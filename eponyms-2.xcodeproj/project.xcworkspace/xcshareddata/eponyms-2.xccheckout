@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>EAC59776-E442-4766-B8B3-F330E7442A7D</string>
+	<key>IDESourceControlProjectName</key>
+	<string>eponyms-2</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>2701E45069A7C4815ED74B38F8F81755C747B5E7</key>
+		<string>github.com:Ossus/eponyms-2.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>eponyms-2.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>2701E45069A7C4815ED74B38F8F81755C747B5E7</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>github.com:Ossus/eponyms-2.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>2701E45069A7C4815ED74B38F8F81755C747B5E7</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>2701E45069A7C4815ED74B38F8F81755C747B5E7</string>
+			<key>IDESourceControlWCCName</key>
+			<string>eponyms-2</string>
+		</dict>
+	</array>
+</dict>
+</plist>
