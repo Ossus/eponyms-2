@@ -9,7 +9,7 @@ Installation
 
 Dependencies are managed with Cocoapods.
 
-    $ git checkout https://github.com/Ossus/eponyms-2.git
+    $ git clone https://github.com/Ossus/eponyms-2.git
     $ sudo gem install cocoapods
     $ cd eponyms-2
     $ pod install
