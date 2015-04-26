@@ -8,7 +8,7 @@
 
 import Foundation
 
-let kSyncGatewayUrl = NSURL(string: "http://192.168.88.22:4999")!
+let kSyncGatewayUrl = NSURL(string: "http://192.168.88.22:4999/eponyms")!
 
 
 class SyncController
@@ -93,7 +93,10 @@ class SyncController
 	
 	// MARK: - Credentials
 	
-	func updateUser(username: String, password: String? = nil) -> Bool {
+	/** Check if a user with given name has credentials in the keychain, if not and a password is given, create and
+		store one.
+	 */
+	func authorizeUser(username: String, password: String? = nil) -> Bool {
 		let space = protectionSpace()
 		if let found = existingCredentialsForUser(username, space: space) {
 			logIfVerbose("Sync: user «\(username)» was already logged in")
@@ -113,22 +116,20 @@ class SyncController
 		return false
 	}
 	
-	func protectionSpace() -> NSURLProtectionSpace {
-		return NSURLProtectionSpace(
-			host: kSyncGatewayUrl.host!,
-			port: kSyncGatewayUrl.port as! Int,
-			`protocol`: kSyncGatewayUrl.scheme,
-			realm: nil,
-			authenticationMethod: NSURLAuthenticationMethodHTTPBasic
-		)
-	}
-	
-	func logInUser(username: String, password: String, space: NSURLProtectionSpace) -> NSURLCredential {
+	/** Returns a list of usernames that have credentials for our Sync Gateway. */
+	func loggedInUsers() -> [String]? {
+		let space = protectionSpace()
 		let store = NSURLCredentialStorage.sharedCredentialStorage()
-		let credentials = NSURLCredential(user: username, password: password, persistence: .Permanent)
-		store.setCredential(credentials, forProtectionSpace: space)
-		
-		return credentials
+		if let found = store.credentialsForProtectionSpace(space) {
+			var usernames = [String]()
+			for (usr, cred) in found {
+				if let u = usr as? String {
+					usernames.append(u)
+				}
+			}
+			return usernames
+		}
+		return nil
 	}
 	
 	func existingCredentialsForUser(username: String, space: NSURLProtectionSpace) -> NSURLCredential? {
@@ -143,12 +144,31 @@ class SyncController
 		return nil
 	}
 	
+	func logInUser(username: String, password: String, space: NSURLProtectionSpace) -> NSURLCredential {
+		let store = NSURLCredentialStorage.sharedCredentialStorage()
+		let credentials = NSURLCredential(user: username, password: password, persistence: .Permanent)
+		store.setCredential(credentials, forProtectionSpace: space)
+		
+		return credentials
+	}
+	
 	func logOutUser(username: String) {
 		let space = protectionSpace()
 		if let found = existingCredentialsForUser(username, space: space) {
 			let store = NSURLCredentialStorage.sharedCredentialStorage()
 			store.removeCredential(found, forProtectionSpace: space)
 		}
+	}
+	
+	/** The URL protection space for our Sync Gateway. */
+	func protectionSpace() -> NSURLProtectionSpace {
+		return NSURLProtectionSpace(
+			host: kSyncGatewayUrl.host!,
+			port: kSyncGatewayUrl.port as! Int,
+			`protocol`: kSyncGatewayUrl.scheme,
+			realm: nil,
+			authenticationMethod: NSURLAuthenticationMethodHTTPBasic
+		)
 	}
 }
 

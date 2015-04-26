@@ -29,9 +29,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
 	
 	func applicationDidBecomeActive(application: UIApplication) {
 		if let sync = sync {
-			if sync.updateUser("guest", password: "guest") {
-				sync.sync()
+			if !sync.authorizeUser("admin") {
+				logIfVerbose("Sync: no user logged in, using anonymous GUEST user")
 			}
+			sync.sync()
 		}
 	}
 	
