@@ -12,6 +12,7 @@ class MasterViewController: UITableViewController
 {
 	var detailViewController: DetailViewController? = nil
 	var objects = NSMutableArray()
+	var sync: SyncController?
 
 
 	override func awakeFromNib() {

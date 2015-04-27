@@ -21,9 +21,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
 		
 		// setup UI
 		let splitViewController = self.window!.rootViewController as! UISplitViewController
-		let navigationController = splitViewController.viewControllers[splitViewController.viewControllers.count-1] as! UINavigationController
-		navigationController.topViewController.navigationItem.leftBarButtonItem = splitViewController.displayModeButtonItem()
+		
+		let masterNavi = splitViewController.viewControllers.first as! UINavigationController
+		let master = masterNavi.viewControllers.first as! MasterViewController
+		master.sync = sync
+		
+		let detailNavi = splitViewController.viewControllers[splitViewController.viewControllers.count-1] as! UINavigationController
+		detailNavi.topViewController.navigationItem.leftBarButtonItem = splitViewController.displayModeButtonItem()
 		splitViewController.delegate = self
+		
 		return true
 	}
 	

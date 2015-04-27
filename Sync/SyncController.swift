@@ -40,7 +40,8 @@ class SyncController
 		database = db!
 		
 		// register model classes
-//		database.modelFactory.registerClass(AnyObject, forDocumentType: "")
+		let factory = database.modelFactory
+		MainDocument.registerInFactory(factory)
 		
 		// setup replication
 		pull = database.createPullReplication(kSyncGatewayUrl)
@@ -79,7 +80,7 @@ class SyncController
 				logIfVerbose("Sync: error pulling [1]: \(err)")
 			}
 			else {
-				logIfVerbose("Sync: progress \(progress)%")
+				logIfVerbose("Sync: progress \(progress * 100)%")
 			}
 		}
 		else if let err = push.lastError {
