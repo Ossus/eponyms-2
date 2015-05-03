@@ -19,7 +19,7 @@ class MainDocument: AuthoredDocument
 	/// The key identifying the main document.
 	@NSManaged var key: String
 	
-	/// A dictionary of documents localizing localizable parts of the main document.
+	/// A dictionary of sub-documents localizing localizable parts of the main document.
 	@NSManaged var localizations: JSONDoc
 	
 	/// A list of tags this main element belongs to.
@@ -32,14 +32,11 @@ class MainDocument: AuthoredDocument
 	
 	// MARK: - Views
 	
-	class func mainDocumentsByTitle(category: String?, locale: String, database: CBLDatabase) -> CBLQuery {
-		let view = mainDocumentTitlesByCategory(database)
+	class func mainDocumentsByTitle(database: CBLDatabase, category: String?) -> CBLQuery {
+		let view = mainDocumentTitlesByTag(database)
 		let query = view.createQuery()
 		query.descending = false
-		
-		if let cat = category {
-			query.keys = [cat]
-		}
+		query.keys = [category ?? "*"]
 		
 		return query
 	}
@@ -50,15 +47,15 @@ class MainDocument: AuthoredDocument
 	
 		`{"_id": "abc", "titles": {"en": "English Title", "de": "Deutscher Titel"}}`
 	 */
-	class func mainDocumentTitlesByCategory(database: CBLDatabase) -> CBLView {
+	class func mainDocumentTitlesByTag(database: CBLDatabase) -> CBLView {
 		let view = database.viewNamed("mainDocumentsByTitle")
 		if nil == view.mapBlock {
 			view.setMapBlock("1") { doc, emit in
 				if "main" == doc["type"] as? String {
-					if let loc = doc["localizations"] as? JSONDoc {
-						let titles = loc.map() { (key, val) in (key, val["title"] as? String ?? "Unnamed") }
-						emit([loc.keys.array], ["_id": doc["_id"] ?? NSNull(), "titles": titles])
-					}
+					var tags = doc["tags"] as? [String] ?? []
+					tags.insert("*", atIndex: 0)
+					let titles = (doc["localizations"] as? JSONDoc)?.map() { (key, val) in (key, val["title"] as? String ?? "Unnamed") }
+					emit(tags, ["_id": doc["_id"] ?? NSNull(), "titles": titles ?? NSNull()])
 				}
 			}
 		}

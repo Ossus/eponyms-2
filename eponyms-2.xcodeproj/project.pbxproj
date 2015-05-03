@@ -22,6 +22,10 @@
 		EE392B621AA49EDE0039F3D1 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EE392B611AA49EDE0039F3D1 /* Images.xcassets */; };
 		EE392B651AA49EDE0039F3D1 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = EE392B631AA49EDE0039F3D1 /* LaunchScreen.xib */; };
 		EE392B711AA49EDE0039F3D1 /* eponyms_2Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE392B701AA49EDE0039F3D1 /* eponyms_2Tests.swift */; };
+		EE4E892C1AF67C2E00E5BBEF /* AuthoredDocumentEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4E892B1AF67C2E00E5BBEF /* AuthoredDocumentEditViewController.swift */; };
+		EE4E892E1AF6A5FD00E5BBEF /* MainDocumentListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4E892D1AF6A5FD00E5BBEF /* MainDocumentListViewController.swift */; };
+		EE4E893F1AF6AC5600E5BBEF /* TableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4E893D1AF6AC5600E5BBEF /* TableViewDataSource.swift */; };
+		EE4E89411AF6B11E00E5BBEF /* CouchTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4E89401AF6B11E00E5BBEF /* CouchTableViewDataSource.swift */; };
 		EE9C69311AEDA82C00D824CE /* AuthoredDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE9C69301AEDA82C00D824CE /* AuthoredDocument.swift */; };
 		EE9C69341AEDA8F200D824CE /* CBLExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE9C69331AEDA8F200D824CE /* CBLExtensions.swift */; };
 		EE9C69361AEDAE9A00D824CE /* MainDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE9C69351AEDAE9A00D824CE /* MainDocument.swift */; };
@@ -72,6 +76,10 @@
 		EE392B6A1AA49EDE0039F3D1 /* eponyms-2Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "eponyms-2Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EE392B6F1AA49EDE0039F3D1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EE392B701AA49EDE0039F3D1 /* eponyms_2Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = eponyms_2Tests.swift; sourceTree = "<group>"; };
+		EE4E892B1AF67C2E00E5BBEF /* AuthoredDocumentEditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthoredDocumentEditViewController.swift; sourceTree = "<group>"; };
+		EE4E892D1AF6A5FD00E5BBEF /* MainDocumentListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainDocumentListViewController.swift; sourceTree = "<group>"; };
+		EE4E893D1AF6AC5600E5BBEF /* TableViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewDataSource.swift; sourceTree = "<group>"; };
+		EE4E89401AF6B11E00E5BBEF /* CouchTableViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CouchTableViewDataSource.swift; sourceTree = "<group>"; };
 		EE9C69301AEDA82C00D824CE /* AuthoredDocument.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthoredDocument.swift; sourceTree = "<group>"; };
 		EE9C69331AEDA8F200D824CE /* CBLExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CBLExtensions.swift; path = Classes/CBLExtensions.swift; sourceTree = "<group>"; };
 		EE9C69351AEDAE9A00D824CE /* MainDocument.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainDocument.swift; sourceTree = "<group>"; };
@@ -142,6 +150,7 @@
 				EE392B581AA49EDE0039F3D1 /* AppDelegate.swift */,
 				EE9C69331AEDA8F200D824CE /* CBLExtensions.swift */,
 				EE9C69321AEDA83100D824CE /* Models */,
+				EE4E893B1AF6AC3D00E5BBEF /* Data Source */,
 				EEC323C01AEC4C15009B0ABB /* Sync */,
 				EEC323BF1AEC40AF009B0ABB /* ViewController */,
 				EEC323BE1AEC40A3009B0ABB /* UI */,
@@ -176,6 +185,16 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		EE4E893B1AF6AC3D00E5BBEF /* Data Source */ = {
+			isa = PBXGroup;
+			children = (
+				EE4E893D1AF6AC5600E5BBEF /* TableViewDataSource.swift */,
+				EE4E89401AF6B11E00E5BBEF /* CouchTableViewDataSource.swift */,
+			);
+			name = "Data Source";
+			path = Classes;
+			sourceTree = "<group>";
+		};
 		EE9C69321AEDA83100D824CE /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -199,7 +218,9 @@
 			isa = PBXGroup;
 			children = (
 				EE392B5A1AA49EDE0039F3D1 /* MasterViewController.swift */,
+				EE4E892D1AF6A5FD00E5BBEF /* MainDocumentListViewController.swift */,
 				EE392B5C1AA49EDE0039F3D1 /* DetailViewController.swift */,
+				EE4E892B1AF67C2E00E5BBEF /* AuthoredDocumentEditViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -314,8 +335,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				EEC323C21AEC4C46009B0ABB /* SyncController.swift in Sources */,
+				EE4E89411AF6B11E00E5BBEF /* CouchTableViewDataSource.swift in Sources */,
+				EE4E893F1AF6AC5600E5BBEF /* TableViewDataSource.swift in Sources */,
 				EE392B5D1AA49EDE0039F3D1 /* DetailViewController.swift in Sources */,
+				EE4E892E1AF6A5FD00E5BBEF /* MainDocumentListViewController.swift in Sources */,
 				EE9C69311AEDA82C00D824CE /* AuthoredDocument.swift in Sources */,
+				EE4E892C1AF67C2E00E5BBEF /* AuthoredDocumentEditViewController.swift in Sources */,
 				EE9C69341AEDA8F200D824CE /* CBLExtensions.swift in Sources */,
 				EE392B5B1AA49EDE0039F3D1 /* MasterViewController.swift in Sources */,
 				EE392B591AA49EDE0039F3D1 /* AppDelegate.swift in Sources */,
