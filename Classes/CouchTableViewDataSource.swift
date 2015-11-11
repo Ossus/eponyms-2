@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import CouchbaseLite
 
 
 /**
@@ -21,7 +22,7 @@ class CouchTableSection
 	}
 	
 	subscript(index: Int) -> CBLQueryRow? {
-		if count(rows) > index {
+		if rows.count > index {
 			return rows[index]
 		}
 		return nil
@@ -31,7 +32,7 @@ class CouchTableSection
 	// MARK: - Rows
 	
 	func numberOfRows() -> Int {
-		return count(rows)
+		return (rows).count
 	}
 	
 	func indexForDocument(document: CBLDocument) -> Int? {
@@ -90,7 +91,7 @@ class CouchTableViewDataSource: TableViewDataSource
 	
 	func startObservingQuery() {
 		if let qry = query {
-			qry.addObserver(self, forKeyPath: "rows", options: nil, context: nil)
+			qry.addObserver(self, forKeyPath: "rows", options: [], context: nil)
 		}
 	}
 	
@@ -104,7 +105,7 @@ class CouchTableViewDataSource: TableViewDataSource
 		if let rows = query?.rows {
 			var oldSections = sections
 			var allRows = rows.allObjects as? [CBLQueryRow] ?? []
-			totalRows = count(allRows)
+			totalRows = allRows.count
 			
 			// TODO: allow delegate to sectionize rows
 			let section = CouchTableSection(rows: allRows)
@@ -120,13 +121,13 @@ class CouchTableViewDataSource: TableViewDataSource
 		}
 	}
 	
-	override func observeValueForKeyPath(keyPath: String, ofObject object: AnyObject, change: [NSObject : AnyObject], context: UnsafeMutablePointer<Void>) {
+	override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
 		if nil != query && object === query! {
 			if !ignoreNextObservedRowChange {
 				reloadFromQuery()
 			}
 			else {
-				totalRows = nil != query?.rows ? count(query!.rows.allObjects) : 0
+				totalRows = query?.rows?.allObjects.count ?? 0
 				onDidReloadTable?(numRows: totalRows)
 			}
 			ignoreNextObservedRowChange = false
@@ -137,7 +138,7 @@ class CouchTableViewDataSource: TableViewDataSource
 	// MARK: - Accessors
 	
 	subscript(sectionIdx: Int) -> CouchTableSection? {
-		if sectionIdx < count(sections) {
+		if sectionIdx < sections.count {
 			return sections[sectionIdx]
 		}
 		return nil
@@ -169,7 +170,7 @@ class CouchTableViewDataSource: TableViewDataSource
 	// MARK: - Integrate Couch into Table Data Source
 	
 	override func numberOfSections() -> Int {
-		return count(sections)
+		return sections.count
 	}
 	
 	override func numberOfRowsInSection(sectionIdx: Int) -> Int {

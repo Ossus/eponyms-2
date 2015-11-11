@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import CouchbaseLite
 
 let kMainDocumentFallbackLocale = "en"
 
@@ -42,11 +43,11 @@ class MainDocument: AuthoredDocument
 	}
 	
 	/**
-		For all "main" documents that have localizations, emits a one-item array where the array item as the array of
-		tags, and a mini-document with the document's "_id" and a "titles" dictionary, like:
+	For all "main" documents that have localizations, emits a one-item array where the array item is the array of tags, and a mini-document
+	with the document's "_id" and a "titles" dictionary, like:
 	
-		`{"_id": "abc", "titles": {"en": "English Title", "de": "Deutscher Titel"}}`
-	 */
+	`{"_id": "abc", "titles": {"en": "English Title", "de": "Deutscher Titel"}}`
+	*/
 	class func mainDocumentTitlesByTag(database: CBLDatabase) -> CBLView {
 		let view = database.viewNamed("mainDocumentsByTitle")
 		if nil == view.mapBlock {
@@ -54,7 +55,12 @@ class MainDocument: AuthoredDocument
 				if "main" == doc["type"] as? String {
 					var tags = doc["tags"] as? [String] ?? []
 					tags.insert("*", atIndex: 0)
-					let titles = (doc["localizations"] as? JSONDoc)?.map() { (key, val) in (key, val["title"] as? String ?? "Unnamed") }
+					var titles = [String: String]()
+					if let localizations = doc["localizations"] as? [String: JSONDoc] {
+						for (lang, data) in localizations {
+							titles[lang] = data["title"] as? String ?? "Unnamed"
+						}
+					}
 					emit(tags, ["_id": doc["_id"] ?? NSNull(), "titles": titles ?? NSNull()])
 				}
 			}

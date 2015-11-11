@@ -12,25 +12,20 @@ import UIKit
 /**
 	Class to display a list of the titles of main documents.
  */
-class MainDocumentListViewController: UITableViewController, TableViewDataSourceDelegate
-{
+class MainDocumentListViewController: UITableViewController, TableViewDataSourceDelegate {
+	
 	var sync: SyncController?
 	
 	var dataSource: CouchTableViewDataSource?
 	
-	override func awakeFromNib() {
-		super.awakeFromNib()
-		if UIDevice.currentDevice().userInterfaceIdiom == .Pad {
-			self.clearsSelectionOnViewWillAppear = false
-			self.preferredContentSize = CGSize(width: 320.0, height: 600.0)
-		}
-	}
+	
+	// MARK: - View Tasks
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
 		assert(nil != sync, "Should have a Sync Controller before loading the view")
-		let query = MainDocument.mainDocumentsByTitle(sync!.database, category: nil).asLiveQuery()!
+		let query = MainDocument.mainDocumentsByTitle(sync!.database, category: nil).asLiveQuery()
 		dataSource = CouchTableViewDataSource(delegate: self, query: query)
 		dataSource!.tableView = self.tableView
 		dataSource!.onWillReloadTable = { numRows in
@@ -44,11 +39,12 @@ class MainDocumentListViewController: UITableViewController, TableViewDataSource
 		self.navigationItem.rightBarButtonItem = addButton
 		
 		// table view
-		self.tableView?.registerClass(UITableViewCell.self, forCellReuseIdentifier: "mainCell")
+		self.tableView?.registerClass(UITableViewCell.self, forCellReuseIdentifier: "MainCell")
 		self.tableView?.reloadData()
 	}
 	
 	override func viewWillAppear(animated: Bool) {
+		self.clearsSelectionOnViewWillAppear = self.splitViewController!.collapsed
 		super.viewWillAppear(animated)
 	}
 	
@@ -57,6 +53,7 @@ class MainDocumentListViewController: UITableViewController, TableViewDataSource
 	
 	func insertNewObject(sender: AnyObject) {
 		if let s = sync {
+			
 			let epo = MainDocument(newDocumentInDatabase: s.database)
 			epo.key = "arnoldsnerve"
 			epo.author = "pp"
@@ -72,7 +69,7 @@ class MainDocumentListViewController: UITableViewController, TableViewDataSource
 			}
 		}
 		else {
-			println("xx>  No SyncController")
+			print("xx>  No SyncController")
 		}
 	}
 	
@@ -83,7 +80,7 @@ class MainDocumentListViewController: UITableViewController, TableViewDataSource
 	}
 	
 	func dataSource(source: TableViewDataSource, tableViewCellForRowAt indexPath: NSIndexPath) -> UITableViewCell {
-		let cell = tableView.dequeueReusableCellWithIdentifier("mainCell", forIndexPath: indexPath) as! UITableViewCell
+		let cell = tableView.dequeueReusableCellWithIdentifier("MainCell", forIndexPath: indexPath) 
 		return cell
 	}
 	

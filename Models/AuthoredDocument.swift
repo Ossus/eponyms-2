@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import CouchbaseLite
 
 
 /**
@@ -25,13 +26,9 @@ class AuthoredDocument: CBLModel
 	/// When the document was last updated.
 	@NSManaged var dateUpdated: NSDate?
 	
-	override init(document: CBLDocument) {
-		super.init(document: document)
-	}
-	
-	init(author athr: String) {
-		super.init(document: nil)
-		author = athr
+	/// This method is called after it's been initialized internally.
+	override func awakeFromInitializer() {
+		super.awakeFromInitializer()
 	}
 	
 	

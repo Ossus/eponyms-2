@@ -17,7 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
 
 
 	func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-		sync = SyncController(databaseName: "eponyms")
+		sync = try! SyncController(databaseName: "eponyms")
 		
 		// setup UI
 		let splitViewController = self.window!.rootViewController as! UISplitViewController
@@ -27,7 +27,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
 		master.sync = sync
 		
 		let detailNavi = splitViewController.viewControllers[splitViewController.viewControllers.count-1] as! UINavigationController
-		detailNavi.topViewController.navigationItem.leftBarButtonItem = splitViewController.displayModeButtonItem()
+		detailNavi.topViewController!.navigationItem.leftBarButtonItem = splitViewController.displayModeButtonItem()
 		splitViewController.delegate = self
 		
 		return true
@@ -45,7 +45,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
 	
 	// MARK: - Split view
 	
-	func splitViewController(splitViewController: UISplitViewController, collapseSecondaryViewController secondaryViewController:UIViewController!, ontoPrimaryViewController primaryViewController:UIViewController!) -> Bool {
+	func splitViewController(splitViewController: UISplitViewController, collapseSecondaryViewController secondaryViewController:UIViewController, ontoPrimaryViewController primaryViewController:UIViewController) -> Bool {
 	    if let secondaryAsNavController = secondaryViewController as? UINavigationController {
 	        if let topAsDetailController = secondaryAsNavController.topViewController as? DetailViewController {
 	            if topAsDetailController.detailItem == nil {
@@ -60,6 +60,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
 
 
 func logIfVerbose(message: String) {
-	println("\(message)")
+	print("\(message)")
 }
 

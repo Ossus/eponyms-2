@@ -115,7 +115,7 @@ class TableViewDataSource: NSObject, UITableViewDataSource
 		if let controller = delegate {
 			return controller.dataSource(self, tableViewCellForRowAt: indexPath)
 		}
-		println("TableViewDataSource warning: cell requested but tableController is gone")
+		print("TableViewDataSource warning: cell requested but tableController is gone")
 		return UITableViewCell()
 	}
 }

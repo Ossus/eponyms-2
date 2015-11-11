@@ -9,6 +9,5 @@
 #ifndef eponyms_2_Bridging_h
 #define eponyms_2_Bridging_h
 
-#import <CouchbaseLite/CouchbaseLite.h>
 
 #endif

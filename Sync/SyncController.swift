@@ -8,7 +8,7 @@
 
 import Foundation
 
-let kSyncGatewayUrl = NSURL(string: "http://192.168.88.22:4999/eponyms")!
+let kSyncGatewayUrl = NSURL(string: "http://192.168.10.22:4999/eponyms")!
 
 
 class SyncController
@@ -27,21 +27,14 @@ class SyncController
 	/// The push replicator.
 	let push: CBLReplication
 	
-	init?(databaseName name: String) {
+	init(databaseName name: String) throws {
 		let manager = CBLManager.sharedInstance()
-		var error: NSError?
-		let db = manager.databaseNamed(name, error: &error)
-		if nil == db {
-			database = CBLDatabase()		// This is stupid, thanks Swift :P
-			pull = CBLReplication()
-			push = CBLReplication()
-			return nil
-		}
-		database = db!
+		database = try manager.databaseNamed(name)
 		
 		// register model classes
-		let factory = database.modelFactory
-		MainDocument.registerInFactory(factory)
+		if let factory = database.modelFactory {
+			MainDocument.registerInFactory(factory)
+		}
 		
 		// setup replication
 		pull = database.createPullReplication(kSyncGatewayUrl)
@@ -138,7 +131,7 @@ class SyncController
 		if let found = store.credentialsForProtectionSpace(space) {
 			for (usr, cred) in found {
 				if let u = usr as? String where u == username {
-					return (cred as! NSURLCredential)
+					return (cred )
 				}
 			}
 		}
