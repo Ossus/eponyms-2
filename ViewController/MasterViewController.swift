@@ -25,7 +25,7 @@ class MasterViewController: UITableViewController {
 	
 	
 	// MARK: - Segues
-
+	
 	override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
 		if segue.identifier == "showDetail" {
 		    if let indexPath = self.tableView.indexPathForSelectedRow {
@@ -51,9 +51,9 @@ class MasterViewController: UITableViewController {
 	
 	override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
 		let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) 
-
+		
 //		let object = objects[indexPath.row]
-		cell.textLabel!.text = "Hello World"
+		cell.textLabel!.text = "All Eponyms"
 		return cell
 	}
 }

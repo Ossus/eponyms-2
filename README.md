@@ -7,7 +7,7 @@ All new incarnation of the iOS Eponyms app.
 Installation
 ------------
 
-This project is built in Swift, runs on iOS 8 or newer and needs Xcode 6.3.
+This project is built in Swift 2, runs on iOS 8 or newer and needs Xcode 7.
 
 Clone the repository via git:
 
@@ -22,4 +22,4 @@ Couchbase
 ---------
 
 - [CouchbaseLite Guides](http://developer.couchbase.com/mobile/develop/guides/couchbase-lite/native-api/index.html)
-- [CouchbaseLite Docs](http://cocoadocs.org/docsets/couchbase-lite-ios/1.0.0/index.html)
+- [CouchbaseLite Docs](http://cocoadocs.org/docsets/couchbase-lite-ios/)

@@ -33,6 +33,34 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		EE0B4E521C7D0FA80098371E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EEA5301F1BD993800084F345 /* CouchbaseLite.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 2701C2101C4D5BDD006D7A99;
+			remoteInfo = "CBL Mac+SQLCipher";
+		};
+		EE0B4E541C7D0FA80098371E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EEA5301F1BD993800084F345 /* CouchbaseLite.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 2701C14E1C49CFE6006D7A99;
+			remoteInfo = "CBL Mac library";
+		};
+		EE0B4E561C7D0FA80098371E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EEA5301F1BD993800084F345 /* CouchbaseLite.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 273E9EED1C509F38003115A6;
+			remoteInfo = "CBL tvOS Test App";
+		};
+		EE0B4E581C7D0FA80098371E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EEA5301F1BD993800084F345 /* CouchbaseLite.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 273E9F021C509F39003115A6;
+			remoteInfo = "CBL tvOS Unit Tests";
+		};
 		EE392B6B1AA49EDE0039F3D1 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = EE392B4B1AA49EDE0039F3D1 /* Project object */;
@@ -201,7 +229,6 @@
 		EE0193411AEC57CB003E74EA /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		EE0193431AEC57D1003E74EA /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		EE0193491AEC57EE003E74EA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		EE01934B1AEC5855003E74EA /* Bridging.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bridging.h; sourceTree = "<group>"; };
 		EE392B531AA49EDE0039F3D1 /* eponyms-2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "eponyms-2.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EE392B571AA49EDE0039F3D1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EE392B581AA49EDE0039F3D1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = Classes/AppDelegate.swift; sourceTree = "<group>"; };
@@ -302,7 +329,6 @@
 		EE392B561AA49EDE0039F3D1 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				EE01934B1AEC5855003E74EA /* Bridging.h */,
 				EE392B571AA49EDE0039F3D1 /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -348,6 +374,8 @@
 			isa = PBXGroup;
 			children = (
 				EEA530391BD993810084F345 /* CouchbaseLite.framework */,
+				EE0B4E531C7D0FA80098371E /* CouchbaseLite.framework */,
+				EE0B4E551C7D0FA80098371E /* libCouchbaseLite.a */,
 				EEA5303B1BD993810084F345 /* CouchbaseLite.framework */,
 				EEA5303D1BD993810084F345 /* CouchbaseLite.framework */,
 				EEA5303F1BD993810084F345 /* libCouchbaseLite.a */,
@@ -360,11 +388,13 @@
 				EEA5304D1BD993810084F345 /* libCouchbaseLiteListener.a */,
 				EEA5304F1BD993810084F345 /* LiteServ */,
 				EEA530511BD993810084F345 /* LiteServ.app */,
-				EEA530691BDB6D130084F345 /* libCBLJSViewCompiler.a */,
+				EE0B4E571C7D0FA80098371E /* CBL tvOS Test App.app */,
 				EEA530531BD993810084F345 /* CBL iOS Unit Tests.xctest */,
 				EEA530551BD993810084F345 /* CBL Mac Unit Tests.xctest */,
+				EE0B4E591C7D0FA80098371E /* CBL tvOS Unit Tests.xctest */,
 				EEA530571BD993810084F345 /* libCBLSQLiteStorage.a */,
 				EEA530591BD993810084F345 /* libCBLForestDBStorage.a */,
+				EEA530691BDB6D130084F345 /* libCBLJSViewCompiler.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -485,6 +515,34 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
+		EE0B4E531C7D0FA80098371E /* CouchbaseLite.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = CouchbaseLite.framework;
+			remoteRef = EE0B4E521C7D0FA80098371E /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		EE0B4E551C7D0FA80098371E /* libCouchbaseLite.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libCouchbaseLite.a;
+			remoteRef = EE0B4E541C7D0FA80098371E /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		EE0B4E571C7D0FA80098371E /* CBL tvOS Test App.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = "CBL tvOS Test App.app";
+			remoteRef = EE0B4E561C7D0FA80098371E /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		EE0B4E591C7D0FA80098371E /* CBL tvOS Unit Tests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "CBL tvOS Unit Tests.xctest";
+			remoteRef = EE0B4E581C7D0FA80098371E /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		EEA530391BD993810084F345 /* CouchbaseLite.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
@@ -791,10 +849,8 @@
 				);
 				INFOPLIST_FILE = Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = "ch.ossus.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = Bridging.h;
 			};
 			name = Debug;
 		};
@@ -808,10 +864,8 @@
 				);
 				INFOPLIST_FILE = Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = "ch.ossus.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = Bridging.h;
 			};
 			name = Release;
 		};

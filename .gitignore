@@ -3,4 +3,5 @@ Couchbase/CouchbaseLite.framework
 # Xcode
 **.xcuserdatad
 **.xccheckout
+**.xcscmblueprint
 

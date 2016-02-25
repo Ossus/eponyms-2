@@ -11,13 +11,13 @@ import CouchbaseLite
 
 
 /**
-	Manages the rows in one table view section.
- */
-class CouchTableSection
-{
+Manages the rows in one table view section.
+*/
+public class CouchTableSection {
+	
 	var rows = [CBLQueryRow]()
 	
-	init(rows: [CBLQueryRow]) {
+	public init(rows: [CBLQueryRow]) {
 		self.rows = rows
 	}
 	
@@ -31,11 +31,11 @@ class CouchTableSection
 	
 	// MARK: - Rows
 	
-	func numberOfRows() -> Int {
+	public func numberOfRows() -> Int {
 		return (rows).count
 	}
 	
-	func indexForDocument(document: CBLDocument) -> Int? {
+	public func indexForDocument(document: CBLDocument) -> Int? {
 		let docId = document.documentID
 		var rowIdx = 0
 		for row in rows {
@@ -47,17 +47,17 @@ class CouchTableSection
 		return nil
 	}
 	
-	func addObject(row: CBLQueryRow) {
+	public func addObject(row: CBLQueryRow) {
 		rows.append(row)
 	}
 }
 
 
 /**
-	A table view data source that hooks into a Couchbase live query.
- */
-class CouchTableViewDataSource: TableViewDataSource
-{
+A table view data source that hooks into a Couchbase live query.
+*/
+public class CouchTableViewDataSource: TableViewDataSource {
+	
 	deinit {
 		stopObservingQuery()
 	}
@@ -80,7 +80,7 @@ class CouchTableViewDataSource: TableViewDataSource
 	var ignoreNextObservedRowChange = false
 	
 	
-	init(delegate: TableViewDataSourceDelegate, query: CBLLiveQuery) {
+	public init(delegate: TableViewDataSourceDelegate, query: CBLLiveQuery) {
 		self.query = query
 		super.init(delegate: delegate)
 		startObservingQuery()
@@ -121,7 +121,7 @@ class CouchTableViewDataSource: TableViewDataSource
 		}
 	}
 	
-	override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
+	public override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
 		if nil != query && object === query! {
 			if !ignoreNextObservedRowChange {
 				reloadFromQuery()
@@ -183,10 +183,10 @@ class CouchTableViewDataSource: TableViewDataSource
 	
 //	override func sectionIndexTitlesForTableView(tableView: UITableView) -> [AnyObject]! {
 //	}
-	
+
 //	override func tableView(tableView: UITableView, sectionForSectionIndexTitle title: String, atIndex index: Int) -> Int {
 //	}
-	
+
 //	override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
 //	}
 }

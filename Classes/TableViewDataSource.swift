@@ -9,22 +9,22 @@
 import UIKit
 
 
-protocol TableViewDataSourceDelegate: class
-{
+public protocol TableViewDataSourceDelegate: class {
+	
 	/**
-		The delegate can return the cell in this method.
-	 */
+	The delegate can return the cell in this method.
+	*/
 	func dataSource(source: TableViewDataSource, tableViewCellForRowAt indexPath: NSIndexPath) -> UITableViewCell
 	
 	/**
-		Called by the search data source when a search produces no results.
-	 */
+	Called by the search data source when a search produces no results.
+	*/
 	func dataSource(source: TableViewDataSource, hasNoSearchResultsForSearchString searchString: String)
 }
 
 
-class TableViewDataSource: NSObject, UITableViewDataSource
-{
+public class TableViewDataSource: NSObject, UITableViewDataSource {
+	
 	weak var delegate: TableViewDataSourceDelegate?
 	
 	weak var tableView: UITableView? {
@@ -59,10 +59,10 @@ class TableViewDataSource: NSObject, UITableViewDataSource
 	}
 	
 	/**
-		Might be called when the receiver's data should be reloaded.
+	Might be called when the receiver's data should be reloaded.
 	
-		Default implementation does nothing.
-	 */
+	Default implementation does nothing.
+	*/
 	func reload() {
 	}
 	
@@ -70,18 +70,18 @@ class TableViewDataSource: NSObject, UITableViewDataSource
 	// MARK: - Search
 	
 	/**
-		Give the data source the chance to prepare for search operations.
+	Give the data source the chance to prepare for search operations.
 	
-		Default implementation does nothing.
-	 */
+	Default implementation does nothing.
+	*/
 	func prepareForSearch() {
 	}
 	
 	/**
-		Ask the data source to update the table after searching for the given string.
+	Ask the data source to update the table after searching for the given string.
 	
-		Default implementation does nothing.
-	 */
+	Default implementation does nothing.
+	*/
 	func performSearchWithString(searchString: String) {
 	}
 	
@@ -103,15 +103,15 @@ class TableViewDataSource: NSObject, UITableViewDataSource
 	
 	// MARK: - Table View Data Source
 	
-	func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+	public func numberOfSectionsInTableView(tableView: UITableView) -> Int {
 		return numberOfSections()
 	}
 	
-	func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+	public func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		return numberOfRowsInSection(section)
 	}
 	
-	func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+	public func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
 		if let controller = delegate {
 			return controller.dataSource(self, tableViewCellForRowAt: indexPath)
 		}

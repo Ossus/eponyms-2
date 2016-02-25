@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CouchbaseLite
 
 
 /**
@@ -34,17 +35,18 @@ class MainDocumentListViewController: UITableViewController, TableViewDataSource
 		dataSource!.onDidReloadTable = { numRows in
 			logIfVerbose("Did display \(numRows)")
 		}
+		tableView.dataSource = dataSource
 		
 		let addButton = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: "insertNewObject:")
-		self.navigationItem.rightBarButtonItem = addButton
+		navigationItem.rightBarButtonItem = addButton
 		
 		// table view
-		self.tableView?.registerClass(UITableViewCell.self, forCellReuseIdentifier: "MainCell")
-		self.tableView?.reloadData()
+		tableView?.registerClass(UITableViewCell.self, forCellReuseIdentifier: "MainCell")
+		tableView?.reloadData()
 	}
 	
 	override func viewWillAppear(animated: Bool) {
-		self.clearsSelectionOnViewWillAppear = self.splitViewController!.collapsed
+		clearsSelectionOnViewWillAppear = splitViewController!.collapsed
 		super.viewWillAppear(animated)
 	}
 	
@@ -52,24 +54,22 @@ class MainDocumentListViewController: UITableViewController, TableViewDataSource
 	// MARK: - Documents
 	
 	func insertNewObject(sender: AnyObject) {
-		if let s = sync {
-			
-			let epo = MainDocument(newDocumentInDatabase: s.database)
-			epo.key = "arnoldsnerve"
-			epo.author = "pp"
-			epo.localizations = ["en": ["title:": "Arnold's Nerve", "text": "Auricular branch of vagus nerve supplying posterior and inferior meatal skin of ear; stimulation can elicit cough reflex."]]
-			epo.tags = ["neuro", "ent", "anat"]
-			
-			var error: NSError?
-			if !epo.save(&error) {
-				logIfVerbose("Failed to save: \(error)")
-			}
-			else {
-				logIfVerbose("SAVED!")
-			}
-		}
-		else {
+		guard let s = sync else {
 			print("xx>  No SyncController")
+			return
+		}			
+		let epo = MainDocument(forNewDocumentInDatabase: s.database)
+		epo._id = "arnoldsnerve"
+		epo.author = "firstuser"
+		epo.localizations = ["en": ["title": "Arnold's Nerve", "text": "Auricular branch of vagus nerve supplying posterior and inferior meatal skin of ear; stimulation can elicit cough reflex."]]
+		epo.tags = ["neuro", "ent", "anat"]
+		
+		do {
+			try epo.save()
+			logIfVerbose("SAVED!")
+		}
+		catch let error {
+			logIfVerbose("Failed to save: \(error)")
 		}
 	}
 	
@@ -80,7 +80,10 @@ class MainDocumentListViewController: UITableViewController, TableViewDataSource
 	}
 	
 	func dataSource(source: TableViewDataSource, tableViewCellForRowAt indexPath: NSIndexPath) -> UITableViewCell {
-		let cell = tableView.dequeueReusableCellWithIdentifier("MainCell", forIndexPath: indexPath) 
+		let cell = tableView.dequeueReusableCellWithIdentifier("MainCell", forIndexPath: indexPath)
+		if let row = dataSource?.rowAtIndexPath(indexPath) {
+			cell.textLabel?.text = MainDocument.mainDocumentsByTitleTitle(row)
+		}
 		return cell
 	}
 	
@@ -93,3 +96,4 @@ class MainDocumentListViewController: UITableViewController, TableViewDataSource
 		// Pass the selected object to the new view controller.
 	}
 }
+
