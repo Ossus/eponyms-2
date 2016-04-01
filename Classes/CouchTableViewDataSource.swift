@@ -42,7 +42,7 @@ public class CouchTableSection {
 			if row.documentID == docId {
 				return rowIdx
 			}
-			rowIdx++
+			rowIdx += 1
 		}
 		return nil
 	}
@@ -158,7 +158,7 @@ public class CouchTableViewDataSource: TableViewDataSource {
 			if let rowIdx = section.indexForDocument(document) {
 				return NSIndexPath(forRow: Int(rowIdx), inSection: sectionIdx)
 			}
-			sectionIdx++
+			sectionIdx += 1
 		}
 		return nil
 	}

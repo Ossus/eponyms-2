@@ -9,8 +9,8 @@
 import UIKit
 
 
-class AuthoredDocumentEditViewController: UIViewController
-{
+class AuthoredDocumentEditViewController: UIViewController {
+	
 	var document: AuthoredDocument? {
 		didSet {
 			if isViewLoaded() {
@@ -28,8 +28,6 @@ class AuthoredDocumentEditViewController: UIViewController
 	// MARK: - View Update
 	
 	func updateView() {
-		if let doc = document {
-			
-		}
+		
 	}
 }

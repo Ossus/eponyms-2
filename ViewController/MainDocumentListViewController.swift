@@ -37,7 +37,7 @@ class MainDocumentListViewController: UITableViewController, TableViewDataSource
 		}
 		tableView.dataSource = dataSource
 		
-		let addButton = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: "insertNewObject:")
+		let addButton = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: #selector(MainDocumentListViewController.insertNewObject(_:)))
 		navigationItem.rightBarButtonItem = addButton
 		
 		// table view

@@ -54,9 +54,7 @@ public class MainDocument: AuthoredDocument {
 		let view = mainDocumentTitlesByTag(database)
 		let query = view.createQuery()
 		query.descending = false
-		if let category = category {
-			query.keys = [category]
-		}
+		query.keys = [category ?? "*"]
 		
 		return query
 	}

@@ -34,7 +34,7 @@ public class SyncController {
 		return NSURLProtectionSpace(
 			host: kSyncGatewayUrl.host!,
 			port: kSyncGatewayUrl.port as! Int,
-			`protocol`: kSyncGatewayUrl.scheme,
+			protocol: kSyncGatewayUrl.scheme,
 			realm: nil,
 			authenticationMethod: NSURLAuthenticationMethodHTTPBasic
 		)
