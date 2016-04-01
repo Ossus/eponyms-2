@@ -7,13 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		EE01933D1AEC5747003E74EA /* CouchbaseLite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE01933B1AEC573A003E74EA /* CouchbaseLite.framework */; };
-		EE01933E1AEC5747003E74EA /* CouchbaseLite.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = EE01933B1AEC573A003E74EA /* CouchbaseLite.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		EE0193401AEC57C7003E74EA /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE01933F1AEC57C7003E74EA /* CFNetwork.framework */; };
 		EE0193421AEC57CB003E74EA /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE0193411AEC57CB003E74EA /* Security.framework */; };
 		EE0193441AEC57D1003E74EA /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE0193431AEC57D1003E74EA /* SystemConfiguration.framework */; };
-		EE0193461AEC57DE003E74EA /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = EE0193451AEC57DE003E74EA /* libsqlite3.dylib */; };
-		EE0193481AEC57E5003E74EA /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = EE0193471AEC57E5003E74EA /* libz.dylib */; };
 		EE01934A1AEC57EE003E74EA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE0193491AEC57EE003E74EA /* Foundation.framework */; };
 		EE392B591AA49EDE0039F3D1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE392B581AA49EDE0039F3D1 /* AppDelegate.swift */; };
 		EE392B5B1AA49EDE0039F3D1 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE392B5A1AA49EDE0039F3D1 /* MasterViewController.swift */; };
@@ -29,16 +25,188 @@
 		EE9C69311AEDA82C00D824CE /* AuthoredDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE9C69301AEDA82C00D824CE /* AuthoredDocument.swift */; };
 		EE9C69341AEDA8F200D824CE /* CBLExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE9C69331AEDA8F200D824CE /* CBLExtensions.swift */; };
 		EE9C69361AEDAE9A00D824CE /* MainDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE9C69351AEDAE9A00D824CE /* MainDocument.swift */; };
+		EEA5301C1BD992A50084F345 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = EEA5301B1BD992A50084F345 /* libz.tbd */; };
+		EEA5301E1BD992AD0084F345 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = EEA5301D1BD992AD0084F345 /* libsqlite3.tbd */; };
+		EEA5305C1BD993B30084F345 /* CouchbaseLite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEA5303B1BD993810084F345 /* CouchbaseLite.framework */; };
+		EEA5305D1BD993B30084F345 /* CouchbaseLite.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = EEA5303B1BD993810084F345 /* CouchbaseLite.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		EEC323C21AEC4C46009B0ABB /* SyncController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEC323C11AEC4C46009B0ABB /* SyncController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		EE0B4E521C7D0FA80098371E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EEA5301F1BD993800084F345 /* CouchbaseLite.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 2701C2101C4D5BDD006D7A99;
+			remoteInfo = "CBL Mac+SQLCipher";
+		};
+		EE0B4E541C7D0FA80098371E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EEA5301F1BD993800084F345 /* CouchbaseLite.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 2701C14E1C49CFE6006D7A99;
+			remoteInfo = "CBL Mac library";
+		};
+		EE0B4E561C7D0FA80098371E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EEA5301F1BD993800084F345 /* CouchbaseLite.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 273E9EED1C509F38003115A6;
+			remoteInfo = "CBL tvOS Test App";
+		};
+		EE0B4E581C7D0FA80098371E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EEA5301F1BD993800084F345 /* CouchbaseLite.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 273E9F021C509F39003115A6;
+			remoteInfo = "CBL tvOS Unit Tests";
+		};
 		EE392B6B1AA49EDE0039F3D1 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = EE392B4B1AA49EDE0039F3D1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = EE392B521AA49EDE0039F3D1;
 			remoteInfo = "eponyms-2";
+		};
+		EEA530381BD993810084F345 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EEA5301F1BD993800084F345 /* CouchbaseLite.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 270B3DEA1489359000E0A926;
+			remoteInfo = "CBL Mac";
+		};
+		EEA5303A1BD993810084F345 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EEA5301F1BD993800084F345 /* CouchbaseLite.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 27452BB81AB1180800327776;
+			remoteInfo = "CBL iOS framework";
+		};
+		EEA5303C1BD993810084F345 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EEA5301F1BD993800084F345 /* CouchbaseLite.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 27B0B7E71492BB6B00A817AD;
+			remoteInfo = "CBL iOS";
+		};
+		EEA5303E1BD993810084F345 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EEA5301F1BD993800084F345 /* CouchbaseLite.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 27B0B7A91492B83B00A817AD;
+			remoteInfo = "CBL iOS library";
+		};
+		EEA530401BD993810084F345 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EEA5301F1BD993800084F345 /* CouchbaseLite.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 27452BAD1AB1156F00327776;
+			remoteInfo = "CBL iOS fat library";
+		};
+		EEA530421BD993810084F345 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EEA5301F1BD993800084F345 /* CouchbaseLite.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 27C70694148864BA00F0F099;
+			remoteInfo = "CBL Mac Test App";
+		};
+		EEA530441BD993810084F345 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EEA5301F1BD993800084F345 /* CouchbaseLite.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 27B0B80B1492C16300A817AD;
+			remoteInfo = "CBL iOS Test App";
+		};
+		EEA530461BD993810084F345 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EEA5301F1BD993800084F345 /* CouchbaseLite.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 27731F2A1495CFEF00815D67;
+			remoteInfo = "CBL iOS Empty App";
+		};
+		EEA530481BD993810084F345 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EEA5301F1BD993800084F345 /* CouchbaseLite.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 275315D514ACF0A10065964D;
+			remoteInfo = "CBL Listener Mac";
+		};
+		EEA5304A1BD993810084F345 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EEA5301F1BD993800084F345 /* CouchbaseLite.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = DA147C3614BCAC3B0052DA4D;
+			remoteInfo = "CBL Listener iOS";
+		};
+		EEA5304C1BD993810084F345 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EEA5301F1BD993800084F345 /* CouchbaseLite.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = DA023B6414BCA94C008184BB;
+			remoteInfo = "Listener iOS Library";
+		};
+		EEA5304E1BD993810084F345 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EEA5301F1BD993800084F345 /* CouchbaseLite.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 270FE0C814C5008C005FF647;
+			remoteInfo = LiteServ;
+		};
+		EEA530501BD993810084F345 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EEA5301F1BD993800084F345 /* CouchbaseLite.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 27538F5017F13B03004C3BFD;
+			remoteInfo = "LiteServ App";
+		};
+		EEA530521BD993810084F345 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EEA5301F1BD993800084F345 /* CouchbaseLite.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 2700358B1A44E9270015B9F4;
+			remoteInfo = "CBL iOS Unit Tests";
+		};
+		EEA530541BD993810084F345 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EEA5301F1BD993800084F345 /* CouchbaseLite.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 272AA83F1A48D835004B8D55;
+			remoteInfo = "CBL Mac Unit Tests";
+		};
+		EEA530561BD993810084F345 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EEA5301F1BD993800084F345 /* CouchbaseLite.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 27E66ACF1A7305B10091DA3F;
+			remoteInfo = "CBL SQLite Storage";
+		};
+		EEA530581BD993810084F345 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EEA5301F1BD993800084F345 /* CouchbaseLite.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 27E66B431A7307590091DA3F;
+			remoteInfo = "CBL ForestDB Storage";
+		};
+		EEA5305A1BD993A10084F345 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EEA5301F1BD993800084F345 /* CouchbaseLite.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 27452BB71AB1180800327776;
+			remoteInfo = "CBL iOS framework";
+		};
+		EEA5305E1BD993B30084F345 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EEA5301F1BD993800084F345 /* CouchbaseLite.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 27452BB71AB1180800327776;
+			remoteInfo = "CBL iOS framework";
+		};
+		EEA530681BDB6D130084F345 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EEA5301F1BD993800084F345 /* CouchbaseLite.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 792867BF178DE01900248AF0;
+			remoteInfo = CBLJSViewCompiler;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -49,7 +217,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				EE01933E1AEC5747003E74EA /* CouchbaseLite.framework in Embed Frameworks */,
+				EEA5305D1BD993B30084F345 /* CouchbaseLite.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -57,14 +225,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		EE01933B1AEC573A003E74EA /* CouchbaseLite.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CouchbaseLite.framework; path = Couchbase/CouchbaseLite.framework; sourceTree = "<group>"; };
 		EE01933F1AEC57C7003E74EA /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		EE0193411AEC57CB003E74EA /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		EE0193431AEC57D1003E74EA /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
-		EE0193451AEC57DE003E74EA /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
-		EE0193471AEC57E5003E74EA /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		EE0193491AEC57EE003E74EA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		EE01934B1AEC5855003E74EA /* Bridging.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bridging.h; sourceTree = "<group>"; };
 		EE392B531AA49EDE0039F3D1 /* eponyms-2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "eponyms-2.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EE392B571AA49EDE0039F3D1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EE392B581AA49EDE0039F3D1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = Classes/AppDelegate.swift; sourceTree = "<group>"; };
@@ -83,6 +247,9 @@
 		EE9C69301AEDA82C00D824CE /* AuthoredDocument.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthoredDocument.swift; sourceTree = "<group>"; };
 		EE9C69331AEDA8F200D824CE /* CBLExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CBLExtensions.swift; path = Classes/CBLExtensions.swift; sourceTree = "<group>"; };
 		EE9C69351AEDAE9A00D824CE /* MainDocument.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainDocument.swift; sourceTree = "<group>"; };
+		EEA5301B1BD992A50084F345 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		EEA5301D1BD992AD0084F345 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		EEA5301F1BD993800084F345 /* CouchbaseLite.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CouchbaseLite.xcodeproj; path = "couchbase-lite-ios/CouchbaseLite.xcodeproj"; sourceTree = "<group>"; };
 		EEC323C11AEC4C46009B0ABB /* SyncController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SyncController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -91,13 +258,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EE0193481AEC57E5003E74EA /* libz.dylib in Frameworks */,
-				EE0193461AEC57DE003E74EA /* libsqlite3.dylib in Frameworks */,
+				EEA5301E1BD992AD0084F345 /* libsqlite3.tbd in Frameworks */,
+				EEA5301C1BD992A50084F345 /* libz.tbd in Frameworks */,
 				EE0193441AEC57D1003E74EA /* SystemConfiguration.framework in Frameworks */,
 				EE0193421AEC57CB003E74EA /* Security.framework in Frameworks */,
 				EE0193401AEC57C7003E74EA /* CFNetwork.framework in Frameworks */,
-				EE01933D1AEC5747003E74EA /* CouchbaseLite.framework in Frameworks */,
 				EE01934A1AEC57EE003E74EA /* Foundation.framework in Frameworks */,
+				EEA5305C1BD993B30084F345 /* CouchbaseLite.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -114,13 +281,12 @@
 		644C79FA43D67C84122D7C41 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				EEA5301D1BD992AD0084F345 /* libsqlite3.tbd */,
+				EEA5301B1BD992A50084F345 /* libz.tbd */,
 				EE0193491AEC57EE003E74EA /* Foundation.framework */,
-				EE0193471AEC57E5003E74EA /* libz.dylib */,
-				EE0193451AEC57DE003E74EA /* libsqlite3.dylib */,
 				EE0193431AEC57D1003E74EA /* SystemConfiguration.framework */,
 				EE0193411AEC57CB003E74EA /* Security.framework */,
 				EE01933F1AEC57C7003E74EA /* CFNetwork.framework */,
-				EE01933B1AEC573A003E74EA /* CouchbaseLite.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -132,6 +298,7 @@
 				EE392B6D1AA49EDE0039F3D1 /* Tests */,
 				EE392B541AA49EDE0039F3D1 /* Products */,
 				644C79FA43D67C84122D7C41 /* Frameworks */,
+				EEA5301F1BD993800084F345 /* CouchbaseLite.xcodeproj */,
 			);
 			sourceTree = "<group>";
 		};
@@ -162,7 +329,6 @@
 		EE392B561AA49EDE0039F3D1 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				EE01934B1AEC5855003E74EA /* Bridging.h */,
 				EE392B571AA49EDE0039F3D1 /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -202,6 +368,35 @@
 				EE9C69351AEDAE9A00D824CE /* MainDocument.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		EEA530201BD993800084F345 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				EEA530391BD993810084F345 /* CouchbaseLite.framework */,
+				EE0B4E531C7D0FA80098371E /* CouchbaseLite.framework */,
+				EE0B4E551C7D0FA80098371E /* libCouchbaseLite.a */,
+				EEA5303B1BD993810084F345 /* CouchbaseLite.framework */,
+				EEA5303D1BD993810084F345 /* CouchbaseLite.framework */,
+				EEA5303F1BD993810084F345 /* libCouchbaseLite.a */,
+				EEA530411BD993810084F345 /* libCouchbaseLiteFat.a */,
+				EEA530431BD993810084F345 /* Couchbase Lite Demo.app */,
+				EEA530451BD993810084F345 /* CBL Test.app */,
+				EEA530471BD993810084F345 /* Couchbase Lite Empty App.app */,
+				EEA530491BD993810084F345 /* CouchbaseLiteListener.framework */,
+				EEA5304B1BD993810084F345 /* CouchbaseLiteListener.framework */,
+				EEA5304D1BD993810084F345 /* libCouchbaseLiteListener.a */,
+				EEA5304F1BD993810084F345 /* LiteServ */,
+				EEA530511BD993810084F345 /* LiteServ.app */,
+				EE0B4E571C7D0FA80098371E /* CBL tvOS Test App.app */,
+				EEA530531BD993810084F345 /* CBL iOS Unit Tests.xctest */,
+				EEA530551BD993810084F345 /* CBL Mac Unit Tests.xctest */,
+				EE0B4E591C7D0FA80098371E /* CBL tvOS Unit Tests.xctest */,
+				EEA530571BD993810084F345 /* libCBLSQLiteStorage.a */,
+				EEA530591BD993810084F345 /* libCBLForestDBStorage.a */,
+				EEA530691BDB6D130084F345 /* libCBLJSViewCompiler.a */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 		EEC323BE1AEC40A3009B0ABB /* UI */ = {
@@ -248,6 +443,8 @@
 			buildRules = (
 			);
 			dependencies = (
+				EEA5305B1BD993A10084F345 /* PBXTargetDependency */,
+				EEA5305F1BD993B30084F345 /* PBXTargetDependency */,
 			);
 			name = "eponyms-2";
 			productName = "eponyms-2";
@@ -278,7 +475,9 @@
 		EE392B4B1AA49EDE0039F3D1 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0610;
+				LastSwiftMigration = 0710;
+				LastSwiftUpdateCheck = 0710;
+				LastUpgradeCheck = 0710;
 				ORGANIZATIONNAME = Ossus;
 				TargetAttributes = {
 					EE392B521AA49EDE0039F3D1 = {
@@ -301,6 +500,12 @@
 			mainGroup = EE392B4A1AA49EDE0039F3D1;
 			productRefGroup = EE392B541AA49EDE0039F3D1 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = EEA530201BD993800084F345 /* Products */;
+					ProjectRef = EEA5301F1BD993800084F345 /* CouchbaseLite.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				EE392B521AA49EDE0039F3D1 /* eponyms-2 */,
@@ -308,6 +513,163 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		EE0B4E531C7D0FA80098371E /* CouchbaseLite.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = CouchbaseLite.framework;
+			remoteRef = EE0B4E521C7D0FA80098371E /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		EE0B4E551C7D0FA80098371E /* libCouchbaseLite.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libCouchbaseLite.a;
+			remoteRef = EE0B4E541C7D0FA80098371E /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		EE0B4E571C7D0FA80098371E /* CBL tvOS Test App.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = "CBL tvOS Test App.app";
+			remoteRef = EE0B4E561C7D0FA80098371E /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		EE0B4E591C7D0FA80098371E /* CBL tvOS Unit Tests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "CBL tvOS Unit Tests.xctest";
+			remoteRef = EE0B4E581C7D0FA80098371E /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		EEA530391BD993810084F345 /* CouchbaseLite.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = CouchbaseLite.framework;
+			remoteRef = EEA530381BD993810084F345 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		EEA5303B1BD993810084F345 /* CouchbaseLite.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = CouchbaseLite.framework;
+			remoteRef = EEA5303A1BD993810084F345 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		EEA5303D1BD993810084F345 /* CouchbaseLite.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = CouchbaseLite.framework;
+			remoteRef = EEA5303C1BD993810084F345 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		EEA5303F1BD993810084F345 /* libCouchbaseLite.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libCouchbaseLite.a;
+			remoteRef = EEA5303E1BD993810084F345 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		EEA530411BD993810084F345 /* libCouchbaseLiteFat.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libCouchbaseLiteFat.a;
+			remoteRef = EEA530401BD993810084F345 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		EEA530431BD993810084F345 /* Couchbase Lite Demo.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = "Couchbase Lite Demo.app";
+			remoteRef = EEA530421BD993810084F345 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		EEA530451BD993810084F345 /* CBL Test.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = "CBL Test.app";
+			remoteRef = EEA530441BD993810084F345 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		EEA530471BD993810084F345 /* Couchbase Lite Empty App.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = "Couchbase Lite Empty App.app";
+			remoteRef = EEA530461BD993810084F345 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		EEA530491BD993810084F345 /* CouchbaseLiteListener.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = CouchbaseLiteListener.framework;
+			remoteRef = EEA530481BD993810084F345 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		EEA5304B1BD993810084F345 /* CouchbaseLiteListener.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = CouchbaseLiteListener.framework;
+			remoteRef = EEA5304A1BD993810084F345 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		EEA5304D1BD993810084F345 /* libCouchbaseLiteListener.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libCouchbaseLiteListener.a;
+			remoteRef = EEA5304C1BD993810084F345 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		EEA5304F1BD993810084F345 /* LiteServ */ = {
+			isa = PBXReferenceProxy;
+			fileType = "compiled.mach-o.executable";
+			path = LiteServ;
+			remoteRef = EEA5304E1BD993810084F345 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		EEA530511BD993810084F345 /* LiteServ.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = LiteServ.app;
+			remoteRef = EEA530501BD993810084F345 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		EEA530531BD993810084F345 /* CBL iOS Unit Tests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "CBL iOS Unit Tests.xctest";
+			remoteRef = EEA530521BD993810084F345 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		EEA530551BD993810084F345 /* CBL Mac Unit Tests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "CBL Mac Unit Tests.xctest";
+			remoteRef = EEA530541BD993810084F345 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		EEA530571BD993810084F345 /* libCBLSQLiteStorage.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libCBLSQLiteStorage.a;
+			remoteRef = EEA530561BD993810084F345 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		EEA530591BD993810084F345 /* libCBLForestDBStorage.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libCBLForestDBStorage.a;
+			remoteRef = EEA530581BD993810084F345 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		EEA530691BDB6D130084F345 /* libCBLJSViewCompiler.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libCBLJSViewCompiler.a;
+			remoteRef = EEA530681BDB6D130084F345 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		EE392B511AA49EDE0039F3D1 /* Resources */ = {
@@ -364,6 +726,16 @@
 			target = EE392B521AA49EDE0039F3D1 /* eponyms-2 */;
 			targetProxy = EE392B6B1AA49EDE0039F3D1 /* PBXContainerItemProxy */;
 		};
+		EEA5305B1BD993A10084F345 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "CBL iOS framework";
+			targetProxy = EEA5305A1BD993A10084F345 /* PBXContainerItemProxy */;
+		};
+		EEA5305F1BD993B30084F345 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "CBL iOS framework";
+			targetProxy = EEA5305E1BD993B30084F345 /* PBXContainerItemProxy */;
+		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
@@ -407,6 +779,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -476,9 +849,8 @@
 				);
 				INFOPLIST_FILE = Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_BUNDLE_IDENTIFIER = "ch.ossus.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = Bridging.h;
 			};
 			name = Debug;
 		};
@@ -492,9 +864,8 @@
 				);
 				INFOPLIST_FILE = Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_BUNDLE_IDENTIFIER = "ch.ossus.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = Bridging.h;
 			};
 			name = Release;
 		};
@@ -512,6 +883,7 @@
 				);
 				INFOPLIST_FILE = Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "ch.ossus.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/eponyms-2.app/eponyms-2";
 			};
@@ -527,6 +899,7 @@
 				);
 				INFOPLIST_FILE = Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "ch.ossus.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/eponyms-2.app/eponyms-2";
 			};

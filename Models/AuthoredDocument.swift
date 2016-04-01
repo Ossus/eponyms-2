@@ -7,15 +7,16 @@
 //
 
 import Foundation
+import CouchbaseLite
 
 
 /**
-	Abstract superclass for all our models which need an author, a name in the "author" property.
+Abstract superclass for all our models which need an author, a name in the "author" property.
 
-	This class also has "date" and "dateUpdated", which are handled at save time automatically.
- */
-class AuthoredDocument: CBLModel
-{
+This class also has "date" and "dateUpdated", which are handled at save time automatically.
+*/
+public class AuthoredDocument: CBLModel {
+	
 	/// The name of the original author of the document.
 	@NSManaged var author: String
 	
@@ -25,19 +26,15 @@ class AuthoredDocument: CBLModel
 	/// When the document was last updated.
 	@NSManaged var dateUpdated: NSDate?
 	
-	override init(document: CBLDocument) {
-		super.init(document: document)
-	}
-	
-	init(author athr: String) {
-		super.init(document: nil)
-		author = athr
+	/// This method is called after it's been initialized internally.
+	public override func awakeFromInitializer() {
+		super.awakeFromInitializer()
 	}
 	
 	
 	// MARK: - Saving
 	
-	override func willSave(changedPropertyNames: Set<NSObject>!) {
+	public override func willSave(changedPropertyNames: Set<NSObject>!) {
 		type = self.dynamicType.type()
 		if nil == date {
 			date = NSDate()

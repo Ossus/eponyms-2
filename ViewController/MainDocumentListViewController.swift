@@ -7,30 +7,26 @@
 //
 
 import UIKit
+import CouchbaseLite
 
 
 /**
 	Class to display a list of the titles of main documents.
  */
-class MainDocumentListViewController: UITableViewController, TableViewDataSourceDelegate
-{
+class MainDocumentListViewController: UITableViewController, TableViewDataSourceDelegate {
+	
 	var sync: SyncController?
 	
 	var dataSource: CouchTableViewDataSource?
 	
-	override func awakeFromNib() {
-		super.awakeFromNib()
-		if UIDevice.currentDevice().userInterfaceIdiom == .Pad {
-			self.clearsSelectionOnViewWillAppear = false
-			self.preferredContentSize = CGSize(width: 320.0, height: 600.0)
-		}
-	}
+	
+	// MARK: - View Tasks
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
 		assert(nil != sync, "Should have a Sync Controller before loading the view")
-		let query = MainDocument.mainDocumentsByTitle(sync!.database, category: nil).asLiveQuery()!
+		let query = MainDocument.mainDocumentsByTitle(sync!.database, category: nil).asLiveQuery()
 		dataSource = CouchTableViewDataSource(delegate: self, query: query)
 		dataSource!.tableView = self.tableView
 		dataSource!.onWillReloadTable = { numRows in
@@ -39,16 +35,18 @@ class MainDocumentListViewController: UITableViewController, TableViewDataSource
 		dataSource!.onDidReloadTable = { numRows in
 			logIfVerbose("Did display \(numRows)")
 		}
+		tableView.dataSource = dataSource
 		
-		let addButton = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: "insertNewObject:")
-		self.navigationItem.rightBarButtonItem = addButton
+		let addButton = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: #selector(MainDocumentListViewController.insertNewObject(_:)))
+		navigationItem.rightBarButtonItem = addButton
 		
 		// table view
-		self.tableView?.registerClass(UITableViewCell.self, forCellReuseIdentifier: "mainCell")
-		self.tableView?.reloadData()
+		tableView?.registerClass(UITableViewCell.self, forCellReuseIdentifier: "MainCell")
+		tableView?.reloadData()
 	}
 	
 	override func viewWillAppear(animated: Bool) {
+		clearsSelectionOnViewWillAppear = splitViewController!.collapsed
 		super.viewWillAppear(animated)
 	}
 	
@@ -56,23 +54,22 @@ class MainDocumentListViewController: UITableViewController, TableViewDataSource
 	// MARK: - Documents
 	
 	func insertNewObject(sender: AnyObject) {
-		if let s = sync {
-			let epo = MainDocument(newDocumentInDatabase: s.database)
-			epo.key = "arnoldsnerve"
-			epo.author = "pp"
-			epo.localizations = ["en": ["title:": "Arnold's Nerve", "text": "Auricular branch of vagus nerve supplying posterior and inferior meatal skin of ear; stimulation can elicit cough reflex."]]
-			epo.tags = ["neuro", "ent", "anat"]
-			
-			var error: NSError?
-			if !epo.save(&error) {
-				logIfVerbose("Failed to save: \(error)")
-			}
-			else {
-				logIfVerbose("SAVED!")
-			}
+		guard let s = sync else {
+			print("xx>  No SyncController")
+			return
+		}			
+		let epo = MainDocument(forNewDocumentInDatabase: s.database)
+		epo._id = "arnoldsnerve"
+		epo.author = "firstuser"
+		epo.localizations = ["en": ["title": "Arnold's Nerve", "text": "Auricular branch of vagus nerve supplying posterior and inferior meatal skin of ear; stimulation can elicit cough reflex."]]
+		epo.tags = ["neuro", "ent", "anat"]
+		
+		do {
+			try epo.save()
+			logIfVerbose("SAVED!")
 		}
-		else {
-			println("xx>  No SyncController")
+		catch let error {
+			logIfVerbose("Failed to save: \(error)")
 		}
 	}
 	
@@ -83,7 +80,10 @@ class MainDocumentListViewController: UITableViewController, TableViewDataSource
 	}
 	
 	func dataSource(source: TableViewDataSource, tableViewCellForRowAt indexPath: NSIndexPath) -> UITableViewCell {
-		let cell = tableView.dequeueReusableCellWithIdentifier("mainCell", forIndexPath: indexPath) as! UITableViewCell
+		let cell = tableView.dequeueReusableCellWithIdentifier("MainCell", forIndexPath: indexPath)
+		if let row = dataSource?.rowAtIndexPath(indexPath) {
+			cell.textLabel?.text = MainDocument.mainDocumentsByTitleTitle(row)
+		}
 		return cell
 	}
 	
@@ -96,3 +96,4 @@ class MainDocumentListViewController: UITableViewController, TableViewDataSource
 		// Pass the selected object to the new view controller.
 	}
 }
+

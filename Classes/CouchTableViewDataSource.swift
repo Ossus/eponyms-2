@@ -7,21 +7,22 @@
 //
 
 import Foundation
+import CouchbaseLite
 
 
 /**
-	Manages the rows in one table view section.
- */
-class CouchTableSection
-{
+Manages the rows in one table view section.
+*/
+public class CouchTableSection {
+	
 	var rows = [CBLQueryRow]()
 	
-	init(rows: [CBLQueryRow]) {
+	public init(rows: [CBLQueryRow]) {
 		self.rows = rows
 	}
 	
 	subscript(index: Int) -> CBLQueryRow? {
-		if count(rows) > index {
+		if rows.count > index {
 			return rows[index]
 		}
 		return nil
@@ -30,33 +31,33 @@ class CouchTableSection
 	
 	// MARK: - Rows
 	
-	func numberOfRows() -> Int {
-		return count(rows)
+	public func numberOfRows() -> Int {
+		return (rows).count
 	}
 	
-	func indexForDocument(document: CBLDocument) -> Int? {
+	public func indexForDocument(document: CBLDocument) -> Int? {
 		let docId = document.documentID
 		var rowIdx = 0
 		for row in rows {
 			if row.documentID == docId {
 				return rowIdx
 			}
-			rowIdx++
+			rowIdx += 1
 		}
 		return nil
 	}
 	
-	func addObject(row: CBLQueryRow) {
+	public func addObject(row: CBLQueryRow) {
 		rows.append(row)
 	}
 }
 
 
 /**
-	A table view data source that hooks into a Couchbase live query.
- */
-class CouchTableViewDataSource: TableViewDataSource
-{
+A table view data source that hooks into a Couchbase live query.
+*/
+public class CouchTableViewDataSource: TableViewDataSource {
+	
 	deinit {
 		stopObservingQuery()
 	}
@@ -79,7 +80,7 @@ class CouchTableViewDataSource: TableViewDataSource
 	var ignoreNextObservedRowChange = false
 	
 	
-	init(delegate: TableViewDataSourceDelegate, query: CBLLiveQuery) {
+	public init(delegate: TableViewDataSourceDelegate, query: CBLLiveQuery) {
 		self.query = query
 		super.init(delegate: delegate)
 		startObservingQuery()
@@ -90,7 +91,7 @@ class CouchTableViewDataSource: TableViewDataSource
 	
 	func startObservingQuery() {
 		if let qry = query {
-			qry.addObserver(self, forKeyPath: "rows", options: nil, context: nil)
+			qry.addObserver(self, forKeyPath: "rows", options: [], context: nil)
 		}
 	}
 	
@@ -104,7 +105,7 @@ class CouchTableViewDataSource: TableViewDataSource
 		if let rows = query?.rows {
 			var oldSections = sections
 			var allRows = rows.allObjects as? [CBLQueryRow] ?? []
-			totalRows = count(allRows)
+			totalRows = allRows.count
 			
 			// TODO: allow delegate to sectionize rows
 			let section = CouchTableSection(rows: allRows)
@@ -120,13 +121,13 @@ class CouchTableViewDataSource: TableViewDataSource
 		}
 	}
 	
-	override func observeValueForKeyPath(keyPath: String, ofObject object: AnyObject, change: [NSObject : AnyObject], context: UnsafeMutablePointer<Void>) {
+	public override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
 		if nil != query && object === query! {
 			if !ignoreNextObservedRowChange {
 				reloadFromQuery()
 			}
 			else {
-				totalRows = nil != query?.rows ? count(query!.rows.allObjects) : 0
+				totalRows = query?.rows?.allObjects.count ?? 0
 				onDidReloadTable?(numRows: totalRows)
 			}
 			ignoreNextObservedRowChange = false
@@ -137,7 +138,7 @@ class CouchTableViewDataSource: TableViewDataSource
 	// MARK: - Accessors
 	
 	subscript(sectionIdx: Int) -> CouchTableSection? {
-		if sectionIdx < count(sections) {
+		if sectionIdx < sections.count {
 			return sections[sectionIdx]
 		}
 		return nil
@@ -157,7 +158,7 @@ class CouchTableViewDataSource: TableViewDataSource
 			if let rowIdx = section.indexForDocument(document) {
 				return NSIndexPath(forRow: Int(rowIdx), inSection: sectionIdx)
 			}
-			sectionIdx++
+			sectionIdx += 1
 		}
 		return nil
 	}
@@ -169,7 +170,7 @@ class CouchTableViewDataSource: TableViewDataSource
 	// MARK: - Integrate Couch into Table Data Source
 	
 	override func numberOfSections() -> Int {
-		return count(sections)
+		return sections.count
 	}
 	
 	override func numberOfRowsInSection(sectionIdx: Int) -> Int {
@@ -182,10 +183,10 @@ class CouchTableViewDataSource: TableViewDataSource
 	
 //	override func sectionIndexTitlesForTableView(tableView: UITableView) -> [AnyObject]! {
 //	}
-	
+
 //	override func tableView(tableView: UITableView, sectionForSectionIndexTitle title: String, atIndex index: Int) -> Int {
 //	}
-	
+
 //	override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
 //	}
 }

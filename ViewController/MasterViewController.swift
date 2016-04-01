@@ -9,29 +9,26 @@
 import UIKit
 
 
-class MasterViewController: UITableViewController
-{
+class MasterViewController: UITableViewController {
+	
 	var objects = [AnyObject]()
 	
 	var sync: SyncController?
 	
 	
-	override func awakeFromNib() {
-		super.awakeFromNib()
-		if UIDevice.currentDevice().userInterfaceIdiom == .Pad {
-		    self.clearsSelectionOnViewWillAppear = false
-		    self.preferredContentSize = CGSize(width: 320.0, height: 600.0)
-		}
-		
-		// DEBUG: to show one row that one can tap
-		objects.append(NSObject())
+	// MARK: - View Tasks
+	
+	override func viewWillAppear(animated: Bool) {
+		self.clearsSelectionOnViewWillAppear = self.splitViewController!.collapsed
+		super.viewWillAppear(animated)
 	}
 	
+	
 	// MARK: - Segues
-
+	
 	override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
 		if segue.identifier == "showDetail" {
-		    if let indexPath = self.tableView.indexPathForSelectedRow() {
+		    if let indexPath = self.tableView.indexPathForSelectedRow {
 //		        let object = objects[indexPath.row]
 		        let controller = (segue.destinationViewController as! UINavigationController).topViewController as! MainDocumentListViewController
 		        controller.sync = sync
@@ -49,14 +46,14 @@ class MasterViewController: UITableViewController
 	}
 	
 	override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		return count(objects)
+		return objects.count
 	}
 	
 	override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-		let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! UITableViewCell
-
+		let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) 
+		
 //		let object = objects[indexPath.row]
-		cell.textLabel!.text = "Hello World"
+		cell.textLabel!.text = "All Eponyms"
 		return cell
 	}
 }
