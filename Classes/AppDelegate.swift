@@ -16,8 +16,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
 	var sync: SyncController?
 
 
-	func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+	func application(application: UIApplication, willFinishLaunchingWithOptions launchOptions: [NSObject : AnyObject]?) -> Bool {
 		sync = try! SyncController(databaseName: "eponyms")
+		
+		NSNotificationCenter.defaultCenter().addObserverForName(UserDidLoginNotification, object: nil, queue: nil, usingBlock: userStatusChanged)
+		NSNotificationCenter.defaultCenter().addObserverForName(UserDidLogoutNotification, object: nil, queue: nil, usingBlock: userStatusChanged)
+		
+		return true
+	}
+	
+	func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
 		
 		// setup UI
 		let splitViewController = self.window!.rootViewController as! UISplitViewController
@@ -35,10 +43,33 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
 	
 	func applicationDidBecomeActive(application: UIApplication) {
 		if let sync = sync {
-			if !sync.authorizeUser("admin") {
-				logIfVerbose("Sync: no user logged in, using anonymous GUEST user")
-			}
+//			if !sync.authorizeUser(user) {
+//				logIfVerbose("Sync: no user logged in, using anonymous GUEST user")
+//			}
 			sync.sync()
+		}
+	}
+	
+	
+	// MARK: - Sync Controller Tasks
+	
+	func userStatusChanged(notification: NSNotification) {
+		print("\(notification)")
+		if let sync = sync {
+			if let user = notification.object as? User {
+				logIfVerbose("LOGIN \(user)")
+				do {
+					try sync.authorizeUser(user)
+				}
+				catch let error {
+					logIfVerbose("Login failed: \(error)")
+				}
+			}
+				
+			// logout
+			else {
+				logIfVerbose("LOGOUT")
+			}
 		}
 	}
 	
@@ -59,7 +90,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
 }
 
 
-func logIfVerbose(message: String) {
-	print("\(message)")
+func logIfVerbose(@autoclosure message: () -> String, function: String = #function, file: String = #file, line: Int = #line) {
+	print("[\((file as NSString).lastPathComponent):\(line)] \(function)  \(message())")
 }
 

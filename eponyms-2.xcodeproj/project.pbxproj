@@ -22,6 +22,9 @@
 		EE4E892E1AF6A5FD00E5BBEF /* MainDocumentListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4E892D1AF6A5FD00E5BBEF /* MainDocumentListViewController.swift */; };
 		EE4E893F1AF6AC5600E5BBEF /* TableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4E893D1AF6AC5600E5BBEF /* TableViewDataSource.swift */; };
 		EE4E89411AF6B11E00E5BBEF /* CouchTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4E89401AF6B11E00E5BBEF /* CouchTableViewDataSource.swift */; };
+		EE4EC9001CAF0E1300293F9D /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4EC8FF1CAF0E1300293F9D /* UserViewController.swift */; };
+		EE4EC9191CAF0E9D00293F9D /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4EC9181CAF0E9D00293F9D /* User.swift */; };
+		EE4EC9231CAF178300293F9D /* SyncError.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4EC9221CAF178300293F9D /* SyncError.swift */; };
 		EE9C69311AEDA82C00D824CE /* AuthoredDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE9C69301AEDA82C00D824CE /* AuthoredDocument.swift */; };
 		EE9C69341AEDA8F200D824CE /* CBLExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE9C69331AEDA8F200D824CE /* CBLExtensions.swift */; };
 		EE9C69361AEDAE9A00D824CE /* MainDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE9C69351AEDAE9A00D824CE /* MainDocument.swift */; };
@@ -244,6 +247,9 @@
 		EE4E892D1AF6A5FD00E5BBEF /* MainDocumentListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainDocumentListViewController.swift; sourceTree = "<group>"; };
 		EE4E893D1AF6AC5600E5BBEF /* TableViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewDataSource.swift; sourceTree = "<group>"; };
 		EE4E89401AF6B11E00E5BBEF /* CouchTableViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CouchTableViewDataSource.swift; sourceTree = "<group>"; };
+		EE4EC8FF1CAF0E1300293F9D /* UserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
+		EE4EC9181CAF0E9D00293F9D /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		EE4EC9221CAF178300293F9D /* SyncError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SyncError.swift; sourceTree = "<group>"; };
 		EE9C69301AEDA82C00D824CE /* AuthoredDocument.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthoredDocument.swift; sourceTree = "<group>"; };
 		EE9C69331AEDA8F200D824CE /* CBLExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CBLExtensions.swift; path = Classes/CBLExtensions.swift; sourceTree = "<group>"; };
 		EE9C69351AEDAE9A00D824CE /* MainDocument.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainDocument.swift; sourceTree = "<group>"; };
@@ -366,6 +372,7 @@
 			children = (
 				EE9C69301AEDA82C00D824CE /* AuthoredDocument.swift */,
 				EE9C69351AEDAE9A00D824CE /* MainDocument.swift */,
+				EE4EC9181CAF0E9D00293F9D /* User.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -416,6 +423,7 @@
 				EE4E892D1AF6A5FD00E5BBEF /* MainDocumentListViewController.swift */,
 				EE392B5C1AA49EDE0039F3D1 /* DetailViewController.swift */,
 				EE4E892B1AF67C2E00E5BBEF /* AuthoredDocumentEditViewController.swift */,
+				EE4EC8FF1CAF0E1300293F9D /* UserViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -424,6 +432,7 @@
 			isa = PBXGroup;
 			children = (
 				EEC323C11AEC4C46009B0ABB /* SyncController.swift */,
+				EE4EC9221CAF178300293F9D /* SyncError.swift */,
 			);
 			path = Sync;
 			sourceTree = "<group>";
@@ -696,7 +705,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EE4EC9191CAF0E9D00293F9D /* User.swift in Sources */,
 				EEC323C21AEC4C46009B0ABB /* SyncController.swift in Sources */,
+				EE4EC9001CAF0E1300293F9D /* UserViewController.swift in Sources */,
 				EE4E89411AF6B11E00E5BBEF /* CouchTableViewDataSource.swift in Sources */,
 				EE4E893F1AF6AC5600E5BBEF /* TableViewDataSource.swift in Sources */,
 				EE392B5D1AA49EDE0039F3D1 /* DetailViewController.swift in Sources */,
@@ -705,6 +716,7 @@
 				EE4E892C1AF67C2E00E5BBEF /* AuthoredDocumentEditViewController.swift in Sources */,
 				EE9C69341AEDA8F200D824CE /* CBLExtensions.swift in Sources */,
 				EE392B5B1AA49EDE0039F3D1 /* MasterViewController.swift in Sources */,
+				EE4EC9231CAF178300293F9D /* SyncError.swift in Sources */,
 				EE392B591AA49EDE0039F3D1 /* AppDelegate.swift in Sources */,
 				EE9C69361AEDAE9A00D824CE /* MainDocument.swift in Sources */,
 			);

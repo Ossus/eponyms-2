@@ -59,8 +59,8 @@ public class SyncController {
 		push = database.createPushReplication(kSyncGatewayUrl)
 		push.continuous = true
 		
-		NSNotificationCenter.defaultCenter().addObserver(self, selector: "replicationChanged:", name: kCBLReplicationChangeNotification, object: push)
-		NSNotificationCenter.defaultCenter().addObserver(self, selector: "replicationChanged:", name: kCBLReplicationChangeNotification, object: pull)
+		NSNotificationCenter.defaultCenter().addObserverForName(kCBLReplicationChangeNotification, object: push, queue: nil, usingBlock: replicationChanged)
+		NSNotificationCenter.defaultCenter().addObserverForName(kCBLReplicationChangeNotification, object: pull, queue: nil, usingBlock: replicationChanged)
 	}
 	
 	
@@ -91,7 +91,7 @@ public class SyncController {
 		}
 	}
 	
-	@objc func replicationChanged(notification: NSNotification) {
+	func replicationChanged(notification: NSNotification) {
 		guard let replicator = notification.object as? CBLReplication else {
 			logIfVerbose("Sync: unexpected notification.object \(notification.object)")
 			return
@@ -123,26 +123,32 @@ public class SyncController {
 	/**
 	Check if a user with given name has credentials in the keychain, if not and a password is given, create and store one.
 	*/
-	func authorizeUser(username: String, password: String? = nil) -> Bool {
+	func authorizeUser(user: User) throws {
+		guard let username = user.name else {
+			throw SyncError.NoUsername
+		}
+		
 		if let found = existingCredentialsForUser(username, space: protectionSpace) {
-			logIfVerbose("Sync: user “\(username)” was already logged in")
+			logIfVerbose("Sync: found password for “\(username)”")
 			pull.credential = found
 			push.credential = found
-			return true
+			return
 		}
 		
 		// log in if we have a password
-		if let pass = password {
-			logIfVerbose("Sync: logged in as “\(username)”")
+		if let pass = user.password {
+			logIfVerbose("Sync: logging in as “\(username)”")
 			let cred = logInUser(username, password: pass, space: protectionSpace)
 			pull.credential = cred
 			push.credential = cred
-			return true
 		}
-		return false
+		throw SyncError.NoPassword
 	}
 	
-	public func deAuthorizeUser(username: String) {
+	public func deAuthorizeUser(user: User) throws {
+		guard let username = user.name else {
+			throw SyncError.NoUsername
+		}
 		logOutUser(username, space: protectionSpace)
 	}
 	
