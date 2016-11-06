@@ -96,6 +96,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
 
 
 func logIfVerbose(_ message: @autoclosure () -> String, function: String = #function, file: String = #file, line: Int = #line) {
+	#if DEBUG
 	print("[\((file as NSString).lastPathComponent):\(line)] \(function)  \(message())")
+	#endif
 }
 

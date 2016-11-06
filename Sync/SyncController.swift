@@ -47,7 +47,6 @@ open class SyncController {
 	public init(databaseName name: String) throws {
 		let manager = CBLManager.sharedInstance()
 		database = try manager.databaseNamed(name)
-		print("-->  Initialized SyncController with database at \(manager.directory)/\(database)")
 		
 		// register model classes
 		if let factory = database.modelFactory {
@@ -62,6 +61,8 @@ open class SyncController {
 		
 		NotificationCenter.default.addObserver(forName: NSNotification.Name.cblReplicationChange, object: push, queue: nil, using: replicationChanged)
 		NotificationCenter.default.addObserver(forName: NSNotification.Name.cblReplicationChange, object: pull, queue: nil, using: replicationChanged)
+		
+		logIfVerbose("-->  Initialized SyncController with database at \(manager.directory)/\(database), \(database.documentCount) documents")
 	}
 	
 	

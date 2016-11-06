@@ -9,7 +9,7 @@
 import Foundation
 import CouchbaseLite
 
-let kMainDocumentFallbackLocale = "en"
+let kLocaleFallback = "en"
 
 
 /**
@@ -26,57 +26,48 @@ open class MainDocument: AuthoredDocument {
 	/// A list of tags this main element belongs to.
 	@NSManaged var tags: [String]
 	
-	/**
-	Feed a row coming from a `mainDocumentsByTitle()` query row to receive the title in the preferred locale.
-	
-	- parameter row: A query result row from the "mainDocumentsByTitle" query
-	- parameter locale: The preferred locale, will fall back to `kMainDocumentFallbackLocale`
-	- returns: The document title or nil
-	*/
-	open class func titleFromMainDocumentsByTitleQuery(_ row: CBLQueryRow, locale: String? = nil) -> String? {
-		guard let titles = row.value as? [String: String] else {
-			return "Unnamed"
-		}
-		if let locale = locale, let title = titles[locale] {
-			return title
-		}
-		return titles[kMainDocumentFallbackLocale]
-	}
-	
 	
 	// MARK: - Views
 	
-	open class func mainDocumentsByTitle(_ database: CBLDatabase, category: String?) -> CBLQuery {
-		let view = mainDocumentTitlesByTag(database)
+	/**
+	Returns the "mainDocumentsByTitle[Tag]" view as a Couchbase query that supports `fullTextQuery`.
+	*/
+	open class func mainDocumentsByTitle(_ database: CBLDatabase, locale: String = kLocaleFallback, tag: String? = nil) -> CBLQuery {
+		let view = mainDocumentTitles(database, tag: tag, locale: locale)
 		let query = view.createQuery()
 		query.descending = false
-		query.keys = [category ?? "*"]
+		let sort = NSSortDescriptor(key: "value", ascending: true, selector:#selector(NSString.caseInsensitiveCompare(_:)))
+		query.sortDescriptors = [sort]
 		
 		return query
 	}
 	
 	/**
-	For all "main" documents that have localizations, emits a mini-document with the document's "titles" dictionary once for every tag and
-	the universal "*" tag, like:
+	For all "main" documents, emits the document's searchable text as a `CBLTextKey` and the "title" as value, in the given locale, like:
 	
-	    "*", {"en": "English Title", "de": "Deutscher Titel"}
-	    "neuro", {"en": "English Title", "de": "Deutscher Titel"}
+	    CBLTextKey(title + text), "The One Eponym"
+	    CBLTextKey(title + text), "The Other Eponym"
 	*/
-	class func mainDocumentTitlesByTag(_ database: CBLDatabase) -> CBLView {
-		let view = database.viewNamed("mainDocumentsByTitle")
+	class func mainDocumentTitles(_ database: CBLDatabase, tag: String?, locale: String = kLocaleFallback) -> CBLView {
+		let view = database.viewNamed("mainDocumentsByTitle\(tag ?? "")")
 		if nil == view.mapBlock {
 			view.setMapBlock("3") { doc, emit in
 				if "main" == doc["type"] as? String {
 					let tags = doc["tags"] as? [String] ?? []
-					var titles = [String: String]()
-					if let localized = doc["localized"] as? [String: JSONDoc] {
-						for (lang, data) in localized {
-							titles[lang] = data["title"] as? String ?? "Unnamed"
+					if nil == tag || tags.contains(tag!) {
+						var title: String?
+						var text: String?
+						if let localized = doc["localized"] as? [String: JSONDoc]{
+							if let inLocale = localized[locale] as? [String: String] {
+								title = inLocale["title"]
+								text = inLocale["text"]
+							}
+							else if let inFallback = localized[kLocaleFallback] as? [String: String] {
+								title = title ?? inFallback["title"]
+								text = text ?? inFallback["text"]
+							}
 						}
-					}
-					emit("*", titles)
-					for tag in tags {
-						emit(tag, titles)
+						emit(CBLTextKey("\(title ?? "")\n\n\(text ?? "")"), title)
 					}
 				}
 			}
