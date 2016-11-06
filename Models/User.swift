@@ -10,13 +10,13 @@ import Foundation
 
 
 /// Sent when a user logs in.
-public let UserDidLoginNotification = "UserDidLoginNotification"
+public let UserDidLoginNotification = Notification.Name(rawValue: "UserDidLoginNotification")
 
 /// Sent when a user logs out.
-public let UserDidLogoutNotification = "UserDidLogoutNotification" 
+public let UserDidLogoutNotification = Notification.Name(rawValue: "UserDidLogoutNotification")
 
 
-public class User {
+open class User {
 	
 	var name: String?
 	
@@ -27,12 +27,12 @@ public class User {
 	
 	// MARK: - Login/Logout
 	
-	public func login() {
-		NSNotificationCenter.defaultCenter().postNotificationName(UserDidLoginNotification, object: self)
+	open func login() {
+		NotificationCenter.default.post(name: UserDidLoginNotification, object: self)
 	}
 	
 	
-	public func logout() {
-		NSNotificationCenter.defaultCenter().postNotificationName(UserDidLogoutNotification, object: self)
+	open func logout() {
+		NotificationCenter.default.post(name: UserDidLogoutNotification, object: self)
 	}
 }

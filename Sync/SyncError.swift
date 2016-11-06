@@ -7,8 +7,8 @@
 //
 
 
-public enum SyncError: ErrorType {
-	case NoUsername
-	case NoPassword
+public enum SyncError: Error {
+	case noUsername
+	case noPassword
 }
 

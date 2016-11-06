@@ -26,7 +26,7 @@ class MainDocumentListViewController: UITableViewController, TableViewDataSource
 		super.viewDidLoad()
 		
 		assert(nil != sync, "Should have a Sync Controller before loading the view")
-		let query = MainDocument.mainDocumentsByTitle(sync!.database, category: nil).asLiveQuery()
+		let query = MainDocument.mainDocumentsByTitle(sync!.database, category: nil).asLive()
 		dataSource = CouchTableViewDataSource(delegate: self, query: query)
 		dataSource!.tableView = self.tableView
 		dataSource!.onWillReloadTable = { numRows in
@@ -37,28 +37,28 @@ class MainDocumentListViewController: UITableViewController, TableViewDataSource
 		}
 		tableView.dataSource = dataSource
 		
-		let addButton = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: #selector(MainDocumentListViewController.insertNewObject(_:)))
+		let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(MainDocumentListViewController.insertNewObject(_:)))
 		navigationItem.rightBarButtonItem = addButton
 		
 		// table view
-		tableView?.registerClass(UITableViewCell.self, forCellReuseIdentifier: "MainCell")
+		tableView?.register(UITableViewCell.self, forCellReuseIdentifier: "MainCell")
 		tableView?.reloadData()
 	}
 	
-	override func viewWillAppear(animated: Bool) {
-		clearsSelectionOnViewWillAppear = splitViewController!.collapsed
+	override func viewWillAppear(_ animated: Bool) {
+		clearsSelectionOnViewWillAppear = splitViewController!.isCollapsed
 		super.viewWillAppear(animated)
 	}
 	
 	
 	// MARK: - Documents
 	
-	func insertNewObject(sender: AnyObject) {
+	func insertNewObject(_ sender: AnyObject) {
 		guard let s = sync else {
 			print("xx>  No SyncController")
 			return
 		}			
-		let epo = MainDocument(forNewDocumentInDatabase: s.database)
+		let epo = MainDocument(forNewDocumentIn: s.database)
 		epo._id = "arnoldsnerve"
 		epo.author = "firstuser"
 		epo.localizations = ["en": ["title": "Arnold's Nerve", "text": "Auricular branch of vagus nerve supplying posterior and inferior meatal skin of ear; stimulation can elicit cough reflex."]]
@@ -76,12 +76,12 @@ class MainDocumentListViewController: UITableViewController, TableViewDataSource
 	
 	// MARK: - Data Source
 	
-	func dataSource(source: TableViewDataSource, hasNoSearchResultsForSearchString searchString: String) {
+	func dataSource(_ source: TableViewDataSource, hasNoSearchResultsForSearchString searchString: String) {
 	}
 	
-	func dataSource(source: TableViewDataSource, tableViewCellForRowAt indexPath: NSIndexPath) -> UITableViewCell {
-		let cell = tableView.dequeueReusableCellWithIdentifier("MainCell", forIndexPath: indexPath)
-		if let row = dataSource?.rowAtIndexPath(indexPath) {
+	func dataSource(_ source: TableViewDataSource, tableViewCellForRowAt indexPath: IndexPath) -> UITableViewCell {
+		let cell = tableView.dequeueReusableCell(withIdentifier: "MainCell", for: indexPath)
+		if let row = dataSource?.rowAtIndexPath(indexPath as NSIndexPath) {
 			cell.textLabel?.text = MainDocument.mainDocumentsByTitleTitle(row)
 		}
 		return cell
@@ -91,7 +91,7 @@ class MainDocumentListViewController: UITableViewController, TableViewDataSource
 	// MARK: - Navigation
 	
 	// In a storyboard-based application, you will often want to do a little preparation before navigation
-	override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 		// Get the new view controller using [segue destinationViewController].
 		// Pass the selected object to the new view controller.
 	}

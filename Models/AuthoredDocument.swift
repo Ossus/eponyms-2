@@ -15,32 +15,32 @@ Abstract superclass for all our models which need an author, a name in the "auth
 
 This class also has "date" and "dateUpdated", which are handled at save time automatically.
 */
-public class AuthoredDocument: CBLModel {
+open class AuthoredDocument: CBLModel {
 	
 	/// The name of the original author of the document.
 	@NSManaged var author: String
 	
 	/// When the document was first created.
-	@NSManaged var date: NSDate?
+	@NSManaged var date: Date?
 	
 	/// When the document was last updated.
-	@NSManaged var dateUpdated: NSDate?
+	@NSManaged var dateUpdated: Date?
 	
 	/// This method is called after it's been initialized internally.
-	public override func awakeFromInitializer() {
+	open override func awakeFromInitializer() {
 		super.awakeFromInitializer()
 	}
 	
 	
 	// MARK: - Saving
 	
-	public override func willSave(changedPropertyNames: Set<NSObject>!) {
-		type = self.dynamicType.type()
+	open override func willSave(_ changedPropertyNames: Set<AnyHashable>?) {
+		type = type(of: self).type()
 		if nil == date {
-			date = NSDate()
+			date = Date()
 		}
 		else {
-			dateUpdated = NSDate()
+			dateUpdated = Date()
 		}
 	}
 	
@@ -51,7 +51,7 @@ public class AuthoredDocument: CBLModel {
 		return "authored"
 	}
 	
-	class func registerInFactory(factory: CBLModelFactory) {
+	class func register(in factory: CBLModelFactory) {
 		logIfVerbose("Registering \(self) for «\(type())»")
 		factory.registerClass(self, forDocumentType: type())
 	}

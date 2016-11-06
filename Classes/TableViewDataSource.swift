@@ -14,16 +14,16 @@ public protocol TableViewDataSourceDelegate: class {
 	/**
 	The delegate can return the cell in this method.
 	*/
-	func dataSource(source: TableViewDataSource, tableViewCellForRowAt indexPath: NSIndexPath) -> UITableViewCell
+	func dataSource(_ source: TableViewDataSource, tableViewCellForRowAt indexPath: IndexPath) -> UITableViewCell
 	
 	/**
 	Called by the search data source when a search produces no results.
 	*/
-	func dataSource(source: TableViewDataSource, hasNoSearchResultsForSearchString searchString: String)
+	func dataSource(_ source: TableViewDataSource, hasNoSearchResultsForSearchString searchString: String)
 }
 
 
-public class TableViewDataSource: NSObject, UITableViewDataSource {
+open class TableViewDataSource: NSObject, UITableViewDataSource {
 	
 	weak var delegate: TableViewDataSourceDelegate?
 	
@@ -34,10 +34,10 @@ public class TableViewDataSource: NSObject, UITableViewDataSource {
 	}
 	
 	/// Will be called before reloading the table data.
-	var onWillReloadTable: ((numRows: Int) -> ())?
+	var onWillReloadTable: ((_ numRows: Int) -> ())?
 	
 	/// Will be called after reloading the table data.
-	var onDidReloadTable: ((numRows: Int) -> ())?
+	var onDidReloadTable: ((_ numRows: Int) -> ())?
 	
 	var isSearching: Bool { return false }
 	
@@ -49,12 +49,12 @@ public class TableViewDataSource: NSObject, UITableViewDataSource {
 	// MARK: - Items
 	
 	/** Return the item at the given index path. */
-	func itemAtIndexPath(indexPath: NSIndexPath) -> AnyObject? {
+	func itemAtIndexPath(_ indexPath: IndexPath) -> AnyObject? {
 		return nil;
 	}
 	
 	/** Get an index path for the given item, or nil if it's not in the source. */
-	func indexPathForItem(item: AnyObject) -> NSIndexPath? {
+	func indexPathForItem(_ item: AnyObject) -> IndexPath? {
 		return nil
 	}
 	
@@ -82,7 +82,7 @@ public class TableViewDataSource: NSObject, UITableViewDataSource {
 	
 	Default implementation does nothing.
 	*/
-	func performSearchWithString(searchString: String) {
+	func performSearchWithString(_ searchString: String) {
 	}
 	
 	
@@ -92,7 +92,7 @@ public class TableViewDataSource: NSObject, UITableViewDataSource {
 		return 0
 	}
 	
-	func numberOfRowsInSection(section: Int) -> Int {
+	func numberOfRowsInSection(_ section: Int) -> Int {
 		return 0
 	}
 	
@@ -103,15 +103,15 @@ public class TableViewDataSource: NSObject, UITableViewDataSource {
 	
 	// MARK: - Table View Data Source
 	
-	public func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+	open func numberOfSections(in tableView: UITableView) -> Int {
 		return numberOfSections()
 	}
 	
-	public func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+	open func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		return numberOfRowsInSection(section)
 	}
 	
-	public func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+	open func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		if let controller = delegate {
 			return controller.dataSource(self, tableViewCellForRowAt: indexPath)
 		}

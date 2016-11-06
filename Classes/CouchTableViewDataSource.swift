@@ -13,7 +13,7 @@ import CouchbaseLite
 /**
 Manages the rows in one table view section.
 */
-public class CouchTableSection {
+open class CouchTableSection {
 	
 	var rows = [CBLQueryRow]()
 	
@@ -31,11 +31,11 @@ public class CouchTableSection {
 	
 	// MARK: - Rows
 	
-	public func numberOfRows() -> Int {
+	open func numberOfRows() -> Int {
 		return (rows).count
 	}
 	
-	public func indexForDocument(document: CBLDocument) -> Int? {
+	open func indexForDocument(_ document: CBLDocument) -> Int? {
 		let docId = document.documentID
 		var rowIdx = 0
 		for row in rows {
@@ -47,7 +47,7 @@ public class CouchTableSection {
 		return nil
 	}
 	
-	public func addObject(row: CBLQueryRow) {
+	open func addObject(_ row: CBLQueryRow) {
 		rows.append(row)
 	}
 }
@@ -56,7 +56,7 @@ public class CouchTableSection {
 /**
 A table view data source that hooks into a Couchbase live query.
 */
-public class CouchTableViewDataSource: TableViewDataSource {
+open class CouchTableViewDataSource: TableViewDataSource {
 	
 	deinit {
 		stopObservingQuery()
@@ -64,7 +64,7 @@ public class CouchTableViewDataSource: TableViewDataSource {
 	
 	var sections = [CouchTableSection]()
 	
-	private var totalRows: Int = 0
+	fileprivate var totalRows: Int = 0
 	
 	var query: CBLLiveQuery? {
 		willSet {
@@ -112,23 +112,23 @@ public class CouchTableViewDataSource: TableViewDataSource {
 			sections = [section]
 			
 			// call will-reload block, let delegate reload (or do it ourselves, as currently implemented), then call did-reload block
-			onWillReloadTable?(numRows: totalRows)
+			onWillReloadTable?(totalRows)
 			tableView?.reloadData()
-			onDidReloadTable?(numRows: totalRows)
+			onDidReloadTable?(totalRows)
 		}
 		else {
 			totalRows = 0
 		}
 	}
 	
-	public override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
-		if nil != query && object === query! {
+	open override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey: Any]?, context: UnsafeMutableRawPointer?) {
+		if let query = query {
 			if !ignoreNextObservedRowChange {
 				reloadFromQuery()
 			}
 			else {
-				totalRows = query?.rows?.allObjects.count ?? 0
-				onDidReloadTable?(numRows: totalRows)
+				totalRows = query.rows?.allObjects.count ?? 0
+				onDidReloadTable?(totalRows)
 			}
 			ignoreNextObservedRowChange = false
 		}
@@ -144,19 +144,19 @@ public class CouchTableViewDataSource: TableViewDataSource {
 		return nil
 	}
 	
-	func rowAtIndexPath(indexPath: NSIndexPath) -> CBLQueryRow? {
+	func rowAtIndexPath(_ indexPath: NSIndexPath) -> CBLQueryRow? {
 		return self[indexPath.section]?[indexPath.row]
 	}
 	
-	func documentAtIndexPath(indexPath: NSIndexPath) -> CBLDocument? {
+	func documentAtIndexPath(_ indexPath: NSIndexPath) -> CBLDocument? {
 		return rowAtIndexPath(indexPath)?.document
 	}
 	
-	func indexPathForDocument(document: CBLDocument) -> NSIndexPath? {
+	func indexPathForDocument(_ document: CBLDocument) -> IndexPath? {
 		var sectionIdx = 0
 		for section in sections {
 			if let rowIdx = section.indexForDocument(document) {
-				return NSIndexPath(forRow: Int(rowIdx), inSection: sectionIdx)
+				return IndexPath(row: rowIdx, section: sectionIdx)
 			}
 			sectionIdx += 1
 		}
@@ -173,7 +173,7 @@ public class CouchTableViewDataSource: TableViewDataSource {
 		return sections.count
 	}
 	
-	override func numberOfRowsInSection(sectionIdx: Int) -> Int {
+	override func numberOfRowsInSection(_ sectionIdx: Int) -> Int {
 		if let section = self[sectionIdx] {
 			return section.numberOfRows()
 		}

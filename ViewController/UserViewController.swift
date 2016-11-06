@@ -9,17 +9,17 @@
 import UIKit
 
 
-public class UserViewController: UITableViewController {
+open class UserViewController: UITableViewController {
 	
 	var user: User?
 	
 	
 	// MARK: - View Tasks
 	
-	public override func viewDidLoad() {
+	open override func viewDidLoad() {
 		super.viewDidLoad()
-		tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "User")
-		tableView.registerClass(LoginButtonCell.self, forCellReuseIdentifier: "Login")
+		tableView.register(UITableViewCell.self, forCellReuseIdentifier: "User")
+		tableView.register(LoginButtonCell.self, forCellReuseIdentifier: "Login")
 	}
 	
 	
@@ -49,43 +49,43 @@ public class UserViewController: UITableViewController {
 	
 	// MARK: - Table View Data Source
 	
-	public override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+	open override func numberOfSections(in tableView: UITableView) -> Int {
 		return 2
 	}
 	
-	public override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+	open override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		if 0 == section {
 			return 3
 		}
 		return 1
 	}
 	
-	public override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+	open override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		
 		// user details
-		if 0 == indexPath.section {
-			let cell = tableView.dequeueReusableCellWithIdentifier("User", forIndexPath: indexPath)
+		if 0 == (indexPath as NSIndexPath).section {
+			let cell = tableView.dequeueReusableCell(withIdentifier: "User", for: indexPath)
 			if nil != user {
-				cell.textLabel?.textColor = UIColor.blackColor()
+				cell.textLabel?.textColor = UIColor.black
 			}
 			else {
-				cell.textLabel?.textColor = UIColor.grayColor()
+				cell.textLabel?.textColor = UIColor.gray
 			}
 			
-			if 0 == indexPath.row {
+			if 0 == (indexPath as NSIndexPath).row {
 				cell.textLabel?.text = user?.name ?? "Name"
 			}
-			else if 1 == indexPath.row {
+			else if 1 == (indexPath as NSIndexPath).row {
 				cell.textLabel?.text = user?.email ?? "Email"
 			}
-			else if 2 == indexPath.row {
+			else if 2 == (indexPath as NSIndexPath).row {
 				cell.textLabel?.text = user?.password ?? "Password"
 			}
 			return cell
 		}
 		
 		// login button
-		let cell = tableView.dequeueReusableCellWithIdentifier("Login", forIndexPath: indexPath) as! LoginButtonCell
+		let cell = tableView.dequeueReusableCell(withIdentifier: "Login", for: indexPath) as! LoginButtonCell
 		cell.textLabel?.text = (nil == user) ? "Login" : "Logout"
 		
 		return cell
@@ -94,8 +94,8 @@ public class UserViewController: UITableViewController {
 	
 	// MARK: - Table View Delegate
 	
-	public override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-		if 1 == indexPath.section {
+	open override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+		if 1 == (indexPath as NSIndexPath).section {
 			if nil == user {
 				login()
 			}
@@ -112,8 +112,8 @@ public class UserViewController: UITableViewController {
 		
 		override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
 			super.init(style: style, reuseIdentifier: reuseIdentifier)
-			self.textLabel?.textColor = UIColor.redColor()
-			self.textLabel?.textAlignment = .Center
+			self.textLabel?.textColor = UIColor.red
+			self.textLabel?.textAlignment = .center
 		}
 		
 		required init?(coder: NSCoder) {
@@ -125,10 +125,10 @@ public class UserViewController: UITableViewController {
 
 // MARK: - 
 
-public class DismissFromModalSegue: UIStoryboardSegue {
+open class DismissFromModalSegue: UIStoryboardSegue {
 	
-	public override func perform() {
-		sourceViewController.dismissViewControllerAnimated(true, completion: nil)
+	open override func perform() {
+		source.dismiss(animated: true, completion: nil)
 	}
 }
 

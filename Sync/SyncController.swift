@@ -10,18 +10,18 @@ import Foundation
 import CouchbaseLite
 
 
-let kSyncGatewayUrl = NSURL(string: "http://192.168.10.22:4999/eponyms")!
+let kSyncGatewayUrl = URL(string: "http://192.168.10.22:4999/eponyms")!
 
 
-public class SyncController {
+open class SyncController {
 	
 	deinit {
-		NSNotificationCenter.defaultCenter().removeObserver(self)
+		NotificationCenter.default.removeObserver(self)
 	}
 	
 	
 	/// Handle to our database.
-	public let database: CBLDatabase
+	open let database: CBLDatabase
 	
 	/// The pull replicator.
 	let pull: CBLReplication
@@ -30,10 +30,10 @@ public class SyncController {
 	let push: CBLReplication
 	
 	/// The URL protection space for our Sync Gateway.
-	lazy var protectionSpace: NSURLProtectionSpace = {
-		return NSURLProtectionSpace(
+	lazy var protectionSpace: URLProtectionSpace = {
+		return URLProtectionSpace(
 			host: kSyncGatewayUrl.host!,
-			port: kSyncGatewayUrl.port as! Int,
+			port: (kSyncGatewayUrl as NSURL).port as! Int,
 			protocol: kSyncGatewayUrl.scheme,
 			realm: nil,
 			authenticationMethod: NSURLAuthenticationMethodHTTPBasic
@@ -46,11 +46,11 @@ public class SyncController {
 	*/
 	public init(databaseName name: String) throws {
 		let manager = CBLManager.sharedInstance()
-		database = try! manager.databaseNamed(name)
+		database = try manager.databaseNamed(name)
 		
 		// register model classes
 		if let factory = database.modelFactory {
-			MainDocument.registerInFactory(factory)
+			MainDocument.register(in: factory)
 		}
 		
 		// setup replication
@@ -59,8 +59,8 @@ public class SyncController {
 		push = database.createPushReplication(kSyncGatewayUrl)
 		push.continuous = true
 		
-		NSNotificationCenter.defaultCenter().addObserverForName(kCBLReplicationChangeNotification, object: push, queue: nil, usingBlock: replicationChanged)
-		NSNotificationCenter.defaultCenter().addObserverForName(kCBLReplicationChangeNotification, object: pull, queue: nil, usingBlock: replicationChanged)
+		NotificationCenter.default.addObserver(forName: NSNotification.Name.cblReplicationChange, object: push, queue: nil, using: replicationChanged)
+		NotificationCenter.default.addObserver(forName: NSNotification.Name.cblReplicationChange, object: pull, queue: nil, using: replicationChanged)
 	}
 	
 	
@@ -69,29 +69,29 @@ public class SyncController {
 	/**
 	Start push and pull replication. Will automatically suspend when the app goes into background.
 	*/
-	public func sync() {
+	open func sync() {
 		push.start()
 		pull.start()
 	}
 	
 	public var isSyncing: Bool {
-		return (pull.status == CBLReplicationStatus.Active) || (push.status == CBLReplicationStatus.Active)
+		return (pull.status == CBLReplicationStatus.active) || (push.status == CBLReplicationStatus.active)
 	}
 	
-	public var syncStatus: String {
+	open var syncStatus: String {
 		switch pull.status {
-		case .Active:
+		case .active:
 			return "active"
-		case .Idle:
+		case .idle:
 			return "idle"
-		case .Stopped:
+		case .stopped:
 			return "stopped"
-		case .Offline:
+		case .offline:
 			return "offline"
 		}
 	}
 	
-	func replicationChanged(notification: NSNotification) {
+	func replicationChanged(_ notification: Notification) {
 		guard let replicator = notification.object as? CBLReplication else {
 			logIfVerbose("Sync: unexpected notification.object \(notification.object)")
 			return
@@ -123,12 +123,12 @@ public class SyncController {
 	/**
 	Check if a user with given name has credentials in the keychain, if not and a password is given, create and store one.
 	*/
-	func authorizeUser(user: User) throws {
+	func authorize(user: User) throws {
 		guard let username = user.name else {
-			throw SyncError.NoUsername
+			throw SyncError.noUsername
 		}
 		
-		if let found = existingCredentialsForUser(username, space: protectionSpace) {
+		if let found = existingCredentials(for: username, space: protectionSpace) {
 			logIfVerbose("Sync: found password for “\(username)”")
 			pull.credential = found
 			push.credential = found
@@ -138,24 +138,24 @@ public class SyncController {
 		// log in if we have a password
 		if let pass = user.password {
 			logIfVerbose("Sync: logging in as “\(username)”")
-			let cred = logInUser(username, password: pass, space: protectionSpace)
+			let cred = logIn(user: username, password: pass, space: protectionSpace)
 			pull.credential = cred
 			push.credential = cred
 		}
-		throw SyncError.NoPassword
+		throw SyncError.noPassword
 	}
 	
-	public func deAuthorizeUser(user: User) throws {
+	open func deAuthorize(_ user: User) throws {
 		guard let username = user.name else {
-			throw SyncError.NoUsername
+			throw SyncError.noUsername
 		}
-		logOutUser(username, space: protectionSpace)
+		logOut(user: username, space: protectionSpace)
 	}
 	
 	/** Returns a list of usernames that have credentials for our Sync Gateway. */
-	func loggedInUsers(space: NSURLProtectionSpace) -> [String]? {
-		let store = NSURLCredentialStorage.sharedCredentialStorage()
-		guard let found = store.credentialsForProtectionSpace(space) else {
+	func loggedInUsers(_ space: URLProtectionSpace) -> [String]? {
+		let store = URLCredentialStorage.shared
+		guard let found = store.credentials(for: space) else {
 			return nil
 		}
 		var usernames = [String]()
@@ -165,11 +165,11 @@ public class SyncController {
 		return usernames
 	}
 	
-	func existingCredentialsForUser(username: String, space: NSURLProtectionSpace) -> NSURLCredential? {
-		let store = NSURLCredentialStorage.sharedCredentialStorage()
-		if let found = store.credentialsForProtectionSpace(space) {
+	func existingCredentials(for user: String, space: URLProtectionSpace) -> URLCredential? {
+		let store = URLCredentialStorage.shared
+		if let found = store.credentials(for: space) {
 			for (usr, cred) in found {
-				if usr == username {
+				if usr == user {
 					return cred
 				}
 			}
@@ -177,18 +177,17 @@ public class SyncController {
 		return nil
 	}
 	
-	public func logInUser(username: String, password: String, space: NSURLProtectionSpace) -> NSURLCredential {
-		let store = NSURLCredentialStorage.sharedCredentialStorage()
-		let credentials = NSURLCredential(user: username, password: password, persistence: .Permanent)
-		store.setCredential(credentials, forProtectionSpace: space)
-		
+	open func logIn(user: String, password: String, space: URLProtectionSpace) -> URLCredential {
+		let store = URLCredentialStorage.shared
+		let credentials = URLCredential(user: user, password: password, persistence: .permanent)
+		store.set(credentials, for: space)
 		return credentials
 	}
 	
-	public func logOutUser(username: String, space: NSURLProtectionSpace) {
-		if let found = existingCredentialsForUser(username, space: space) {
-			let store = NSURLCredentialStorage.sharedCredentialStorage()
-			store.removeCredential(found, forProtectionSpace: space)
+	open func logOut(user: String, space: URLProtectionSpace) {
+		if let found = existingCredentials(for: user, space: space) {
+			let store = URLCredentialStorage.shared
+			store.remove(found, for: space)
 		}
 	}
 }

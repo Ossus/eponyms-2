@@ -13,7 +13,7 @@ class AuthoredDocumentEditViewController: UIViewController {
 	
 	var document: AuthoredDocument? {
 		didSet {
-			if isViewLoaded() {
+			if isViewLoaded {
 				updateView()
 			}
 		}

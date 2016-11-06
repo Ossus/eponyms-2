@@ -16,16 +16,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
 	var sync: SyncController?
 
 
-	func application(application: UIApplication, willFinishLaunchingWithOptions launchOptions: [NSObject : AnyObject]?) -> Bool {
+	func application(_ application: UIApplication, willFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 		sync = try! SyncController(databaseName: "eponyms")
 		
-		NSNotificationCenter.defaultCenter().addObserverForName(UserDidLoginNotification, object: nil, queue: nil, usingBlock: userStatusChanged)
-		NSNotificationCenter.defaultCenter().addObserverForName(UserDidLogoutNotification, object: nil, queue: nil, usingBlock: userStatusChanged)
+		NotificationCenter.default.addObserver(forName: UserDidLoginNotification, object: nil, queue: nil, using: userStatusChanged)
+		NotificationCenter.default.addObserver(forName: UserDidLogoutNotification, object: nil, queue: nil, using: userStatusChanged)
 		
 		return true
 	}
 	
-	func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 		
 		// setup UI
 		let splitViewController = self.window!.rootViewController as! UISplitViewController
@@ -35,13 +35,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
 		master.sync = sync
 		
 		let detailNavi = splitViewController.viewControllers[splitViewController.viewControllers.count-1] as! UINavigationController
-		detailNavi.topViewController!.navigationItem.leftBarButtonItem = splitViewController.displayModeButtonItem()
+		detailNavi.topViewController!.navigationItem.leftBarButtonItem = splitViewController.displayModeButtonItem
 		splitViewController.delegate = self
 		
 		return true
 	}
 	
-	func applicationDidBecomeActive(application: UIApplication) {
+	func applicationDidBecomeActive(_ application: UIApplication) {
 		if let sync = sync {
 //			if !sync.authorizeUser(user) {
 //				logIfVerbose("Sync: no user logged in, using anonymous GUEST user")
@@ -53,7 +53,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
 	
 	// MARK: - Sync Controller Tasks
 	
-	func userStatusChanged(notification: NSNotification) {
+	func userStatusChanged(_ notification: Notification) {
 		print("\(notification)")
 		if let sync = sync {
 			if let user = notification.object as? User {
@@ -76,7 +76,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
 	
 	// MARK: - Split view
 	
-	func splitViewController(splitViewController: UISplitViewController, collapseSecondaryViewController secondaryViewController:UIViewController, ontoPrimaryViewController primaryViewController:UIViewController) -> Bool {
+	func splitViewController(_ splitViewController: UISplitViewController, collapseSecondary secondaryViewController:UIViewController, onto primaryViewController:UIViewController) -> Bool {
 	    if let secondaryAsNavController = secondaryViewController as? UINavigationController {
 	        if let topAsDetailController = secondaryAsNavController.topViewController as? DetailViewController {
 	            if topAsDetailController.detailItem == nil {
@@ -90,7 +90,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
 }
 
 
-func logIfVerbose(@autoclosure message: () -> String, function: String = #function, file: String = #file, line: Int = #line) {
+func logIfVerbose(_ message: @autoclosure () -> String, function: String = #function, file: String = #file, line: Int = #line) {
 	print("[\((file as NSString).lastPathComponent):\(line)] \(function)  \(message())")
 }
 

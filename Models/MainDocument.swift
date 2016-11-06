@@ -13,9 +13,9 @@ let kMainDocumentFallbackLocale = "en"
 
 
 /**
-	The class for the main document type in the database, e.g. an Eponym.
- */
-public class MainDocument: AuthoredDocument {
+The class for the main document type in the database, e.g. an Eponym.
+*/
+open class MainDocument: AuthoredDocument {
 	
 	/// The document identifier.
 	@NSManaged var _id: String
@@ -37,7 +37,7 @@ public class MainDocument: AuthoredDocument {
 	- parameter locale: The preferred locale, will fall back to `kMainDocumentFallbackLocale`
 	- returns: The document title or nil
 	*/
-	public class func mainDocumentsByTitleTitle(row: CBLQueryRow, locale: String? = nil) -> String? {
+	open class func mainDocumentsByTitleTitle(_ row: CBLQueryRow, locale: String? = nil) -> String? {
 		guard let titles = row.value as? [String: String] else {
 			return nil
 		}
@@ -50,7 +50,7 @@ public class MainDocument: AuthoredDocument {
 	
 	// MARK: - Views
 	
-	public class func mainDocumentsByTitle(database: CBLDatabase, category: String?) -> CBLQuery {
+	open class func mainDocumentsByTitle(_ database: CBLDatabase, category: String?) -> CBLQuery {
 		let view = mainDocumentTitlesByTag(database)
 		let query = view.createQuery()
 		query.descending = false
@@ -66,7 +66,7 @@ public class MainDocument: AuthoredDocument {
 	    "*", {"en": "English Title", "de": "Deutscher Titel"}
 	    "neuro", {"en": "English Title", "de": "Deutscher Titel"}
 	*/
-	class func mainDocumentTitlesByTag(database: CBLDatabase) -> CBLView {
+	class func mainDocumentTitlesByTag(_ database: CBLDatabase) -> CBLView {
 		let view = database.viewNamed("mainDocumentsByTitle")
 		if nil == view.mapBlock {
 			view.setMapBlock("4") { doc, emit in
