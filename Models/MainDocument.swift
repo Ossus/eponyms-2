@@ -26,10 +26,6 @@ open class MainDocument: AuthoredDocument {
 	/// A list of tags this main element belongs to.
 	@NSManaged var tags: [String]
 	
-	override class func type() -> String {
-		return "main"
-	}
-	
 	/**
 	Feed a row coming from a `mainDocumentsByTitle()` query row to receive the title in the preferred locale.
 	
@@ -37,9 +33,9 @@ open class MainDocument: AuthoredDocument {
 	- parameter locale: The preferred locale, will fall back to `kMainDocumentFallbackLocale`
 	- returns: The document title or nil
 	*/
-	open class func mainDocumentsByTitleTitle(_ row: CBLQueryRow, locale: String? = nil) -> String? {
+	open class func titleFromMainDocumentsByTitleQuery(_ row: CBLQueryRow, locale: String? = nil) -> String? {
 		guard let titles = row.value as? [String: String] else {
-			return nil
+			return "Unnamed"
 		}
 		if let locale = locale, let title = titles[locale] {
 			return title
@@ -69,12 +65,12 @@ open class MainDocument: AuthoredDocument {
 	class func mainDocumentTitlesByTag(_ database: CBLDatabase) -> CBLView {
 		let view = database.viewNamed("mainDocumentsByTitle")
 		if nil == view.mapBlock {
-			view.setMapBlock("4") { doc, emit in
+			view.setMapBlock("3") { doc, emit in
 				if "main" == doc["type"] as? String {
 					let tags = doc["tags"] as? [String] ?? []
 					var titles = [String: String]()
-					if let localizations = doc["localizations"] as? [String: JSONDoc] {
-						for (lang, data) in localizations {
+					if let localized = doc["localized"] as? [String: JSONDoc] {
+						for (lang, data) in localized {
 							titles[lang] = data["title"] as? String ?? "Unnamed"
 						}
 					}
@@ -86,6 +82,13 @@ open class MainDocument: AuthoredDocument {
 			}
 		}
 		return view
+	}
+	
+	
+	// MARK: - Type & Factory
+	
+	override public class var documentType: String {
+		return "main"
 	}
 }
 

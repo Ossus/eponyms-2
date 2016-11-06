@@ -27,7 +27,7 @@ class MasterViewController: UITableViewController {
 	// MARK: - Segues
 	
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-		if segue.identifier == "showDetail" {
+		if segue.identifier == "showList" {
 		    if let indexPath = self.tableView.indexPathForSelectedRow {
 //		        let object = objects[indexPath.row]
 		        let controller = (segue.destination as! UINavigationController).topViewController as! MainDocumentListViewController
@@ -46,6 +46,7 @@ class MasterViewController: UITableViewController {
 	}
 	
 	override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+		return 1
 		return objects.count
 	}
 	

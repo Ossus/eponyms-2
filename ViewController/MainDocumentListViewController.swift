@@ -11,38 +11,28 @@ import CouchbaseLite
 
 
 /**
-	Class to display a list of the titles of main documents.
- */
-class MainDocumentListViewController: UITableViewController, TableViewDataSourceDelegate {
+Class to display a list of the titles of main documents.
+*/
+class MainDocumentListViewController: UITableViewController, CBLUITableDelegate {
 	
 	var sync: SyncController?
 	
-	var dataSource: CouchTableViewDataSource?
+	var dataSource: CBLUITableSource?
 	
 	
 	// MARK: - View Tasks
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		
 		assert(nil != sync, "Should have a Sync Controller before loading the view")
-		let query = MainDocument.mainDocumentsByTitle(sync!.database, category: nil).asLive()
-		dataSource = CouchTableViewDataSource(delegate: self, query: query)
+		
+		dataSource = CBLUITableSource()
 		dataSource!.tableView = self.tableView
-		dataSource!.onWillReloadTable = { numRows in
-			logIfVerbose("Will display \(numRows)")
-		}
-		dataSource!.onDidReloadTable = { numRows in
-			logIfVerbose("Did display \(numRows)")
-		}
+		dataSource!.query = MainDocument.mainDocumentsByTitle(sync!.database, category: nil).asLive()
 		tableView.dataSource = dataSource
 		
-		let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(MainDocumentListViewController.insertNewObject(_:)))
+		let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(MainDocumentListViewController.suggestNewMainDocument(_:)))
 		navigationItem.rightBarButtonItem = addButton
-		
-		// table view
-		tableView?.register(UITableViewCell.self, forCellReuseIdentifier: "MainCell")
-		tableView?.reloadData()
 	}
 	
 	override func viewWillAppear(_ animated: Bool) {
@@ -53,36 +43,18 @@ class MainDocumentListViewController: UITableViewController, TableViewDataSource
 	
 	// MARK: - Documents
 	
-	func insertNewObject(_ sender: AnyObject) {
-		guard let s = sync else {
-			print("xx>  No SyncController")
-			return
-		}			
-		let epo = MainDocument(forNewDocumentIn: s.database)
-		epo._id = "arnoldsnerve"
-		epo.author = "firstuser"
-		epo.localizations = ["en": ["title": "Arnold's Nerve", "text": "Auricular branch of vagus nerve supplying posterior and inferior meatal skin of ear; stimulation can elicit cough reflex."]]
-		epo.tags = ["neuro", "ent", "anat"]
-		
-		do {
-			try epo.save()
-			logIfVerbose("SAVED!")
-		}
-		catch let error {
-			logIfVerbose("Failed to save: \(error)")
-		}
+	func suggestNewMainDocument(_ sender: AnyObject) {
+		// TODO: implement
+		print("suggestNewMainDocument()")
 	}
 	
 	
-	// MARK: - Data Source
+	// MARK: - CBLUITableDelegate
 	
-	func dataSource(_ source: TableViewDataSource, hasNoSearchResultsForSearchString searchString: String) {
-	}
-	
-	func dataSource(_ source: TableViewDataSource, tableViewCellForRowAt indexPath: IndexPath) -> UITableViewCell {
-		let cell = tableView.dequeueReusableCell(withIdentifier: "MainCell", for: indexPath)
-		if let row = dataSource?.rowAtIndexPath(indexPath as NSIndexPath) {
-			cell.textLabel?.text = MainDocument.mainDocumentsByTitleTitle(row)
+	func couchTableSource(_ source: CBLUITableSource, cellForRowAt indexPath: IndexPath) -> UITableViewCell? {
+		let cell = tableView.dequeueReusableCell(withIdentifier: "MainDocCell", for: indexPath)
+		if let row = dataSource?.row(at: indexPath) {
+			cell.textLabel?.text = MainDocument.titleFromMainDocumentsByTitleQuery(row)
 		}
 		return cell
 	}
@@ -90,10 +62,22 @@ class MainDocumentListViewController: UITableViewController, TableViewDataSource
 	
 	// MARK: - Navigation
 	
-	// In a storyboard-based application, you will often want to do a little preparation before navigation
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-		// Get the new view controller using [segue destinationViewController].
-		// Pass the selected object to the new view controller.
+		if segue.identifier == "showDetail" {
+			guard let mainDocController = segue.destination as? MainDocumentViewController else {
+				preconditionFailure("A valid segue from here must point to a MainDocumentViewController, but points to \(segue.destination)")
+			}
+			guard let selection = tableView.indexPathForSelectedRow else {
+				NSLog("No selected row")
+				return
+			}
+			let document = dataSource?.document(at: selection)
+			guard let model = document?.modelObject as? MainDocument else {
+				NSLog("Cannot represent document \(document) as MainDocument model")
+				return
+			}
+			mainDocController.object = model
+		}
 	}
 }
 

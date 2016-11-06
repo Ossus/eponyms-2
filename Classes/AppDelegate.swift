@@ -43,6 +43,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
 	
 	func applicationDidBecomeActive(_ application: UIApplication) {
 		if let sync = sync {
+			do {
+//				try sync.importLocalDocuments(from: "eponyms-2")
+			}
+			catch let error {
+				fatalError("\(error)")
+			}
 //			if !sync.authorizeUser(user) {
 //				logIfVerbose("Sync: no user logged in, using anonymous GUEST user")
 //			}
@@ -59,7 +65,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
 			if let user = notification.object as? User {
 				logIfVerbose("LOGIN \(user)")
 				do {
-					try sync.authorizeUser(user)
+					try sync.authorize(user: user)
 				}
 				catch let error {
 					logIfVerbose("Login failed: \(error)")
@@ -78,9 +84,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
 	
 	func splitViewController(_ splitViewController: UISplitViewController, collapseSecondary secondaryViewController:UIViewController, onto primaryViewController:UIViewController) -> Bool {
 	    if let secondaryAsNavController = secondaryViewController as? UINavigationController {
-	        if let topAsDetailController = secondaryAsNavController.topViewController as? DetailViewController {
-	            if topAsDetailController.detailItem == nil {
-	                // Return true to indicate that we have handled the collapse by doing nothing; the secondary controller will be discarded.
+	        if let topAsDetailController = secondaryAsNavController.topViewController as? MainDocumentViewController {
+	            if nil == topAsDetailController.object {
 	                return true
 	            }
 	        }

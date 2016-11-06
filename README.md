@@ -23,3 +23,10 @@ Couchbase
 
 - [CouchbaseLite Guides](http://developer.couchbase.com/mobile/develop/guides/couchbase-lite/native-api/index.html)
 - [CouchbaseLite Docs](http://cocoadocs.org/docsets/couchbase-lite-ios/)
+
+
+Import from Eponyms 1.x
+-----------------------
+
+The documents will not get the same ids as the ones used in legacy Eponyms.
+Hence, to migrate favorites, the names of favorite Eponyms must be exported so the new version can find them and make them a favorite.

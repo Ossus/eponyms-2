@@ -47,6 +47,7 @@ open class SyncController {
 	public init(databaseName name: String) throws {
 		let manager = CBLManager.sharedInstance()
 		database = try manager.databaseNamed(name)
+		print("-->  Initialized SyncController with database at \(manager.directory)/\(database)")
 		
 		// register model classes
 		if let factory = database.modelFactory {
@@ -61,6 +62,41 @@ open class SyncController {
 		
 		NotificationCenter.default.addObserver(forName: NSNotification.Name.cblReplicationChange, object: push, queue: nil, using: replicationChanged)
 		NotificationCenter.default.addObserver(forName: NSNotification.Name.cblReplicationChange, object: pull, queue: nil, using: replicationChanged)
+	}
+	
+	
+	// MARK: - Local Import
+	
+	/**
+	Import all documents found in a JSON document. The JSON document must have a top level "documents" key that is an array of documents.
+	
+	- parameter file: The filename WITHOUT "json" extension
+	*/
+	public func importLocalDocuments(from file: String) throws {
+		guard let url = Bundle.main.url(forResource: file, withExtension: "json") else {
+			throw NSError(domain: "ch.ossus.eponyms.Sync", code: 389, userInfo: [NSLocalizedDescriptionKey: "There does not seem to exist a file “\(file).json” in the main Bundle"])
+		}
+		let data = try Data(contentsOf: url)
+		let json = try JSONSerialization.jsonObject(with: data, options: []) as! JSONDoc
+		guard let all = json["documents"] as? [JSONDoc] else {
+			throw NSError(domain: "ch.ossus.eponyms.Sync", code: 786, userInfo: [NSLocalizedDescriptionKey: "There must be an array of dictionaries under the top-level “documents” key in \(file).json, but there isn't"])
+		}
+		
+		// import all documents
+		database.inTransaction {
+			for epo in all {
+				let document = self.database.createDocument()
+				do {
+					try document.putProperties(epo)
+				}
+				catch let error {
+					print("xxxx>  ERROR IMPORTING, ROLLING BACK. Error was: \(error)")
+					return false
+				}
+			}
+			print("====>  Imported \(self.database.documentCount) documents")
+			return true
+		}
 	}
 	
 	

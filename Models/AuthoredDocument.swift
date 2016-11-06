@@ -35,7 +35,7 @@ open class AuthoredDocument: CBLModel {
 	// MARK: - Saving
 	
 	open override func willSave(_ changedPropertyNames: Set<AnyHashable>?) {
-		type = type(of: self).type()
+		type = type(of: self).documentType
 		if nil == date {
 			date = Date()
 		}
@@ -47,13 +47,13 @@ open class AuthoredDocument: CBLModel {
 	
 	// MARK: - Type & Factory
 	
-	class func type() -> String {
+	public class var documentType: String {
 		return "authored"
 	}
 	
 	class func register(in factory: CBLModelFactory) {
-		logIfVerbose("Registering \(self) for «\(type())»")
-		factory.registerClass(self, forDocumentType: type())
+		logIfVerbose("Registering \(self) for «\(documentType)»")
+		factory.registerClass(self, forDocumentType: documentType)
 	}
 }
 

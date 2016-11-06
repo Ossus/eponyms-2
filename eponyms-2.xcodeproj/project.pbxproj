@@ -13,15 +13,12 @@
 		EE01934A1AEC57EE003E74EA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE0193491AEC57EE003E74EA /* Foundation.framework */; };
 		EE392B591AA49EDE0039F3D1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE392B581AA49EDE0039F3D1 /* AppDelegate.swift */; };
 		EE392B5B1AA49EDE0039F3D1 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE392B5A1AA49EDE0039F3D1 /* MasterViewController.swift */; };
-		EE392B5D1AA49EDE0039F3D1 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE392B5C1AA49EDE0039F3D1 /* DetailViewController.swift */; };
 		EE392B601AA49EDE0039F3D1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EE392B5E1AA49EDE0039F3D1 /* Main.storyboard */; };
 		EE392B621AA49EDE0039F3D1 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EE392B611AA49EDE0039F3D1 /* Images.xcassets */; };
 		EE392B651AA49EDE0039F3D1 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = EE392B631AA49EDE0039F3D1 /* LaunchScreen.xib */; };
 		EE392B711AA49EDE0039F3D1 /* eponyms_2Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE392B701AA49EDE0039F3D1 /* eponyms_2Tests.swift */; };
 		EE4E892C1AF67C2E00E5BBEF /* AuthoredDocumentEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4E892B1AF67C2E00E5BBEF /* AuthoredDocumentEditViewController.swift */; };
 		EE4E892E1AF6A5FD00E5BBEF /* MainDocumentListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4E892D1AF6A5FD00E5BBEF /* MainDocumentListViewController.swift */; };
-		EE4E893F1AF6AC5600E5BBEF /* TableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4E893D1AF6AC5600E5BBEF /* TableViewDataSource.swift */; };
-		EE4E89411AF6B11E00E5BBEF /* CouchTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4E89401AF6B11E00E5BBEF /* CouchTableViewDataSource.swift */; };
 		EE4EC9001CAF0E1300293F9D /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4EC8FF1CAF0E1300293F9D /* UserViewController.swift */; };
 		EE4EC9191CAF0E9D00293F9D /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4EC9181CAF0E9D00293F9D /* User.swift */; };
 		EE4EC9231CAF178300293F9D /* SyncError.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4EC9221CAF178300293F9D /* SyncError.swift */; };
@@ -33,6 +30,8 @@
 		EEA5301C1BD992A50084F345 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = EEA5301B1BD992A50084F345 /* libz.tbd */; };
 		EEA5301E1BD992AD0084F345 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = EEA5301D1BD992AD0084F345 /* libsqlite3.tbd */; };
 		EEC323C21AEC4C46009B0ABB /* SyncController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEC323C11AEC4C46009B0ABB /* SyncController.swift */; };
+		EEEA64181DCECF460018E72E /* eponyms-2.json in Resources */ = {isa = PBXBuildFile; fileRef = EEEA64171DCECF460018E72E /* eponyms-2.json */; };
+		EEEA641A1DCF83570018E72E /* MainDocumentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEEA64191DCF83570018E72E /* MainDocumentViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,7 +67,6 @@
 		EE392B571AA49EDE0039F3D1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EE392B581AA49EDE0039F3D1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = Classes/AppDelegate.swift; sourceTree = "<group>"; };
 		EE392B5A1AA49EDE0039F3D1 /* MasterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
-		EE392B5C1AA49EDE0039F3D1 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		EE392B5F1AA49EDE0039F3D1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		EE392B611AA49EDE0039F3D1 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = ../UI/Images.xcassets; sourceTree = "<group>"; };
 		EE392B641AA49EDE0039F3D1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -77,8 +75,6 @@
 		EE392B701AA49EDE0039F3D1 /* eponyms_2Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = eponyms_2Tests.swift; sourceTree = "<group>"; };
 		EE4E892B1AF67C2E00E5BBEF /* AuthoredDocumentEditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthoredDocumentEditViewController.swift; sourceTree = "<group>"; };
 		EE4E892D1AF6A5FD00E5BBEF /* MainDocumentListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainDocumentListViewController.swift; sourceTree = "<group>"; };
-		EE4E893D1AF6AC5600E5BBEF /* TableViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewDataSource.swift; sourceTree = "<group>"; };
-		EE4E89401AF6B11E00E5BBEF /* CouchTableViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CouchTableViewDataSource.swift; sourceTree = "<group>"; };
 		EE4EC8FF1CAF0E1300293F9D /* UserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
 		EE4EC9181CAF0E9D00293F9D /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		EE4EC9221CAF178300293F9D /* SyncError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SyncError.swift; sourceTree = "<group>"; };
@@ -89,6 +85,8 @@
 		EEA5301B1BD992A50084F345 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		EEA5301D1BD992AD0084F345 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		EEC323C11AEC4C46009B0ABB /* SyncController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SyncController.swift; sourceTree = "<group>"; };
+		EEEA64171DCECF460018E72E /* eponyms-2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "eponyms-2.json"; sourceTree = "<group>"; };
+		EEEA64191DCF83570018E72E /* MainDocumentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainDocumentViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -154,7 +152,6 @@
 				EE392B581AA49EDE0039F3D1 /* AppDelegate.swift */,
 				EE9C69331AEDA8F200D824CE /* CBLExtensions.swift */,
 				EE9C69321AEDA83100D824CE /* Models */,
-				EE4E893B1AF6AC3D00E5BBEF /* Data Source */,
 				EEC323C01AEC4C15009B0ABB /* Sync */,
 				EEC323BF1AEC40AF009B0ABB /* ViewController */,
 				EEC323BE1AEC40A3009B0ABB /* UI */,
@@ -166,6 +163,7 @@
 		EE392B561AA49EDE0039F3D1 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				EEEA64171DCECF460018E72E /* eponyms-2.json */,
 				EE392B571AA49EDE0039F3D1 /* Info.plist */,
 				EE4EE4B11DCEB61F005F8CEB /* CouchbaseLite.framework */,
 			);
@@ -187,16 +185,6 @@
 				EE392B6F1AA49EDE0039F3D1 /* Info.plist */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		EE4E893B1AF6AC3D00E5BBEF /* Data Source */ = {
-			isa = PBXGroup;
-			children = (
-				EE4E893D1AF6AC5600E5BBEF /* TableViewDataSource.swift */,
-				EE4E89401AF6B11E00E5BBEF /* CouchTableViewDataSource.swift */,
-			);
-			name = "Data Source";
-			path = Classes;
 			sourceTree = "<group>";
 		};
 		EE9C69321AEDA83100D824CE /* Models */ = {
@@ -224,7 +212,7 @@
 			children = (
 				EE392B5A1AA49EDE0039F3D1 /* MasterViewController.swift */,
 				EE4E892D1AF6A5FD00E5BBEF /* MainDocumentListViewController.swift */,
-				EE392B5C1AA49EDE0039F3D1 /* DetailViewController.swift */,
+				EEEA64191DCF83570018E72E /* MainDocumentViewController.swift */,
 				EE4E892B1AF67C2E00E5BBEF /* AuthoredDocumentEditViewController.swift */,
 				EE4EC8FF1CAF0E1300293F9D /* UserViewController.swift */,
 			);
@@ -327,6 +315,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EEEA64181DCECF460018E72E /* eponyms-2.json in Resources */,
 				EE392B601AA49EDE0039F3D1 /* Main.storyboard in Resources */,
 				EE392B651AA49EDE0039F3D1 /* LaunchScreen.xib in Resources */,
 				EE392B621AA49EDE0039F3D1 /* Images.xcassets in Resources */,
@@ -367,14 +356,12 @@
 				EE4EC9191CAF0E9D00293F9D /* User.swift in Sources */,
 				EEC323C21AEC4C46009B0ABB /* SyncController.swift in Sources */,
 				EE4EC9001CAF0E1300293F9D /* UserViewController.swift in Sources */,
-				EE4E89411AF6B11E00E5BBEF /* CouchTableViewDataSource.swift in Sources */,
-				EE4E893F1AF6AC5600E5BBEF /* TableViewDataSource.swift in Sources */,
-				EE392B5D1AA49EDE0039F3D1 /* DetailViewController.swift in Sources */,
 				EE4E892E1AF6A5FD00E5BBEF /* MainDocumentListViewController.swift in Sources */,
 				EE9C69311AEDA82C00D824CE /* AuthoredDocument.swift in Sources */,
 				EE4E892C1AF67C2E00E5BBEF /* AuthoredDocumentEditViewController.swift in Sources */,
 				EE9C69341AEDA8F200D824CE /* CBLExtensions.swift in Sources */,
 				EE392B5B1AA49EDE0039F3D1 /* MasterViewController.swift in Sources */,
+				EEEA641A1DCF83570018E72E /* MainDocumentViewController.swift in Sources */,
 				EE4EC9231CAF178300293F9D /* SyncError.swift in Sources */,
 				EE392B591AA49EDE0039F3D1 /* AppDelegate.swift in Sources */,
 				EE9C69361AEDAE9A00D824CE /* MainDocument.swift in Sources */,

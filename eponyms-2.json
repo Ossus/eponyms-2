@@ -1,0 +1,170 @@
+{
+    "date": "2016-11-06",
+    "documents": [
+        {
+            "author": "ajyee",
+            "date": "2005-01-17",
+            "dateUpdated": "2005-01-17",
+            "localized": {
+                "en": {
+                    "text": "Congenital anomaly of the splanchnic vasculature, arises from defects in vitelline vein formation; in type 1, portal vein completely diverted into IVC and complete absence of formation of intrahepatic portal vein; in type 2, portal venous system is formed, but there is an abnormal communication with systemic veins, usually IVC; associated with hepatic encephalopathy and hepatopulmonary syndrome; more common in dogs, particularly Yorkshire terriers.",
+                    "title": "Abernethy malformation"
+                }
+            },
+            "tags": [
+                "anat",
+                "gi",
+                "peds"
+            ],
+            "type": "main"
+        },
+        {
+            "author": "ajyee",
+            "date": "2007-04-05",
+            "localized": {
+                "en": {
+                    "text": "Rare entity of spontaneous or mechanically-induced hematomas on the volar aspect of fingers associated with burning pain and swelling of the digits.",
+                    "title": "Achenbach's syndrome"
+                }
+            },
+            "tags": [
+                "synd",
+                "derm"
+            ],
+            "type": "main"
+        },
+        {
+            "author": "ajyee",
+            "date": "1998-03-21",
+            "dateUpdated": "1998-03-21",
+            "localized": {
+                "en": {
+                    "text": "Artery that when severed, can lead to anterior spinal syndrome; can be severed in abdominal aortic aneurysm repair.",
+                    "title": "Adamkiewicz, artery of"
+                }
+            },
+            "tags": [
+                "anat"
+            ],
+            "type": "main"
+        },
+        {
+            "author": "ajyee",
+            "date": "2006-07-19",
+            "dateUpdated": "2006-07-19",
+            "localized": {
+                "en": {
+                    "text": "Sex-linked hydrocephalus, aqueductal stenosis, mental deficiency, and flexion deformities and spasticity of the extremities.  Most common inherited forms of inherited hydrocephalus.  X-linked (Xq28), due to mutation in L1CAM.",
+                    "title": "Bickers-Adams syndrome"
+                }
+            },
+            "tags": [
+                "synd",
+                "neuro",
+                "peds"
+            ],
+            "type": "main"
+        },
+        {
+            "author": "ajyee",
+            "date": "2000-03-12",
+            "dateUpdated": "2000-03-12",
+            "localized": {
+                "en": {
+                    "text": "Brain stem encephalitis.  Has features of Miller Fisher syndrome, but with encephalopathy and hyperreflexia.  Associated with anti-GQ1b antibodies; can be te treated with IVIG and plasma exchange.",
+                    "title": "Bickerstaff's encephalitis"
+                }
+            },
+            "tags": [
+                "neuro",
+                "synd"
+            ],
+            "type": "main"
+        },
+        {
+            "author": "ajyee",
+            "date": "1998-03-21",
+            "localized": {
+                "en": {
+                    "text": "The angle made by the proximal nail fold and the nail plate.",
+                    "title": "Lovibond's angle"
+                }
+            },
+            "tags": [
+                "derm",
+                "anat"
+            ],
+            "type": "main"
+        },
+        {
+            "author": "ajyee",
+            "date": "2000-07-15",
+            "localized": {
+                "en": {
+                    "text": "In deep vein thrombosis, two calves are wrapped with cuffs to see if there is asymetry in tolerance to pressure of 180 mm Hg.",
+                    "title": "Lowenberg's sign"
+                }
+            },
+            "tags": [
+                "cv",
+                "pulm",
+                "sign",
+                "proc"
+            ],
+            "type": "main"
+        },
+        {
+            "author": "ajyee",
+            "date": "2000-02-28",
+            "dateUpdated": "2000-02-28",
+            "localized": {
+                "en": {
+                    "text": "Wilms's tumor, Anirida, Genital anomalies, and mental Retardation; 33% chance of developing Wilms's tumor; associated with mutation in WT1 gene.",
+                    "title": "WAGR"
+                }
+            },
+            "tags": [
+                "renal",
+                "synd",
+                "onc",
+                "ophth",
+                "peds"
+            ],
+            "type": "main"
+        },
+        {
+            "author": "ajyee",
+            "date": "1998-03-21",
+            "dateUpdated": "1998-03-21",
+            "localized": {
+                "en": {
+                    "text": "A subset of lymphoplasmacytic lymphoma (a malignancy involving small B lymphocytes, plasmactyoid lymphocytes, and plasma cells) with bone marrow involvement and IgM monoclonal gammopathy in the blood.  Characterized by macroglobulinemia and associated with visual impairment, neurologic problems, bleeding, cryoglobulinemia, and hyperviscosity.",
+                    "title": "Waldenström's macroglobulinemia"
+                }
+            },
+            "tags": [
+                "heme",
+                "onc"
+            ],
+            "type": "main"
+        },
+        {
+            "author": "ajyee",
+            "date": "1998-03-21",
+            "dateUpdated": "1998-03-21",
+            "localized": {
+                "en": {
+                    "text": "The broken ring of lymphoid tissue, formed of the lingual, facial, and pharyngeal tonsils, commonly involved in non-Hodgkin's lymphoma and rarely in Hodgkin's disease.",
+                    "title": "Waldeyer's throat ring"
+                }
+            },
+            "tags": [
+                "heme",
+                "onc",
+                "anat",
+                "ent"
+            ],
+            "type": "main"
+        }
+    ]
+}
