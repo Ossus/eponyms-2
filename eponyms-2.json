@@ -3,6 +3,78 @@
     "documents": [
         {
             "author": "ajyee",
+            "date": "1998-03-21",
+            "localized": {
+                "en": "Anatomy"
+            },
+            "tag": "anat",
+            "type": "tag"
+        },
+        {
+            "author": "ajyee",
+            "date": "1998-03-21",
+            "localized": {
+                "en": "Dermatology"
+            },
+            "tag": "derm",
+            "type": "tag"
+        },
+        {
+            "author": "ajyee",
+            "date": "1998-03-21",
+            "localized": {
+                "en": "Hematology"
+            },
+            "tag": "heme",
+            "type": "tag"
+        },
+        {
+            "author": "ajyee",
+            "date": "1998-03-21",
+            "localized": {
+                "en": "Neurology"
+            },
+            "tag": "neuro",
+            "type": "tag"
+        },
+        {
+            "author": "ajyee",
+            "date": "1998-03-21",
+            "localized": {
+                "en": "Oncology"
+            },
+            "tag": "onc",
+            "type": "tag"
+        },
+        {
+            "author": "ajyee",
+            "date": "1998-03-21",
+            "localized": {
+                "en": "Pediatrics"
+            },
+            "tag": "peds",
+            "type": "tag"
+        },
+        {
+            "author": "ajyee",
+            "date": "1998-03-21",
+            "localized": {
+                "en": "Renal"
+            },
+            "tag": "renal",
+            "type": "tag"
+        },
+        {
+            "author": "ajyee",
+            "date": "1998-03-21",
+            "localized": {
+                "en": "Syndromes"
+            },
+            "tag": "synd",
+            "type": "tag"
+        },
+        {
+            "author": "ajyee",
             "date": "2005-01-17",
             "dateUpdated": "2005-01-17",
             "localized": {
@@ -13,7 +85,6 @@
             },
             "tags": [
                 "anat",
-                "gi",
                 "peds"
             ],
             "type": "main"
@@ -106,10 +177,6 @@
                 }
             },
             "tags": [
-                "cv",
-                "pulm",
-                "sign",
-                "proc"
             ],
             "type": "main"
         },
@@ -127,7 +194,6 @@
                 "renal",
                 "synd",
                 "onc",
-                "ophth",
                 "peds"
             ],
             "type": "main"
@@ -161,8 +227,7 @@
             "tags": [
                 "heme",
                 "onc",
-                "anat",
-                "ent"
+                "anat"
             ],
             "type": "main"
         }

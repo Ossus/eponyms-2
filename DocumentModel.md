@@ -14,7 +14,7 @@ This is the “superclass” document model from which all other documents inher
 
 ```json
 {
-    "id": "",
+    "id": "…",
     "type": "document-type",
     "author": "author-username",
     "date": "2016-11-creation-date",
@@ -27,11 +27,12 @@ Main
 ----
 
 The main document describing the eponym (item).
+Inherits from `authored`.
 
 ```json
 {
-    {inherit properties from `Authored`}
-    "tags": ["ana", "neuro"],
+    {inherit properties from `authored`}
+    "tags": ["tag1", "tag2"],
     "localized": {
         "en": {
             "title": "An Eponym",
@@ -44,3 +45,21 @@ The main document describing the eponym (item).
     }
 }
 ```
+
+Tag
+---
+
+Documents containing translations for all the tags.
+Inherits from `Authored`.
+
+```json
+{
+    {inherit properties from `authored`}
+    "tag": "tag",
+    "localized": {
+        "en": "A Tag",
+        "de": "Der Tag"
+    }
+}
+```
+
