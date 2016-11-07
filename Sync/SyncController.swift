@@ -72,8 +72,9 @@ open class SyncController {
 	Import all documents found in a JSON document. The JSON document must have a top level "documents" key that is an array of documents.
 	
 	- parameter file: The filename WITHOUT "json" extension
+	- parameter deleteExisting: If true, will drop the whole DB first!
 	*/
-	public func importLocalDocuments(from file: String) throws {
+	public func importLocalDocuments(from file: String, deleteExisting: Bool = false) throws {
 		guard let url = Bundle.main.url(forResource: file, withExtension: "json") else {
 			throw NSError(domain: "ch.ossus.eponyms.Sync", code: 389, userInfo: [NSLocalizedDescriptionKey: "There does not seem to exist a file “\(file).json” in the main Bundle"])
 		}
@@ -81,6 +82,12 @@ open class SyncController {
 		let json = try JSONSerialization.jsonObject(with: data, options: []) as! JSONDoc
 		guard let all = json["documents"] as? [JSONDoc] else {
 			throw NSError(domain: "ch.ossus.eponyms.Sync", code: 786, userInfo: [NSLocalizedDescriptionKey: "There must be an array of dictionaries under the top-level “documents” key in \(file).json, but there isn't"])
+		}
+		
+		// delete existing?
+		if deleteExisting {
+//			try database.delete()
+			// TODO: doesn't work
 		}
 		
 		// import all documents

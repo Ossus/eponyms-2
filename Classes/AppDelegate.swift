@@ -42,12 +42,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
 	
 	func applicationDidBecomeActive(_ application: UIApplication) {
 		if let sync = sync {
+#if false
 			do {
-//				try sync.importLocalDocuments(from: "eponyms-2")
+				try sync.importLocalDocuments(from: "eponyms-2", deleteExisting: true)
 			}
 			catch let error {
 				fatalError("\(error)")
 			}
+#endif
 //			if !sync.authorizeUser(user) {
 //				logIfVerbose("Sync: no user logged in, using anonymous GUEST user")
 //			}
