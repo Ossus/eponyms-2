@@ -29,7 +29,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
 		
 		// setup UI
 		let splitViewController = self.window!.rootViewController as! UISplitViewController
-		
 		let masterNavi = splitViewController.viewControllers.first as! UINavigationController
 		let master = masterNavi.viewControllers.first as! MasterViewController
 		master.sync = sync

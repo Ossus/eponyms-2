@@ -12,9 +12,10 @@
         <scene sceneID="pY4-Hu-kfo">
             <objects>
                 <navigationController title="Master" id="RMx-3f-FxP" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="Pmd-2v-anx">
+                    <navigationBar key="navigationBar" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" id="Pmd-2v-anx">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.14810849854975575" green="0.56122189258486044" blue="0.80552842881944442" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
                     <connections>
                         <segue destination="7bK-jq-Zjz" kind="relationship" relationship="rootViewController" id="tsl-Nk-0bq"/>
@@ -41,20 +42,20 @@
         <scene sceneID="smW-Zh-WAh">
             <objects>
                 <tableViewController title="Master" clearsSelectionOnViewWillAppear="NO" id="7bK-jq-Zjz" customClass="MasterViewController" customModule="eponyms_2" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="52" sectionHeaderHeight="22" sectionFooterHeight="22" id="r7i-6Z-zg0">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="52" sectionHeaderHeight="18" sectionFooterHeight="18" id="r7i-6Z-zg0">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" textLabel="Arm-wq-HPj" style="IBUITableViewCellStyleDefault" id="WCw-Qf-5nD">
-                                <rect key="frame" x="0.0" y="22" width="375" height="52"/>
+                                <rect key="frame" x="0.0" y="56" width="375" height="52"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="WCw-Qf-5nD" id="37f-cq-3Eg">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="51.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="51"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Arm-wq-HPj">
-                                            <rect key="frame" x="15" y="0.0" width="345" height="51.5"/>
+                                            <rect key="frame" x="15" y="0.0" width="345" height="51"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -74,8 +75,8 @@
                             <outlet property="delegate" destination="7bK-jq-Zjz" id="RA6-mI-bju"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Hello" id="Zdf-7t-Un8">
-                        <barButtonItem key="rightBarButtonItem" systemItem="compose" id="oRl-Db-uGg">
+                    <navigationItem key="navigationItem" id="Zdf-7t-Un8">
+                        <barButtonItem key="rightBarButtonItem" image="button-profile" style="plain" id="oRl-Db-uGg">
                             <connections>
                                 <segue destination="jRm-4l-0r1" kind="presentation" id="NPT-1f-kvs"/>
                             </connections>
@@ -90,9 +91,10 @@
         <scene sceneID="9fh-nJ-9ea">
             <objects>
                 <navigationController id="15M-hW-Eok" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="O7g-yh-Jry">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="O7g-yh-Jry">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.14810849849999999" green="0.56122189259999999" blue="0.80552842879999997" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
                     <connections>
                         <segue destination="LqK-F3-Iiw" kind="relationship" relationship="rootViewController" id="tad-So-BSc"/>
@@ -102,7 +104,7 @@
             </objects>
             <point key="canvasLocation" x="1471" y="128"/>
         </scene>
-        <!--Document-->
+        <!--Main Document View Controller-->
         <scene sceneID="KuT-EA-7LC">
             <objects>
                 <viewController id="LqK-F3-Iiw" customClass="MainDocumentViewController" customModule="eponyms_2" customModuleProvider="target" sceneMemberID="viewController">
@@ -127,13 +129,13 @@
                             <constraint firstAttribute="centerX" secondItem="LvS-v2-Pcc" secondAttribute="centerX" id="dbI-P0-uoj"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Document" id="hOZ-e1-SpC"/>
+                    <navigationItem key="navigationItem" id="hOZ-e1-SpC"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CAm-Dh-E0l" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2292" y="128"/>
         </scene>
-        <!--Documents-->
+        <!--Main Document List View Controller-->
         <scene sceneID="ZmL-9m-vLG">
             <objects>
                 <tableViewController id="lGo-dd-TJm" customClass="MainDocumentListViewController" customModule="eponyms_2" customModuleProvider="target" sceneMemberID="viewController">
@@ -142,7 +144,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <view key="tableHeaderView" contentMode="scaleToFill" id="yG0-2z-dYc">
-                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                            <rect key="frame" x="0.0" y="64" width="375" height="44"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <searchBar contentMode="redraw" searchBarStyle="prominent" placeholder="Search" translatesAutoresizingMaskIntoConstraints="NO" id="fdx-pN-duz">
@@ -170,11 +172,11 @@
                                 <rect key="frame" x="0.0" y="66" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="yz1-4C-vm1" id="QhD-Y0-WX2">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="y3v-YY-sXa">
-                                            <rect key="frame" x="15" y="0.0" width="345" height="43.5"/>
+                                            <rect key="frame" x="15" y="0.0" width="345" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
                                             <nil key="textColor"/>
@@ -192,7 +194,7 @@
                             <outlet property="delegate" destination="lGo-dd-TJm" id="Qii-Xb-v73"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Documents" id="bIn-nb-sqd"/>
+                    <navigationItem key="navigationItem" id="bIn-nb-sqd"/>
                     <connections>
                         <outlet property="searchBar" destination="fdx-pN-duz" id="UFk-2L-AOh"/>
                     </connections>
@@ -201,7 +203,7 @@
             </objects>
             <point key="canvasLocation" x="709" y="129"/>
         </scene>
-        <!--Title-->
+        <!--You-->
         <scene sceneID="BJW-1b-FFT">
             <objects>
                 <tableViewController id="qUR-V1-EH7" customClass="UserViewController" customModule="eponyms_2" customModuleProvider="target" sceneMemberID="viewController">
@@ -210,11 +212,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="TLL-Vt-Y8M">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="None" id="TLL-Vt-Y8M">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="TLL-Vt-Y8M" id="FS8-wA-evZ">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -224,7 +226,7 @@
                             <outlet property="delegate" destination="qUR-V1-EH7" id="kFG-Sq-o34"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Title" id="ElD-BP-ncm">
+                    <navigationItem key="navigationItem" title="You" id="ElD-BP-ncm">
                         <barButtonItem key="rightBarButtonItem" systemItem="done" id="pWG-gO-Bs7">
                             <connections>
                                 <segue destination="7bK-jq-Zjz" kind="custom" customClass="DismissFromModalSegue" customModule="eponyms_2" id="mAG-ca-Fjt"/>
@@ -240,9 +242,10 @@
         <scene sceneID="dPe-FT-dew">
             <objects>
                 <navigationController id="jRm-4l-0r1" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="vhu-Hn-ect">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="vhu-Hn-ect">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.14810849854975575" green="0.56122189258486044" blue="0.80552842881944442" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
                     <connections>
                         <segue destination="qUR-V1-EH7" kind="relationship" relationship="rootViewController" id="wM0-0B-18K"/>
@@ -256,9 +259,10 @@
         <scene sceneID="r7l-gg-dq7">
             <objects>
                 <navigationController id="vC3-pB-5Vb" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="DjV-YW-jjY">
+                    <navigationBar key="navigationBar" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" id="DjV-YW-jjY">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.14810849849999999" green="0.56122189259999999" blue="0.80552842879999997" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
                     <connections>
                         <segue destination="lGo-dd-TJm" kind="relationship" relationship="rootViewController" id="44I-cm-568"/>
@@ -269,7 +273,11 @@
             <point key="canvasLocation" x="-45" y="129"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="button-profile" width="26" height="26"/>
+    </resources>
     <inferredMetricsTieBreakers>
         <segue reference="mAG-ca-Fjt"/>
     </inferredMetricsTieBreakers>
+    <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
 </document>
