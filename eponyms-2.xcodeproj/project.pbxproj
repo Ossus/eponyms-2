@@ -65,7 +65,7 @@
 		EE0193491AEC57EE003E74EA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		EE392B531AA49EDE0039F3D1 /* eponyms-2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "eponyms-2.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EE392B571AA49EDE0039F3D1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		EE392B581AA49EDE0039F3D1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = Classes/AppDelegate.swift; sourceTree = "<group>"; };
+		EE392B581AA49EDE0039F3D1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = ../Classes/AppDelegate.swift; sourceTree = "<group>"; };
 		EE392B5A1AA49EDE0039F3D1 /* MasterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
 		EE392B5F1AA49EDE0039F3D1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		EE392B611AA49EDE0039F3D1 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = ../UI/Images.xcassets; sourceTree = "<group>"; };
@@ -80,7 +80,7 @@
 		EE4EC9221CAF178300293F9D /* SyncError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SyncError.swift; sourceTree = "<group>"; };
 		EE4EE4B11DCEB61F005F8CEB /* CouchbaseLite.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CouchbaseLite.framework; path = Carthage/Build/iOS/CouchbaseLite.framework; sourceTree = "<group>"; };
 		EE9C69301AEDA82C00D824CE /* AuthoredDocument.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthoredDocument.swift; sourceTree = "<group>"; };
-		EE9C69331AEDA8F200D824CE /* CBLExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CBLExtensions.swift; path = Classes/CBLExtensions.swift; sourceTree = "<group>"; };
+		EE9C69331AEDA8F200D824CE /* CBLExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CBLExtensions.swift; sourceTree = "<group>"; };
 		EE9C69351AEDAE9A00D824CE /* MainDocument.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainDocument.swift; sourceTree = "<group>"; };
 		EEA5301B1BD992A50084F345 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		EEA5301D1BD992AD0084F345 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
@@ -127,6 +127,34 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		EE14E78F1DD0C8E6009F8736 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				EE14E7901DD0C922009F8736 /* Base */,
+				EE14E7911DD0C941009F8736 /* Classes */,
+				EE9C69321AEDA83100D824CE /* Models */,
+				EEC323C01AEC4C15009B0ABB /* Sync */,
+				EEC323BF1AEC40AF009B0ABB /* ViewController */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		EE14E7901DD0C922009F8736 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				EE9C69331AEDA8F200D824CE /* CBLExtensions.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		EE14E7911DD0C941009F8736 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				EE392B581AA49EDE0039F3D1 /* AppDelegate.swift */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
 		EE392B4A1AA49EDE0039F3D1 = {
 			isa = PBXGroup;
 			children = (
@@ -149,11 +177,7 @@
 		EE392B551AA49EDE0039F3D1 /* eponyms-2 */ = {
 			isa = PBXGroup;
 			children = (
-				EE392B581AA49EDE0039F3D1 /* AppDelegate.swift */,
-				EE9C69331AEDA8F200D824CE /* CBLExtensions.swift */,
-				EE9C69321AEDA83100D824CE /* Models */,
-				EEC323C01AEC4C15009B0ABB /* Sync */,
-				EEC323BF1AEC40AF009B0ABB /* ViewController */,
+				EE14E78F1DD0C8E6009F8736 /* Sources */,
 				EEC323BE1AEC40A3009B0ABB /* UI */,
 				EE392B561AA49EDE0039F3D1 /* Supporting Files */,
 			);
