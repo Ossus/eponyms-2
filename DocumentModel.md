@@ -14,11 +14,13 @@ This is the “superclass” document model from which all other documents inher
 
 ```json
 {
-    "id": "…",
-    "type": "document-type",
-    "author": "author-username",
-    "date": "2016-11-creation-date",
-    "dateUpdated": "2016-12-last-update"
+    "_id": "…",
+    "type": "{document-type}",
+    "audits": [{
+        "author": "{author-name}",
+        "date": "2016-11-creation-datetime",
+        "action": "create"
+    }]
 }
 ```
 
@@ -32,14 +34,17 @@ Inherits from `authored`.
 ```json
 {
     {inherit properties from `authored`}
-    "tags": ["tag1", "tag2"],
-    "localized": {
+    "tags": [
+		"tag1",
+		"tag2"
+	],
+    "content": {
         "en": {
-            "title": "An Eponym",
+            "name": "An Eponym",
             "text": "This is the text body for this eponym"
         },
         "de": {
-            "title": "Ein Eponym",
+            "name": "Ein Eponym",
             "text": "Dies ist die Beschreibung dieses Eponyms"
         }
     }
@@ -49,14 +54,13 @@ Inherits from `authored`.
 Tag
 ---
 
-Documents containing translations for all the tags.
-Inherits from `Authored`.
+Documents containing translations for all a tag.
 
 ```json
 {
-    {inherit properties from `authored`}
-    "tag": "tag",
-    "localized": {
+    "_id": "tag1"
+    "type": "tag",
+    "content": {
         "en": "A Tag",
         "de": "Der Tag"
     }

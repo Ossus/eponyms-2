@@ -21,6 +21,7 @@ Open `eponyms-2.xcworkspace` in Xcode and run!
 Couchbase
 ---------
 
+- [Document Model](./DocumentModel.md)
 - [CouchbaseLite Guides](http://developer.couchbase.com/mobile/develop/guides/couchbase-lite/native-api/index.html)
 - [CouchbaseLite Docs](http://cocoadocs.org/docsets/couchbase-lite-ios/)
 

@@ -7,16 +7,44 @@
 //
 
 import UIKit
+import CouchbaseLite
 
 
-class MasterViewController: UITableViewController {
-	
-	var tags = [AnyObject]()
+/**
+The master view controller, shown first and center.
+*/
+class MasterViewController: UITableViewController, CBLUITableDelegate {
+	@IBOutlet var row1: UIView?
+	@IBOutlet var row2: UIView?
+	@IBOutlet var row3: UIView?
 	
 	var sync: SyncController?
 	
+	var dataSource: CBLUITableSource?
+	
 	
 	// MARK: - View Tasks
+	
+	override func viewDidLoad() {
+		super.viewDidLoad()
+		
+		// setup fake first 3 table rows
+		let scale = UIScreen.main.scale
+		row1?.layer.borderColor = UIColor(red: 0.7843, green: 0.7804, blue: 0.8, alpha: 1.0).cgColor
+		row2?.layer.borderColor = UIColor(red: 0.7843, green: 0.7804, blue: 0.8, alpha: 1.0).cgColor
+		row3?.layer.borderColor = UIColor(red: 0.7843, green: 0.7804, blue: 0.8, alpha: 1.0).cgColor
+		row1?.layer.borderWidth = 1.0 / scale
+		row2?.layer.borderWidth = 1.0 / scale
+		row3?.layer.borderWidth = 1.0 / scale
+		
+		let recognizer = UITapGestureRecognizer(target: self, action: #selector(MasterViewController.didRecognizeGesture(_:)))
+		row1?.superview?.addGestureRecognizer(recognizer)
+		
+		dataSource = CBLUITableSource()
+		dataSource!.tableView = self.tableView
+		dataSource!.query = TagDocument.tagDocumentsByTitle(sync!.database).asLive()
+		tableView.dataSource = dataSource
+	}
 	
 	override func viewWillAppear(_ animated: Bool) {
 		self.clearsSelectionOnViewWillAppear = self.splitViewController!.isCollapsed
@@ -24,69 +52,49 @@ class MasterViewController: UITableViewController {
 	}
 	
 	
+	// MARK: - CBLUITableDelegate
+	
+	func couchTableSource(_ source: CBLUITableSource, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+		let cell = tableView.dequeueReusableCell(withIdentifier: "TagDocCell", for: indexPath)
+		if let row = dataSource?.row(at: indexPath) {
+			cell.textLabel?.text = (row.value as? String) ?? "Unnamed Tag"
+		}
+		return cell
+	}
+	
+	
+	// MARK: - Tag Gesture
+	
+	func didRecognizeGesture(_ recognizer: UITapGestureRecognizer) {
+		if .recognized == recognizer.state {
+			if let row = row1, row.bounds.contains(recognizer.location(in: row)) {
+				self.performSegue(withIdentifier: "showList", sender: Category.all)
+			}
+			else if let row = row2, row.bounds.contains(recognizer.location(in: row)) {
+				self.performSegue(withIdentifier: "showList", sender: Category.starred)
+			}
+			else if let row = row3, row.bounds.contains(recognizer.location(in: row)) {
+				self.performSegue(withIdentifier: "showList", sender: Category.recent)
+			}
+		}
+	}
+	
+	
 	// MARK: - Segues
 	
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 		if segue.identifier == "showList" {
-		    if let indexPath = self.tableView.indexPathForSelectedRow {
-				if 0 == indexPath.section {
-					if 1 == indexPath.row  {
-						
-					}
-					else if 2 == indexPath.row {
-						
-					}
-				}
-				else {
-//					let object = objects[indexPath.row]
-				}
-		        let controller = (segue.destination as! UINavigationController).topViewController as! MainDocumentListViewController
-		        controller.sync = sync
-		        controller.navigationItem.leftBarButtonItem = self.splitViewController?.displayModeButtonItem
-		        controller.navigationItem.leftItemsSupplementBackButton = true
-		    }
-		}
-	}
-	
-	
-	// MARK: - Table View
-	
-	override func numberOfSections(in tableView: UITableView) -> Int {
-		return 2
-	}
-	
-	override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-		if 1 == section {
-			return "Categories"
-		}
-		return nil
-	}
-	
-	override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		if 0 == section {
-			return 3
-		}
-		return tags.count
-	}
-	
-	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-		let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) 
-		if 0 == indexPath.section {
-			if 0 == indexPath.row {
-				cell.textLabel?.text = "All Eponyms"
+			let controller = (segue.destination as! UINavigationController).topViewController as! MainDocumentListViewController
+			if let indexPath = self.tableView.indexPathForSelectedRow, let document = dataSource?.document(at: indexPath) {
+				controller.tag = TagDocument(for: document)
 			}
-			else if 1 == indexPath.row {
-				cell.textLabel?.text = "Starred Eponyms"
+			else if let sender = sender as? Category {
+				controller.category = sender
 			}
-			else if 2 == indexPath.row {
-				cell.textLabel?.text = "Recent Eponyms"
-			}
+			controller.sync = sync
+			controller.navigationItem.leftBarButtonItem = self.splitViewController?.displayModeButtonItem
+			controller.navigationItem.leftItemsSupplementBackButton = true
 		}
-		else {
-//			let object = tags[indexPath.row]
-			cell.textLabel?.text = "Category"
-		}
-		return cell
 	}
 }
 

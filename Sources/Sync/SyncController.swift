@@ -23,6 +23,11 @@ open class SyncController {
 	/// Handle to our database.
 	open let database: CBLDatabase
 	
+	/// The number of documents currently in the database.
+	public var documentCount: UInt {
+		return database.documentCount
+	}
+	
 	/// The pull replicator.
 	let pull: CBLReplication
 	
@@ -51,6 +56,7 @@ open class SyncController {
 		// register model classes
 		if let factory = database.modelFactory {
 			MainDocument.register(in: factory)
+			TagDocument.register(in: factory)
 		}
 		
 		// setup replication
@@ -92,10 +98,10 @@ open class SyncController {
 		
 		// import all documents
 		database.inTransaction {
-			for epo in all {
-				let document = self.database.createDocument()
+			for doc in all {
+				let document = ((nil != doc["_id"]) ? self.database.document(withID: doc["_id"] as! String) : self.database.createDocument()) ?? self.database.createDocument()
 				do {
-					try document.putProperties(epo)
+					try document.putProperties(doc)
 				}
 				catch let error {
 					print("xxxx>  ERROR IMPORTING, ROLLING BACK. Error was: \(error)")

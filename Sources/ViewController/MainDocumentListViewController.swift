@@ -15,7 +15,21 @@ Class to display a list of the titles of main documents.
 */
 class MainDocumentListViewController: UITableViewController, CBLUITableDelegate, UISearchBarDelegate {
 	
-	var tag: String?
+	/// If set, will only show documents that have this tag. Also look at `category`.
+	var tag: TagDocument? {
+		didSet {
+			title = tag?.name
+		}
+	}
+	
+	/// The category to show; only used if `tag` is nil.
+	var category: Category? {
+		didSet {
+			if nil == tag {
+				title = category?.name
+			}
+		}
+	}
 	
 	var sync: SyncController?
 	
@@ -55,7 +69,7 @@ class MainDocumentListViewController: UITableViewController, CBLUITableDelegate,
 	
 	// MARK: - CBLUITableDelegate
 	
-	func couchTableSource(_ source: CBLUITableSource, cellForRowAt indexPath: IndexPath) -> UITableViewCell? {
+	func couchTableSource(_ source: CBLUITableSource, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		let cell = tableView.dequeueReusableCell(withIdentifier: "MainDocCell", for: indexPath)
 		if let row = dataSource?.row(at: indexPath) {
 			cell.textLabel?.text = (row.value as? String) ?? "Unnamed"
@@ -76,7 +90,7 @@ class MainDocumentListViewController: UITableViewController, CBLUITableDelegate,
 	// MARK: - Search
 	
 	func liveQuery(searchingFor: String? = nil) -> CBLLiveQuery {
-		let query = MainDocument.mainDocumentsByTitle(sync!.database, tag: tag).asLive()
+		let query = MainDocument.mainDocumentsByTitle(sync!.database, tag: tag?.document?.documentID).asLive()
 		if let searchText = searchingFor, searchText.characters.count > 0 {
 			let parts = searchText.components(separatedBy: CharacterSet.whitespaces)
 			query.fullTextQuery = parts.map() {

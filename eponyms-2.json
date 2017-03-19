@@ -1,101 +1,242 @@
 {
-    "date": "2016-11-06",
+    "date": "2017-03-19T18:12:51.535068+00:00",
     "documents": [
         {
-            "author": "ajyee",
-            "date": "1998-03-21",
-            "localized": {
+            "_id": "ajyee",
+            "name": "Andrew J Yee",
+            "type": "author"
+        },
+        {
+            "_id": "anat",
+            "content": {
                 "en": "Anatomy"
             },
-            "tag": "anat",
             "type": "tag"
         },
         {
-            "author": "ajyee",
-            "date": "1998-03-21",
-            "localized": {
-                "en": "Dermatology"
+            "_id": "gi",
+            "content": {
+                "en": "Gastroenterology"
             },
-            "tag": "derm",
             "type": "tag"
         },
         {
-            "author": "ajyee",
-            "date": "1998-03-21",
-            "localized": {
-                "en": "Hematology"
-            },
-            "tag": "heme",
-            "type": "tag"
-        },
-        {
-            "author": "ajyee",
-            "date": "1998-03-21",
-            "localized": {
-                "en": "Neurology"
-            },
-            "tag": "neuro",
-            "type": "tag"
-        },
-        {
-            "author": "ajyee",
-            "date": "1998-03-21",
-            "localized": {
-                "en": "Oncology"
-            },
-            "tag": "onc",
-            "type": "tag"
-        },
-        {
-            "author": "ajyee",
-            "date": "1998-03-21",
-            "localized": {
+            "_id": "peds",
+            "content": {
                 "en": "Pediatrics"
             },
-            "tag": "peds",
             "type": "tag"
         },
         {
-            "author": "ajyee",
-            "date": "1998-03-21",
-            "localized": {
-                "en": "Renal"
-            },
-            "tag": "renal",
-            "type": "tag"
-        },
-        {
-            "author": "ajyee",
-            "date": "1998-03-21",
-            "localized": {
+            "_id": "synd",
+            "content": {
                 "en": "Syndromes"
             },
-            "tag": "synd",
             "type": "tag"
         },
         {
-            "author": "ajyee",
-            "date": "2005-01-17",
-            "dateUpdated": "2005-01-17",
-            "localized": {
+            "_id": "derm",
+            "content": {
+                "en": "Dermatology"
+            },
+            "type": "tag"
+        },
+        {
+            "_id": "path",
+            "content": {
+                "en": "Pathology"
+            },
+            "type": "tag"
+        },
+        {
+            "_id": "neuro",
+            "content": {
+                "en": "Neurology"
+            },
+            "type": "tag"
+        },
+        {
+            "_id": "endo",
+            "content": {
+                "en": "Endocrinology"
+            },
+            "type": "tag"
+        },
+        {
+            "_id": "ophth",
+            "content": {
+                "en": "Ophthalmology"
+            },
+            "type": "tag"
+        },
+        {
+            "_id": "sign",
+            "content": {
+                "en": "Signs"
+            },
+            "type": "tag"
+        },
+        {
+            "_id": "gyn",
+            "content": {
+                "en": "Gynecology"
+            },
+            "type": "tag"
+        },
+        {
+            "_id": "ortho",
+            "content": {
+                "en": "Orthopedics"
+            },
+            "type": "tag"
+        },
+        {
+            "_id": "proc",
+            "content": {
+                "en": "Procedures and Tests"
+            },
+            "type": "tag"
+        },
+        {
+            "_id": "cv",
+            "content": {
+                "en": "Cardiovascular"
+            },
+            "type": "tag"
+        },
+        {
+            "_id": "heme",
+            "content": {
+                "en": "Hematology"
+            },
+            "type": "tag"
+        },
+        {
+            "_id": "ent",
+            "content": {
+                "en": "Ear, Nose and Throat"
+            },
+            "type": "tag"
+        },
+        {
+            "_id": "pulm",
+            "content": {
+                "en": "Pulmonary"
+            },
+            "type": "tag"
+        },
+        {
+            "_id": "renal",
+            "content": {
+                "en": "Renal"
+            },
+            "type": "tag"
+        },
+        {
+            "_id": "psych",
+            "content": {
+                "en": "Psychiatry"
+            },
+            "type": "tag"
+        },
+        {
+            "_id": "biochem",
+            "content": {
+                "en": "Biochemistry and Metabolism"
+            },
+            "type": "tag"
+        },
+        {
+            "_id": "rays",
+            "content": {
+                "en": "Radiology"
+            },
+            "type": "tag"
+        },
+        {
+            "_id": "rheum",
+            "content": {
+                "en": "Rheumatology"
+            },
+            "type": "tag"
+        },
+        {
+            "_id": "onc",
+            "content": {
+                "en": "Oncology"
+            },
+            "type": "tag"
+        },
+        {
+            "_id": "ob",
+            "content": {
+                "en": "Obstetrics"
+            },
+            "type": "tag"
+        },
+        {
+            "_id": "id",
+            "content": {
+                "en": "Infectious Disease"
+            },
+            "type": "tag"
+        },
+        {
+            "_id": "uro",
+            "content": {
+                "en": "Urology"
+            },
+            "type": "tag"
+        },
+        {
+            "_id": "geo",
+            "content": {
+                "en": "Geographical"
+            },
+            "type": "tag"
+        },
+        {
+            "_id": "misc",
+            "content": {
+                "en": "Miscellaneous"
+            },
+            "type": "tag"
+        },
+        {
+            "_id": "abernethymalformation",
+            "audits": [
+                {
+                    "action": "create",
+                    "author": "ajyee",
+                    "date": "2005-01-01"
+                }
+            ],
+            "content": {
                 "en": {
-                    "text": "Congenital anomaly of the splanchnic vasculature, arises from defects in vitelline vein formation; in type 1, portal vein completely diverted into IVC and complete absence of formation of intrahepatic portal vein; in type 2, portal venous system is formed, but there is an abnormal communication with systemic veins, usually IVC; associated with hepatic encephalopathy and hepatopulmonary syndrome; more common in dogs, particularly Yorkshire terriers.",
-                    "title": "Abernethy malformation"
+                    "name": "Abernethy malformation",
+                    "text": "Congenital anomaly of the splanchnic vasculature, arises from defects in vitelline vein formation; in type 1, portal vein completely diverted into IVC and complete absence of formation of intrahepatic portal vein; in type 2, portal venous system is formed, but there is an abnormal communication with systemic veins, usually IVC; associated with hepatic encephalopathy and hepatopulmonary syndrome; more common in dogs, particularly Yorkshire terriers."
                 }
             },
             "tags": [
                 "anat",
+                "gi",
                 "peds"
             ],
             "type": "main"
         },
         {
-            "author": "ajyee",
-            "date": "2007-04-05",
-            "localized": {
+            "_id": "achenbachssyndrome",
+            "audits": [
+                {
+                    "action": "create",
+                    "author": "ajyee",
+                    "date": "2007-01-01"
+                }
+            ],
+            "content": {
                 "en": {
-                    "text": "Rare entity of spontaneous or mechanically-induced hematomas on the volar aspect of fingers associated with burning pain and swelling of the digits.",
-                    "title": "Achenbach's syndrome"
+                    "name": "Achenbach's syndrome",
+                    "text": "Rare entity of spontaneous or mechanically-induced hematomas on the volar aspect of fingers associated with burning pain and swelling of the digits."
                 }
             },
             "tags": [
@@ -105,13 +246,18 @@
             "type": "main"
         },
         {
-            "author": "ajyee",
-            "date": "1998-03-21",
-            "dateUpdated": "1998-03-21",
-            "localized": {
+            "_id": "adamkiewiczarteryof",
+            "audits": [
+                {
+                    "action": "create",
+                    "author": "ajyee",
+                    "date": "1998-01-01"
+                }
+            ],
+            "content": {
                 "en": {
-                    "text": "Artery that when severed, can lead to anterior spinal syndrome; can be severed in abdominal aortic aneurysm repair.",
-                    "title": "Adamkiewicz, artery of"
+                    "name": "Adamkiewicz, artery of",
+                    "text": "Artery that when severed, can lead to anterior spinal syndrome; can be severed in abdominal aortic aneurysm repair."
                 }
             },
             "tags": [
@@ -120,114 +266,258 @@
             "type": "main"
         },
         {
-            "author": "ajyee",
-            "date": "2006-07-19",
-            "dateUpdated": "2006-07-19",
-            "localized": {
+            "_id": "adamsonsfringe",
+            "audits": [
+                {
+                    "action": "create",
+                    "author": "ajyee",
+                    "date": "2000-01-01"
+                }
+            ],
+            "content": {
                 "en": {
-                    "text": "Sex-linked hydrocephalus, aqueductal stenosis, mental deficiency, and flexion deformities and spasticity of the extremities.  Most common inherited forms of inherited hydrocephalus.  X-linked (Xq28), due to mutation in L1CAM.",
-                    "title": "Bickers-Adams syndrome"
+                    "name": "Adamson's fringe",
+                    "text": "In tinea capitis, the location of the terminal tuft of hyphae; weakest point of hair located just about Adamson's fringe."
                 }
             },
             "tags": [
-                "synd",
-                "neuro",
-                "peds"
+                "derm",
+                "path",
+                "anat"
             ],
             "type": "main"
         },
         {
-            "author": "ajyee",
-            "date": "2000-03-12",
-            "dateUpdated": "2000-03-12",
-            "localized": {
+            "_id": "adamsstriad",
+            "audits": [
+                {
+                    "action": "create",
+                    "author": "ajyee",
+                    "date": "2011-01-01"
+                }
+            ],
+            "content": {
                 "en": {
-                    "text": "Brain stem encephalitis.  Has features of Miller Fisher syndrome, but with encephalopathy and hyperreflexia.  Associated with anti-GQ1b antibodies; can be te treated with IVIG and plasma exchange.",
-                    "title": "Bickerstaff's encephalitis"
+                    "name": "Adams's triad",
+                    "text": "In normal pressure hydrocephalus, triad of urinary incontinence, gait instability, and mental decline.  Also known as Hakim's triad"
                 }
             },
             "tags": [
-                "neuro",
+                "neuro"
+            ],
+            "type": "main"
+        },
+        {
+            "_id": "addisonsdisease",
+            "audits": [
+                {
+                    "action": "create",
+                    "author": "ajyee",
+                    "date": "2000-01-01"
+                }
+            ],
+            "content": {
+                "en": {
+                    "name": "Addison's disease",
+                    "text": "Primary adrenal insufficiency.  Bilateral adrenal destruction by tuberculosis used to be most common cause, now only accounts for 7-20% of cases.  Now autoimmune disease 70-90%, remainder caused by infectious disease, metastasis or lymphoma, adrenal hemorrhage, infarction, or drugs."
+                }
+            },
+            "tags": [
+                "endo"
+            ],
+            "type": "main"
+        },
+        {
+            "_id": "adiespupil",
+            "audits": [
+                {
+                    "action": "create",
+                    "author": "ajyee",
+                    "date": "1998-01-01"
+                }
+            ],
+            "content": {
+                "en": {
+                    "name": "Adie's pupil",
+                    "text": "Tonic pupil, larger than contralateral unaffected pupil, reacts sluggishly to changes in illumination; see also Holmes-Adie syndrome; seen in young women; no neurologic significance."
+                }
+            },
+            "tags": [
+                "ophth",
+                "neuro"
+            ],
+            "type": "main"
+        },
+        {
+            "_id": "adlersign",
+            "audits": [
+                {
+                    "action": "create",
+                    "author": "ajyee",
+                    "date": "2006-01-01"
+                }
+            ],
+            "content": {
+                "en": {
+                    "name": "Adler sign",
+                    "text": "For distinguishing appendicitis from adnexal or uterine pain:  if the point of maximal tenderness shifts medially with repositioning on the left lateral side, etiology generally gynecologic."
+                }
+            },
+            "tags": [
+                "gi",
+                "sign",
+                "gyn"
+            ],
+            "type": "main"
+        },
+        {
+            "_id": "adsonssign",
+            "audits": [
+                {
+                    "action": "create",
+                    "author": "ajyee",
+                    "date": "2000-01-01"
+                }
+            ],
+            "content": {
+                "en": {
+                    "name": "Adson's sign",
+                    "text": "In thoracic outlet syndrome, decrease in ipsilateral radial pulse and/or presence of subclavian bruit while patient extending neck maximally, rotating head towards side being tested, and holding breath."
+                }
+            },
+            "tags": [
+                "ortho",
+                "proc",
+                "sign",
+                "cv"
+            ],
+            "type": "main"
+        },
+        {
+            "_id": "ahumadadelcastillosyndrome",
+            "audits": [
+                {
+                    "action": "create",
+                    "author": "ajyee",
+                    "date": "2001-01-01"
+                }
+            ],
+            "content": {
+                "en": {
+                    "name": "Ahumada-del Castillo syndrome",
+                    "text": "Galactorrhea-amenorrhea not associated with pregnancy."
+                }
+            },
+            "tags": [
+                "endo",
                 "synd"
             ],
             "type": "main"
         },
         {
-            "author": "ajyee",
-            "date": "1998-03-21",
-            "localized": {
+            "_id": "aicardisyndrome",
+            "audits": [
+                {
+                    "action": "create",
+                    "author": "ajyee",
+                    "date": "2002-01-01"
+                }
+            ],
+            "content": {
                 "en": {
-                    "text": "The angle made by the proximal nail fold and the nail plate.",
-                    "title": "Lovibond's angle"
+                    "name": "Aicardi syndrome",
+                    "text": "Partial or complete agenesis of corpus callosum, infantile spasms, mental retardation, lacunae of the retina; occurs only in females; likely X-linked dominant with lethality in males; described in 1965."
                 }
             },
             "tags": [
-                "derm",
-                "anat"
+                "peds",
+                "neuro",
+                "ophth",
+                "synd"
             ],
             "type": "main"
         },
         {
-            "author": "ajyee",
-            "date": "2000-07-15",
-            "localized": {
+            "_id": "ainhumdisease",
+            "audits": [
+                {
+                    "action": "create",
+                    "author": "ajyee",
+                    "date": "2004-01-01"
+                }
+            ],
+            "content": {
                 "en": {
-                    "text": "In deep vein thrombosis, two calves are wrapped with cuffs to see if there is asymetry in tolerance to pressure of 180 mm Hg.",
-                    "title": "Lowenberg's sign"
+                    "name": "ainhum disease",
+                    "text": "Autoamputation of a digit, usually of the fifth toe from a constricting scar in the form of a band or groove; usually from trauma acquired from walking barefoot; felt to be more common in tropics in patients of African descent; \"ainhum\" means \"fissure\" in one of the indigenous language in Brazil."
                 }
             },
             "tags": [
+                "ortho"
             ],
             "type": "main"
         },
         {
-            "author": "ajyee",
-            "date": "2000-02-28",
-            "dateUpdated": "2000-02-28",
-            "localized": {
+            "_id": "alagillesyndrome",
+            "audits": [
+                {
+                    "action": "create",
+                    "author": "ajyee",
+                    "date": "1998-01-01"
+                }
+            ],
+            "content": {
                 "en": {
-                    "text": "Wilms's tumor, Anirida, Genital anomalies, and mental Retardation; 33% chance of developing Wilms's tumor; associated with mutation in WT1 gene.",
-                    "title": "WAGR"
+                    "name": "Alagille syndrome",
+                    "text": "Inherited cholestatic syndrome, associated with biliary hypoplasia (ductopenia), vertebral anomalies, prominent forehead, deep-set eyes, peripheral pulmonic stenosis.  Autosomal dominant, associated with mutation in JAG1 or NOTCH2."
                 }
             },
             "tags": [
-                "renal",
+                "gi",
                 "synd",
-                "onc",
                 "peds"
             ],
             "type": "main"
         },
         {
-            "author": "ajyee",
-            "date": "1998-03-21",
-            "dateUpdated": "1998-03-21",
-            "localized": {
+            "_id": "albersschnbergdisease",
+            "audits": [
+                {
+                    "action": "create",
+                    "author": "ajyee",
+                    "date": "1998-01-01"
+                }
+            ],
+            "content": {
                 "en": {
-                    "text": "A subset of lymphoplasmacytic lymphoma (a malignancy involving small B lymphocytes, plasmactyoid lymphocytes, and plasma cells) with bone marrow involvement and IgM monoclonal gammopathy in the blood.  Characterized by macroglobulinemia and associated with visual impairment, neurologic problems, bleeding, cryoglobulinemia, and hyperviscosity.",
-                    "title": "Waldenström's macroglobulinemia"
+                    "name": "Albers-Schönberg disease",
+                    "text": "Osteopetrosis or marble bone disease, autosomal dominant.  Characterized by sclerosis, mainly involving the spline, pelvis, and skull base, and paradoxical fragility of bones.  Due to mutation in CLCN7 gene."
                 }
             },
             "tags": [
-                "heme",
-                "onc"
+                "endo",
+                "ortho"
             ],
             "type": "main"
         },
         {
-            "author": "ajyee",
-            "date": "1998-03-21",
-            "dateUpdated": "1998-03-21",
-            "localized": {
+            "_id": "albertstest",
+            "audits": [
+                {
+                    "action": "create",
+                    "author": "ajyee",
+                    "date": "2003-01-01"
+                }
+            ],
+            "content": {
                 "en": {
-                    "text": "The broken ring of lymphoid tissue, formed of the lingual, facial, and pharyngeal tonsils, commonly involved in non-Hodgkin's lymphoma and rarely in Hodgkin's disease.",
-                    "title": "Waldeyer's throat ring"
+                    "name": "Albert's test",
+                    "text": "For diagnosing hemineglect; patient presented with multiple lines on a page and asked to cross them out; if >70% of crossed out lines are ipsilateral to motor deficit, hemineglect is diagnosed; described in Neurology 1973; 23:658-64."
                 }
             },
             "tags": [
-                "heme",
-                "onc",
-                "anat"
+                "neuro",
+                "proc"
             ],
             "type": "main"
         }

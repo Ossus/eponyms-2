@@ -11,49 +11,23 @@ import CouchbaseLite
 
 
 /**
-Abstract superclass for all our models which need an author, a name in the "author" property.
-
-This class also has "date" and "dateUpdated", which are handled at save time automatically.
+Abstract superclass for all our models which are audited and have authors.
 */
-open class AuthoredDocument: CBLModel {
+open class AuthoredDocument: TypedDocument {
 	
-	/// The name of the original author of the document.
-	@NSManaged var author: String
-	
-	/// When the document was first created.
-	@NSManaged var date: Date?
-	
-	/// When the document was last updated.
-	@NSManaged var dateUpdated: Date?
+	/// An array of actions that were done to the document.
+	@NSManaged var audits: [[String: String]]?
 	
 	/// This method is called after it's been initialized internally.
-	open override func awakeFromInitializer() {
+	override open func awakeFromInitializer() {
 		super.awakeFromInitializer()
-	}
-	
-	
-	// MARK: - Saving
-	
-	open override func willSave(_ changedPropertyNames: Set<AnyHashable>?) {
-		type = type(of: self).documentType
-		if nil == date {
-			date = Date()
-		}
-		else {
-			dateUpdated = Date()
-		}
 	}
 	
 	
 	// MARK: - Type & Factory
 	
-	public class var documentType: String {
+	override public class var documentType: String {
 		return "authored"
-	}
-	
-	class func register(in factory: CBLModelFactory) {
-		logIfVerbose("Registering \(self) for «\(documentType)»")
-		factory.registerClass(self, forDocumentType: documentType)
 	}
 }
 

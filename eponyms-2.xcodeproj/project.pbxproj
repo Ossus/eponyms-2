@@ -29,6 +29,10 @@
 		EE9C69361AEDAE9A00D824CE /* MainDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE9C69351AEDAE9A00D824CE /* MainDocument.swift */; };
 		EEA5301C1BD992A50084F345 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = EEA5301B1BD992A50084F345 /* libz.tbd */; };
 		EEA5301E1BD992AD0084F345 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = EEA5301D1BD992AD0084F345 /* libsqlite3.tbd */; };
+		EEB6D5081E7EF4EA00B2AF8E /* String+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB6D5071E7EF4EA00B2AF8E /* String+Helpers.swift */; };
+		EEB6D50A1E7EF55D00B2AF8E /* TagDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB6D5091E7EF55D00B2AF8E /* TagDocument.swift */; };
+		EEB6D50C1E7EF5C500B2AF8E /* TypedDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB6D50B1E7EF5C500B2AF8E /* TypedDocument.swift */; };
+		EEB6D50E1E7F1AE100B2AF8E /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB6D50D1E7F1AE100B2AF8E /* Category.swift */; };
 		EEC323C21AEC4C46009B0ABB /* SyncController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEC323C11AEC4C46009B0ABB /* SyncController.swift */; };
 		EEEA64181DCECF460018E72E /* eponyms-2.json in Resources */ = {isa = PBXBuildFile; fileRef = EEEA64171DCECF460018E72E /* eponyms-2.json */; };
 		EEEA641A1DCF83570018E72E /* MainDocumentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEEA64191DCF83570018E72E /* MainDocumentViewController.swift */; };
@@ -84,6 +88,13 @@
 		EE9C69351AEDAE9A00D824CE /* MainDocument.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainDocument.swift; sourceTree = "<group>"; };
 		EEA5301B1BD992A50084F345 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		EEA5301D1BD992AD0084F345 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		EEB6D5041E7EE97000B2AF8E /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		EEB6D5051E7EE97000B2AF8E /* DocumentSync.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = DocumentSync.md; sourceTree = "<group>"; };
+		EEB6D5061E7EE97000B2AF8E /* DocumentModel.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = DocumentModel.md; sourceTree = "<group>"; };
+		EEB6D5071E7EF4EA00B2AF8E /* String+Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Helpers.swift"; sourceTree = "<group>"; };
+		EEB6D5091E7EF55D00B2AF8E /* TagDocument.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagDocument.swift; sourceTree = "<group>"; };
+		EEB6D50B1E7EF5C500B2AF8E /* TypedDocument.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TypedDocument.swift; sourceTree = "<group>"; };
+		EEB6D50D1E7F1AE100B2AF8E /* Category.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		EEC323C11AEC4C46009B0ABB /* SyncController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SyncController.swift; sourceTree = "<group>"; };
 		EEEA64171DCECF460018E72E /* eponyms-2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "eponyms-2.json"; sourceTree = "<group>"; };
 		EEEA64191DCF83570018E72E /* MainDocumentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainDocumentViewController.swift; sourceTree = "<group>"; };
@@ -151,6 +162,7 @@
 			isa = PBXGroup;
 			children = (
 				EE392B581AA49EDE0039F3D1 /* AppDelegate.swift */,
+				EEB6D5071E7EF4EA00B2AF8E /* String+Helpers.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -158,6 +170,9 @@
 		EE392B4A1AA49EDE0039F3D1 = {
 			isa = PBXGroup;
 			children = (
+				EEB6D5041E7EE97000B2AF8E /* README.md */,
+				EEB6D5051E7EE97000B2AF8E /* DocumentSync.md */,
+				EEB6D5061E7EE97000B2AF8E /* DocumentModel.md */,
 				EE392B551AA49EDE0039F3D1 /* eponyms-2 */,
 				EE392B6D1AA49EDE0039F3D1 /* Tests */,
 				EE392B541AA49EDE0039F3D1 /* Products */,
@@ -214,9 +229,12 @@
 		EE9C69321AEDA83100D824CE /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				EEB6D50B1E7EF5C500B2AF8E /* TypedDocument.swift */,
 				EE9C69301AEDA82C00D824CE /* AuthoredDocument.swift */,
 				EE9C69351AEDAE9A00D824CE /* MainDocument.swift */,
+				EEB6D5091E7EF55D00B2AF8E /* TagDocument.swift */,
 				EE4EC9181CAF0E9D00293F9D /* User.swift */,
+				EEB6D50D1E7F1AE100B2AF8E /* Category.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -225,8 +243,8 @@
 			isa = PBXGroup;
 			children = (
 				EE392B5E1AA49EDE0039F3D1 /* Main.storyboard */,
-				EE392B611AA49EDE0039F3D1 /* Images.xcassets */,
 				EE392B631AA49EDE0039F3D1 /* LaunchScreen.xib */,
+				EE392B611AA49EDE0039F3D1 /* Images.xcassets */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -263,7 +281,7 @@
 				EE392B501AA49EDE0039F3D1 /* Frameworks */,
 				EE392B511AA49EDE0039F3D1 /* Resources */,
 				EEC323CA1AEC515C009B0ABB /* Embed Frameworks */,
-				EE4EE4B01DCEB3B6005F8CEB /* ShellScript */,
+				EE4EE4B01DCEB3B6005F8CEB /* Run Script [Carthage Copy Frameworks] */,
 			);
 			buildRules = (
 			);
@@ -356,7 +374,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		EE4EE4B01DCEB3B6005F8CEB /* ShellScript */ = {
+		EE4EE4B01DCEB3B6005F8CEB /* Run Script [Carthage Copy Frameworks] */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -364,6 +382,7 @@
 			inputPaths = (
 				"$(SRCROOT)/Carthage/Build/iOS/CouchbaseLite.framework",
 			);
+			name = "Run Script [Carthage Copy Frameworks]";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -377,12 +396,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EEB6D5081E7EF4EA00B2AF8E /* String+Helpers.swift in Sources */,
 				EE4EC9191CAF0E9D00293F9D /* User.swift in Sources */,
+				EEB6D50C1E7EF5C500B2AF8E /* TypedDocument.swift in Sources */,
 				EEC323C21AEC4C46009B0ABB /* SyncController.swift in Sources */,
 				EE4EC9001CAF0E1300293F9D /* UserViewController.swift in Sources */,
 				EE4E892E1AF6A5FD00E5BBEF /* MainDocumentListViewController.swift in Sources */,
 				EE9C69311AEDA82C00D824CE /* AuthoredDocument.swift in Sources */,
+				EEB6D50E1E7F1AE100B2AF8E /* Category.swift in Sources */,
 				EE4E892C1AF67C2E00E5BBEF /* AuthoredDocumentEditViewController.swift in Sources */,
+				EEB6D50A1E7EF55D00B2AF8E /* TagDocument.swift in Sources */,
 				EE9C69341AEDA8F200D824CE /* CBLExtensions.swift in Sources */,
 				EE392B5B1AA49EDE0039F3D1 /* MasterViewController.swift in Sources */,
 				EEEA641A1DCF83570018E72E /* MainDocumentViewController.swift in Sources */,
