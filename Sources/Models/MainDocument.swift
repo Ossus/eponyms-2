@@ -27,6 +27,25 @@ open class MainDocument: AuthoredDocument {
 	// MARK: - Views
 	
 	/**
+	Returns a tuple with the name and text, in the given locale, of the given document.
+	*/
+	open class func nameAndText(in doc: JSONDoc, in locale: String = kLocaleFallback) -> (String?, String?) {
+		var name: String?
+		var text: String?
+		if let localized = doc["content"] as? [String: JSONDoc] {
+			if let inLocale = localized[locale] as? [String: String] {
+				name = inLocale["name"]
+				text = inLocale["text"]
+			}
+			else if let inFallback = localized[kLocaleFallback] as? [String: String] {
+				name = name ?? inFallback["name"]
+				text = text ?? inFallback["text"]
+			}
+		}
+		return (name, text)
+	}
+	
+	/**
 	Returns the "mainDocumentsByTitle[Tag]" view as a Couchbase query that supports `fullTextQuery`.
 	*/
 	open class func mainDocumentsByTitle(_ database: CBLDatabase, locale: String = kLocaleFallback, tag: String? = nil) -> CBLQuery {
@@ -52,18 +71,7 @@ open class MainDocument: AuthoredDocument {
 				if "main" == doc["type"] as? String {
 					let tags = doc["tags"] as? [String] ?? []
 					if nil == tag || tags.contains(tag!) {
-						var name: String?
-						var text: String?
-						if let localized = doc["content"] as? [String: JSONDoc] {
-							if let inLocale = localized[locale] as? [String: String] {
-								name = inLocale["name"]
-								text = inLocale["text"]
-							}
-							else if let inFallback = localized[kLocaleFallback] as? [String: String] {
-								name = name ?? inFallback["name"]
-								text = text ?? inFallback["text"]
-							}
-						}
+						let (name, text) = self.nameAndText(in: doc, in: locale)
 						emit(CBLTextKey("\(name ?? "")\n\n\(text ?? "")"), name)
 					}
 				}

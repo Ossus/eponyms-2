@@ -15,8 +15,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
 	var window: UIWindow?
 	
 	var sync: SyncController?
-
-
+	
+	
 	func application(_ application: UIApplication, willFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 		sync = try! SyncController(databaseName: "eponyms")
 		
@@ -45,7 +45,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
 		if let sync = sync {
 			if 0 == sync.documentCount {
 				do {
-					try sync.importLocalDocuments(from: "eponyms-2", deleteExisting: true)
+					try performImport(with: sync)
 				}
 				catch let error {
 					fatalError("\(error)")
@@ -78,6 +78,42 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
 			else {
 				logIfVerbose("LOGOUT")
 			}
+		}
+	}
+	
+	/**
+	Imports bundled eponyms into the local Couchbase db, then looks if the SQLite database from version 1.x is still there and imports
+	starred and most recent documents.
+	*/
+	func performImport(with sync: SyncController) throws {
+		
+		// import bunded eponyms
+		try sync.importLocalDocuments(from: "eponyms-2", deleteExisting: true)
+		
+		// read starred and recent eponyms in old database, if it's there
+		let reader = OldDatabaseReader()
+		if let (starred, recent) = try reader.starredAndRecentIds() {
+			if let dbLocation = OldDatabaseReader.databaseLocation {
+				try? FileManager.default.removeItem(at: dbLocation)
+			}
+			
+			// add to user prefs document
+			let prefs = UserPrefsDocument(forNewDocumentIn: sync.database)
+			var starredDocs = [JSONDoc]()
+			var recentDocs = [JSONDoc]()
+			for star in starred {
+				if let doc = sync.database.existingDocument(withID: star)?.properties {
+					starredDocs.append(doc)
+				}
+			}
+			for rec in recent {
+				if let doc = sync.database.existingDocument(withID: rec)?.properties {
+					recentDocs.append(doc)
+				}
+			}
+			prefs.starred = starredDocs
+			prefs.recent = recentDocs
+			try prefs.save()
 		}
 	}
 	

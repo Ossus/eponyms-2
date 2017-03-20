@@ -1,1 +1,2 @@
+github "stephencelis/SQLite.swift" "0.11.2"
 github "couchbase/couchbase-lite-ios" "950db27f74da3e0afc45e48e19e0693d65adf083"

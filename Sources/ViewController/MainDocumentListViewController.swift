@@ -31,7 +31,7 @@ class MainDocumentListViewController: UITableViewController, CBLUITableDelegate,
 		}
 	}
 	
-	var sync: SyncController?
+	var sync: SyncController!
 	
 	var dataSource: CBLUITableSource?
 	
@@ -89,8 +89,18 @@ class MainDocumentListViewController: UITableViewController, CBLUITableDelegate,
 	
 	// MARK: - Search
 	
+	private func documentQuery() -> CBLQuery {
+		if let tag = tag?.document?.documentID {
+			return MainDocument.mainDocumentsByTitle(sync.database, tag: tag)
+		}
+		if let query = category?.query(in: sync.database) {
+			return query
+		}
+		return MainDocument.mainDocumentsByTitle(sync.database, tag: nil)
+	}
+	
 	func liveQuery(searchingFor: String? = nil) -> CBLLiveQuery {
-		let query = MainDocument.mainDocumentsByTitle(sync!.database, tag: tag?.document?.documentID).asLive()
+		let query = documentQuery().asLive()
 		if let searchText = searchingFor, searchText.characters.count > 0 {
 			let parts = searchText.components(separatedBy: CharacterSet.whitespaces)
 			query.fullTextQuery = parts.map() {

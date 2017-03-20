@@ -35,9 +35,9 @@ Inherits from `authored`.
 {
     {inherit properties from `authored`}
     "tags": [
-		"tag1",
-		"tag2"
-	],
+        "tag1",
+        "tag2"
+    ],
     "content": {
         "en": {
             "name": "An Eponym",
@@ -58,7 +58,7 @@ Documents containing translations for all a tag.
 
 ```json
 {
-    "_id": "tag1"
+    "_id": "tag1",
     "type": "tag",
     "content": {
         "en": "A Tag",
