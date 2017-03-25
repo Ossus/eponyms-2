@@ -40,7 +40,7 @@ class MasterViewController: UITableViewController {
 				else {
 //					let object = objects[indexPath.row]
 				}
-		        let controller = (segue.destination as! UINavigationController).topViewController as! MainDocumentListViewController
+		        let controller = segue.destination as! MainDocumentListViewController
 		        controller.sync = sync
 		        controller.navigationItem.leftBarButtonItem = self.splitViewController?.displayModeButtonItem
 		        controller.navigationItem.leftItemsSupplementBackButton = true

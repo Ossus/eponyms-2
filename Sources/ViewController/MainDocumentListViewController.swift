@@ -112,8 +112,8 @@ class MainDocumentListViewController: UITableViewController, CBLUITableDelegate,
 	
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 		if segue.identifier == "showDetail" {
-			guard let target = (segue.destination as? UINavigationController)?.topViewController as? MainDocumentViewController else {
-				preconditionFailure("A valid segue from here must point to a MainDocumentViewController, but points to \(segue.destination)")
+			guard let target = (segue.destination as? UINavigationController)?.topViewController as? MainDocumentPageViewController else {
+				preconditionFailure("A valid segue from here must point to a MainDocumentPageViewController, but points to \(segue.destination)")
 			}
 			guard let selection = tableView.indexPathForSelectedRow else {
 				NSLog("No selected row")
@@ -124,7 +124,7 @@ class MainDocumentListViewController: UITableViewController, CBLUITableDelegate,
 				NSLog("Cannot represent document \(document) as MainDocument model")
 				return
 			}
-			target.object = model
+			target.element = model
 		}
 	}
 }
