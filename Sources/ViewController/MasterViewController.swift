@@ -84,7 +84,7 @@ class MasterViewController: UITableViewController, CBLUITableDelegate {
 	
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 		if segue.identifier == "showList" {
-			let controller = (segue.destination as! UINavigationController).topViewController as! MainDocumentListViewController
+			let controller = segue.destination as! MainDocumentListViewController
 			if let indexPath = self.tableView.indexPathForSelectedRow, let document = dataSource?.document(at: indexPath) {
 				controller.tag = TagDocument(for: document)
 			}

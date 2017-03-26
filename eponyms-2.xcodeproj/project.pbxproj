@@ -17,6 +17,7 @@
 		EE392B621AA49EDE0039F3D1 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EE392B611AA49EDE0039F3D1 /* Images.xcassets */; };
 		EE392B651AA49EDE0039F3D1 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = EE392B631AA49EDE0039F3D1 /* LaunchScreen.xib */; };
 		EE392B711AA49EDE0039F3D1 /* eponyms_2Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE392B701AA49EDE0039F3D1 /* eponyms_2Tests.swift */; };
+		EE3F17701E86F6E6008FB75F /* MainDocumentPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE3F176F1E86F6E6008FB75F /* MainDocumentPageViewController.swift */; };
 		EE4E892C1AF67C2E00E5BBEF /* AuthoredDocumentEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4E892B1AF67C2E00E5BBEF /* AuthoredDocumentEditViewController.swift */; };
 		EE4E892E1AF6A5FD00E5BBEF /* MainDocumentListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4E892D1AF6A5FD00E5BBEF /* MainDocumentListViewController.swift */; };
 		EE4EC9001CAF0E1300293F9D /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4EC8FF1CAF0E1300293F9D /* UserViewController.swift */; };
@@ -82,6 +83,7 @@
 		EE392B6A1AA49EDE0039F3D1 /* eponyms-2Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "eponyms-2Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EE392B6F1AA49EDE0039F3D1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EE392B701AA49EDE0039F3D1 /* eponyms_2Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = eponyms_2Tests.swift; sourceTree = "<group>"; };
+		EE3F176F1E86F6E6008FB75F /* MainDocumentPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainDocumentPageViewController.swift; sourceTree = "<group>"; };
 		EE4E892B1AF67C2E00E5BBEF /* AuthoredDocumentEditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthoredDocumentEditViewController.swift; sourceTree = "<group>"; };
 		EE4E892D1AF6A5FD00E5BBEF /* MainDocumentListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainDocumentListViewController.swift; sourceTree = "<group>"; };
 		EE4EC8FF1CAF0E1300293F9D /* UserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
@@ -106,6 +108,7 @@
 		EEC323C11AEC4C46009B0ABB /* SyncController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SyncController.swift; sourceTree = "<group>"; };
 		EEEA64171DCECF460018E72E /* eponyms-2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "eponyms-2.json"; sourceTree = "<group>"; };
 		EEEA64191DCF83570018E72E /* MainDocumentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainDocumentViewController.swift; sourceTree = "<group>"; };
+		EEEEA0861E7DD03E0093A9FD /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -266,6 +269,7 @@
 			children = (
 				EE392B5A1AA49EDE0039F3D1 /* MasterViewController.swift */,
 				EE4E892D1AF6A5FD00E5BBEF /* MainDocumentListViewController.swift */,
+				EE3F176F1E86F6E6008FB75F /* MainDocumentPageViewController.swift */,
 				EEEA64191DCF83570018E72E /* MainDocumentViewController.swift */,
 				EE4E892B1AF67C2E00E5BBEF /* AuthoredDocumentEditViewController.swift */,
 				EE4EC8FF1CAF0E1300293F9D /* UserViewController.swift */,
@@ -427,6 +431,7 @@
 				EE4EC9231CAF178300293F9D /* SyncError.swift in Sources */,
 				EE392B591AA49EDE0039F3D1 /* AppDelegate.swift in Sources */,
 				EE9C69361AEDAE9A00D824CE /* MainDocument.swift in Sources */,
+				EE3F17701E86F6E6008FB75F /* MainDocumentPageViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

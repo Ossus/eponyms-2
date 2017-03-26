@@ -7,7 +7,7 @@ All new incarnation of the iOS Eponyms app.
 Installation
 ------------
 
-This project is built in Swift 2, runs on iOS 8 or newer and needs Xcode 7.
+This project is built in Swift 3, runs on iOS 8 or newer and needs Xcode 8.
 
 Clone the repository via git:
 

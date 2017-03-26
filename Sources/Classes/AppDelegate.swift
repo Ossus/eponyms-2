@@ -36,6 +36,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
 		
 		let detailNavi = splitViewController.viewControllers[splitViewController.viewControllers.count-1] as! UINavigationController
 		detailNavi.topViewController!.navigationItem.leftBarButtonItem = splitViewController.displayModeButtonItem
+		
+		splitViewController.preferredDisplayMode = .allVisible
 		splitViewController.delegate = self
 		
 		return true
@@ -123,7 +125,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
 	func splitViewController(_ splitViewController: UISplitViewController, collapseSecondary secondaryViewController:UIViewController, onto primaryViewController:UIViewController) -> Bool {
 	    if let secondaryAsNavController = secondaryViewController as? UINavigationController {
 	        if let topAsDetailController = secondaryAsNavController.topViewController as? MainDocumentViewController {
-	            if nil == topAsDetailController.object {
+	            if nil == topAsDetailController.element {
 	                return true
 	            }
 	        }
