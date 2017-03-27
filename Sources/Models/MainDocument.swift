@@ -24,26 +24,31 @@ open class MainDocument: AuthoredDocument {
 	@NSManaged var tags: [String]
 	
 	
-	// MARK: - Views
+	// MARK: - Access
+	
+	open func nameAndText(in locale: String = kLocaleFallback) -> (String?, String?) {
+		return type(of: self).nameAndText(in: content, in: locale)
+	}
 	
 	/**
 	Returns a tuple with the name and text, in the given locale, of the given document.
 	*/
-	open class func nameAndText(in doc: JSONDoc, in locale: String = kLocaleFallback) -> (String?, String?) {
+	open class func nameAndText(in content: JSONDoc, in locale: String = kLocaleFallback) -> (String?, String?) {
 		var name: String?
 		var text: String?
-		if let localized = doc["content"] as? [String: JSONDoc] {
-			if let inLocale = localized[locale] as? [String: String] {
-				name = inLocale["name"]
-				text = inLocale["text"]
-			}
-			else if let inFallback = localized[kLocaleFallback] as? [String: String] {
-				name = name ?? inFallback["name"]
-				text = text ?? inFallback["text"]
-			}
+		if let inLocale = content[locale] as? [String: String] {
+			name = inLocale["name"]
+			text = inLocale["text"]
+		}
+		else if let inFallback = content[kLocaleFallback] as? [String: String] {
+			name = name ?? inFallback["name"]
+			text = text ?? inFallback["text"]
 		}
 		return (name, text)
 	}
+	
+	
+	// MARK: - Views
 	
 	/**
 	Returns the "mainDocumentsByTitle[Tag]" view as a Couchbase query that supports `fullTextQuery`.

@@ -54,7 +54,7 @@ class MasterViewController: UITableViewController, CBLUITableDelegate {
 	
 	// MARK: - CBLUITableDelegate
 	
-	func couchTableSource(_ source: CBLUITableSource, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+	func couchTableSource(_ source: CBLUITableSource, cellForRowAt indexPath: IndexPath) -> UITableViewCell? {
 		let cell = tableView.dequeueReusableCell(withIdentifier: "TagDocCell", for: indexPath)
 		if let row = dataSource?.row(at: indexPath) {
 			cell.textLabel?.text = (row.value as? String) ?? "Unnamed Tag"

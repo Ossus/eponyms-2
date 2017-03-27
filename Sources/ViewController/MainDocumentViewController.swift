@@ -42,7 +42,14 @@ class MainDocumentViewController: UIViewController {
 	// MARK: - Main Display
 	
 	func updateDisplay(for main: MainDocument) {
-		// TODO: show
+		guard let main = element else {
+			NSLog("No main document element set")
+			return
+		}
+		let (name, text) = main.nameAndText()
+		titleLabel?.text = name
+		textLabel?.text = text
+		tagLabel?.text = main.tags.joined(separator: ", ")
 		
 		// apply display mode
 		switch displayMode {

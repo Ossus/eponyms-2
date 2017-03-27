@@ -189,7 +189,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Eponyms" id="Zdf-7t-Un8">
-                        <barButtonItem key="rightBarButtonItem" image="button-profile" style="plain" id="oRl-Db-uGg">
+                        <barButtonItem key="rightBarButtonItem" image="button-profile" id="oRl-Db-uGg">
                             <connections>
                                 <segue destination="jRm-4l-0r1" kind="presentation" id="NPT-1f-kvs"/>
                             </connections>
@@ -234,8 +234,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" alwaysBounceHorizontal="YES" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s5F-F2-gge">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" directionalLockEnabled="YES" alwaysBounceHorizontal="YES" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s5F-F2-gge">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="d7F-Zb-UTk">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="190.5"/>
@@ -315,7 +315,7 @@
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="s5F-F2-gge" secondAttribute="trailing" id="9eD-rg-gWa"/>
                             <constraint firstItem="d7F-Zb-UTk" firstAttribute="width" secondItem="wCP-6J-nbV" secondAttribute="width" id="Yrx-RF-llh"/>
-                            <constraint firstItem="s5F-F2-gge" firstAttribute="top" secondItem="wCP-6J-nbV" secondAttribute="top" id="fjv-Jl-eca"/>
+                            <constraint firstItem="s5F-F2-gge" firstAttribute="top" secondItem="sCt-3m-SE7" secondAttribute="bottom" id="fQr-ps-uz8"/>
                             <constraint firstItem="ADJ-jq-LCb" firstAttribute="top" secondItem="s5F-F2-gge" secondAttribute="bottom" id="n7a-fl-o8P"/>
                             <constraint firstItem="s5F-F2-gge" firstAttribute="leading" secondItem="wCP-6J-nbV" secondAttribute="leading" id="tXP-zJ-xL3"/>
                         </constraints>
@@ -354,7 +354,7 @@
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <searchBar contentMode="redraw" searchBarStyle="prominent" placeholder="Search" translatesAutoresizingMaskIntoConstraints="NO" id="fdx-pN-duz">
-                                    <rect key="frame" x="0.0" y="0.0" width="768" height="44"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                     <textInputTraits key="textInputTraits" returnKeyType="search"/>
                                     <scopeButtonTitles>
                                         <string>Title</string>
@@ -422,7 +422,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="TLL-Vt-Y8M" id="FS8-wA-evZ">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -433,7 +433,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="You" id="ElD-BP-ncm">
-                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="pWG-gO-Bs7">
+                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="done" id="pWG-gO-Bs7">
                             <connections>
                                 <segue destination="7bK-jq-Zjz" kind="custom" customClass="DismissFromModalSegue" customModule="eponyms_2" id="mAG-ca-Fjt"/>
                             </connections>
@@ -468,7 +468,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="tsl-Nk-0bq"/>
-        <segue reference="oxj-zx-woe"/>
+        <segue reference="eHM-IZ-Ygq"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
 </document>

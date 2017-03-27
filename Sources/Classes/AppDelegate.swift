@@ -56,7 +56,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
 //			if !sync.authorizeUser(user) {
 //				logIfVerbose("Sync: no user logged in, using anonymous GUEST user")
 //			}
+			#if SYNC_ACTIVE
 			sync.sync()
+			#endif
 		}
 	}
 	
@@ -125,12 +127,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
 	func splitViewController(_ splitViewController: UISplitViewController, collapseSecondary secondaryViewController:UIViewController, onto primaryViewController:UIViewController) -> Bool {
 	    if let secondaryAsNavController = secondaryViewController as? UINavigationController {
 	        if let topAsDetailController = secondaryAsNavController.topViewController as? MainDocumentViewController {
-	            if nil == topAsDetailController.element {
-	                return true
+	            if nil != topAsDetailController.element {
+	                return false
 	            }
 	        }
 	    }
-	    return false
+	    return true
 	}
 }
 

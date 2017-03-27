@@ -69,7 +69,7 @@ class MainDocumentListViewController: UITableViewController, CBLUITableDelegate,
 	
 	// MARK: - CBLUITableDelegate
 	
-	func couchTableSource(_ source: CBLUITableSource, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+	func couchTableSource(_ source: CBLUITableSource, cellForRowAt indexPath: IndexPath) -> UITableViewCell? {
 		let cell = tableView.dequeueReusableCell(withIdentifier: "MainDocCell", for: indexPath)
 		if let row = dataSource?.row(at: indexPath) {
 			cell.textLabel?.text = (row.value as? String) ?? "Unnamed"
